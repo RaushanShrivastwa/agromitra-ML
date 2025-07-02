@@ -2,8 +2,26 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import * as jwtDecode from 'jwt-decode';
+// import * as jwtDecode from 'jwt-decode'; // REMOVED: No longer needed
+
 import '../styles/Login.css'; // Assuming you have a CSS file for styling
+
+// Custom parseJWT function
+function parseJWT(token) {
+  if (!token) throw new Error('Missing token');
+  const parts = token.split('.');
+  if (parts.length !== 3) throw new Error('Invalid JWT format');
+
+  const b64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+  const json = decodeURIComponent(
+    atob(b64)
+      .split('')
+      .map(ch => '%' + ch.charCodeAt(0).toString(16).padStart(2, '0'))
+      .join('')
+  );
+
+  return JSON.parse(json);
+}
 
 function Login() {
   const [loginData, setLoginData] = useState({ email: '', password: '' });
@@ -24,9 +42,14 @@ function Login() {
       const data = await res.json();
 
       if (res.ok) {
+        if (!data.token) { // Added check for missing token in response
+          alert('Invalid login response: No token received.');
+          return;
+        }
+
         let decodedUser = {};
         try {
-          const decodedToken = jwtDecode(data.token);
+          const decodedToken = parseJWT(data.token); // Changed to use custom parseJWT
           decodedUser = {
             id: decodedToken.id,
             email: decodedToken.email,
@@ -35,9 +58,12 @@ function Login() {
           };
         } catch (err) {
           console.error('JWT decoding failed:', err);
-          alert('Login successful, but user info could not be decoded.');
+          alert('Login successful, but user info could not be decoded. Token might be invalid.');
           return;
         }
+
+        // Explicitly storing token in localStorage
+        localStorage.setItem('token', data.token);
 
         login(data.token, decodedUser);
         navigate(decodedUser.role === 'admin' ? '/admin' : '/Dashboard');
