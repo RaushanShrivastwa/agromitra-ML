@@ -1,0 +1,1775 @@
+[
+  {
+    "keywords": [
+      "pm kisan",
+      "pm-kisan",
+      "kisan samman nidhi",
+      "6000",
+      "six thousand",
+      "income support"
+    ],
+    "question": "What is PM-Kisan and who is eligible?",
+    "answer": "PM-Kisan is a central government scheme providing \u20b96,000 per year in three equal installments of \u20b92,000. It targets all small and marginal landholding farmer families across India. Landholdings must be under 5 acres (2 hectares) for local registry. Taxpayers, government employees, and institutional landholders are excluded."
+  },
+  {
+    "keywords": [
+      "apply pm kisan",
+      "registration pm kisan",
+      "how to register pm kisan"
+    ],
+    "question": "How do I apply or register for the PM-Kisan scheme?",
+    "answer": "Farmers can self-register online at pmkisan.gov.in using the 'New Farmer Registration' module. You can also visit a local Common Service Centre (CSC) or submit land ownership and identity documents to your Block Agriculture Officer or Revenue Officer (Patwari)."
+  },
+  {
+    "keywords": [
+      "documents pm kisan",
+      "required papers pm kisan",
+      "what documents pm kisan"
+    ],
+    "question": "What documents are required for PM-Kisan registration?",
+    "answer": "You need: 1. Aadhaar Card, 2. Land Ownership Record (Khatauni/Patta/ROR), 3. Savings Bank Account details (linked to Aadhaar for DBT transfer), and 4. Active mobile number registered with Aadhaar for OTP verification."
+  },
+  {
+    "keywords": [
+      "ekyc pm kisan",
+      "e-kyc",
+      "kisan status check",
+      "kisan installment not received"
+    ],
+    "question": "How do I check my PM-Kisan status and complete my e-KYC?",
+    "answer": "Go to the PM-Kisan portal and click 'Know Your Status' to check installment history. To complete e-KYC (mandatory to receive payments), click the 'e-KYC' link on the portal, enter your Aadhaar number, and verify using the OTP sent to your registered mobile. You can also complete biometric-based e-KYC at any CSC."
+  },
+  {
+    "keywords": [
+      "crop insurance",
+      "fasal bima",
+      "pmfby",
+      "crop damage",
+      "flood",
+      "drought"
+    ],
+    "question": "What is PM Fasal Bima Yojana (PMFBY)?",
+    "answer": "PMFBY is a crop insurance scheme protecting farmers against yield loss due to natural calamities (drought, flood, cyclone), pests, and diseases. Farmers pay a nominal premium: 2% for Kharif crops, 1.5% for Rabi crops, and 5% for commercial/horticultural crops. The government covers the remaining premium amount."
+  },
+  {
+    "keywords": [
+      "claim fasal bima",
+      "crop insurance claim",
+      "report crop loss"
+    ],
+    "question": "How do I claim insurance under PM Fasal Bima Yojana (PMFBY)?",
+    "answer": "In case of crop loss, you must report the damage within 72 hours. You can report it via the 'Crop Insurance' mobile app, notify the local agriculture department officer, or contact the insurance company directly. Provide your policy number, crop details, land survey number, and photos of the damage for inspection."
+  },
+  {
+    "keywords": [
+      "solar pump",
+      "kusum",
+      "solar tube well",
+      "water pump subsidy",
+      "solar panel farming"
+    ],
+    "question": "What is the PM-KUSUM Solar Pump Scheme and how do I apply?",
+    "answer": "PM-KUSUM Component B provides a 60% combined subsidy (30% Central + 30% State) for installing standalone solar irrigation pumps (3HP to 10HP capacity). Farmers only pay 40% of the cost. Apply online through your state energy development agency (e.g., UREDA, HAREDA, MEDA) with land papers, Aadhaar, and borewell feasibility certificate."
+  },
+  {
+    "keywords": [
+      "tractor subsidy",
+      "tractor registration",
+      "smam",
+      "machinery subsidy",
+      "power tiller"
+    ],
+    "question": "How do I get a subsidy on tractors and farm machinery under SMAM?",
+    "answer": "The Sub-Mission on Agricultural Mechanization (SMAM) offers a 50% to 80% subsidy for purchasing tractors, power tillers, rotavators, and weeders. Register on the SMAM portal (agrimachinery.nic.in), upload your Aadhaar, bank passbook, caste certificate, land records, and a quote from an authorized machinery dealer."
+  },
+  {
+    "keywords": [
+      "drip irrigation",
+      "sprinkler subsidy",
+      "pmksy",
+      "micro irrigation",
+      "per drop more crop"
+    ],
+    "question": "What is the Micro Irrigation Drip and Sprinkler Subsidy?",
+    "answer": "Under the Per Drop More Crop (PMKSY) scheme, the government offers a 70% to 90% subsidy on drip and sprinkler micro-irrigation installations. Small and marginal farmers receive the highest percentage (up to 90% in some states). Apply with your district horticulture department with farm survey maps and land papers."
+  },
+  {
+    "keywords": [
+      "organic farming",
+      "pkvy",
+      "organic fertilizer",
+      "organic cluster",
+      "certification"
+    ],
+    "question": "What benefits are provided under the organic farming scheme (PKVY)?",
+    "answer": "Paramparagat Krishi Vikas Yojana (PKVY) promotes organic farming through farmer clusters. Farmers receive \u20b950,000 per hectare over 3 years. Of this, \u20b931,000 is given directly via DBT for buying organic seeds, bio-fertilizers, and bio-pesticides. The remaining amount covers training, packaging, and PGS-India organic certification."
+  },
+  {
+    "keywords": [
+      "beekeeping",
+      "honey subsidy",
+      "apiculture",
+      "bee hive",
+      "nbhm"
+    ],
+    "question": "Are there subsidies for starting a beekeeping business?",
+    "answer": "Yes, under the National Beekeeping and Honey Mission (NBHM), the government provides up to 50% subsidy for setting up apiary units, purchasing bee colonies, hives, and honey extraction equipment. Apply through your district horticulture office or through the Khadi and Village Industries Commission (KVIC)."
+  },
+  {
+    "keywords": [
+      "fish farming",
+      "fisheries pond",
+      "aquaculture",
+      "pmmsy"
+    ],
+    "question": "What subsidies are available for fish farming (aquaculture) under PMMSY?",
+    "answer": "The Pradhan Mantri Matsya Sampada Yojana (PMMSY) provides up to 60% subsidy for women and SC/ST farmers, and 40% for general farmers, to construct new aquaculture ponds, set up fish feed mills, establish hatcheries, or purchase biofloc systems and aerators. Applications are processed by your State Fisheries Department."
+  },
+  {
+    "keywords": [
+      "dairy loan",
+      "animal husbandry loan",
+      "ahidf",
+      "cows",
+      "buffaloes"
+    ],
+    "question": "How do I get a loan and interest subsidy for dairy or animal husbandry?",
+    "answer": "The Animal Husbandry Infrastructure Development Fund (AHIDF) offers loans up to 90% of project costs for setting up dairy processing plants, meat plants, or feed manufacturing units. The scheme provides a 3% interest subvention (subsidy on your interest rate) and a 2-year repayment moratorium. Apply through the Udyami Mitra portal."
+  },
+  {
+    "keywords": [
+      "soil testing",
+      "soil health card",
+      "free soil test",
+      "nitrogen phosphorus potassium"
+    ],
+    "question": "What is the Soil Health Card Scheme?",
+    "answer": "The Soil Health Card Scheme provides 100% free chemical testing of soil samples. Every two years, farmers receive a card detailing 12 parameters: Macro-nutrients (N, P, K), Secondary nutrients (S), Micro-nutrients (Zn, Fe, Cu, Mn, B), and Physical parameters (pH, EC, Organic Carbon). The card suggests exact fertilizer dosages to optimize crop yields."
+  },
+  {
+    "keywords": [
+      "seed subsidy",
+      "cheap seeds",
+      "wheat seed",
+      "paddy seed"
+    ],
+    "question": "How can I purchase subsidized high-quality seeds?",
+    "answer": "Under the National Food Security Mission (NFSM), the government distributes certified high-yield variety (HYV) seeds of wheat, paddy, pulses, and oilseeds at 50% subsidy. You can buy these seeds directly from your block's Government Seed Distribution Centre or primary agricultural cooperative societies (PACS) by showing your farmer ID card or land passbook."
+  },
+  {
+    "keywords": [
+      "drone subsidy",
+      "agriculture drone",
+      "krishi drone",
+      "spray drone"
+    ],
+    "question": "What is the subsidy for buying agricultural spray drones?",
+    "answer": "To promote smart farming, individual small, marginal, women, and SC/ST farmers receive a 50% subsidy (up to \u20b95 lakh) for purchasing DGCA-approved agricultural drones. Other farmers receive a 40% subsidy (up to \u20b94 lakh). Cooperative societies and Farmer Producer Organizations (FPOs) can receive up to 75% to 100% grant for custom hiring. Apply via the SMAM portal."
+  },
+  {
+    "keywords": [
+      "agri business",
+      "acabc",
+      "agri clinic",
+      "setup store",
+      "loan seed shop"
+    ],
+    "question": "What is the Agri-Clinic and Agri-Business Centres (ACABC) scheme?",
+    "answer": "ACABC supports agriculture graduates, diploma holders, and science graduates to set up custom consulting clinics or retail input shops (selling seeds, fertilizers, pesticides). The scheme offers loans up to \u20b920 lakh with a 36% subsidy for general category and 44% for women, SC/ST, and North-Eastern states, backed by a 45-day free training course by MANAGE."
+  },
+  {
+    "keywords": [
+      "rythu bandhu",
+      "telangana farmer",
+      "rythu bandhu eligibility"
+    ],
+    "question": "What is Rythu Bandhu and how does it work?",
+    "answer": "Rythu Bandhu is a Telangana state scheme providing \u20b910,000 per acre per year (\u20b95,000 each for Rabi and Kharif seasons) to landowning farmers. The money is deposited directly to bank accounts to purchase seeds, fertilizers, pesticides, and other farming inputs."
+  },
+  {
+    "keywords": [
+      "rythu bharosa",
+      "ysr rythu bharosa",
+      "ap farmer support"
+    ],
+    "question": "What is YSR Rythu Bharosa in Andhra Pradesh?",
+    "answer": "YSR Rythu Bharosa provides financial assistance of \u20b913,500 per year to eligible farmer families in Andhra Pradesh, including tenant farmers. The amount includes support from PM-Kisan (\u20b96,000) and the AP State Government (\u20b97,500)."
+  },
+  {
+    "keywords": [
+      "loan waiver",
+      "debt relief",
+      "agriculture loan waiver",
+      "punjab loan waiver"
+    ],
+    "question": "How does the Crop Loan Waiver scheme work?",
+    "answer": "State-specific Crop Loan Waiver schemes (e.g. in Punjab, Maharashtra) waive crop loan dues up to \u20b92,00,000 for small and marginal farmers who took loans from cooperative or public sector banks. Apply through local cooperative bank branches."
+  },
+  {
+    "keywords": [
+      "kcc",
+      "kisan credit card",
+      "farm loan",
+      "crop loan",
+      "interest rate farming"
+    ],
+    "question": "What is Kisan Credit Card (KCC) and how do I apply?",
+    "answer": "KCC provides subsidized credit at 4% interest rate (after government subvention of 5%) for crop production, animal husbandry, and fisheries. You can get up to \u20b93 lakh at 4% if you repay on time. Apply at any commercial bank, cooperative bank, or Regional Rural Bank (RRB) with Aadhaar, land records, and passport-size photos. The card also provides personal accident insurance cover of \u20b950,000."
+  },
+  {
+    "keywords": [
+      "rkvy",
+      "rashtriya krishi vikas yojana",
+      "state agriculture funding"
+    ],
+    "question": "What is the Rashtriya Krishi Vikas Yojana (RKVY)?",
+    "answer": "RKVY-RAFTAAR provides flexible funding to states for agriculture and allied sector development. It supports infrastructure projects, agri-startups, innovation, and value chain development. States prepare their own agriculture plans and implement projects based on local priorities. Individual farmers benefit indirectly through state-level programs funded under RKVY."
+  },
+  {
+    "keywords": [
+      "enam",
+      "e-nam",
+      "online mandi",
+      "electronic market",
+      "sell crop online"
+    ],
+    "question": "How does e-NAM (electronic National Agriculture Market) work?",
+    "answer": "e-NAM is an online trading platform connecting APMCs (mandis) across India. Farmers can register at their local mandi, get their produce quality tested, and sell to buyers across the country. The platform shows transparent bidding and ensures competitive pricing. Register through the e-NAM portal or visit your nearest integrated mandi."
+  },
+  {
+    "keywords": [
+      "midh",
+      "horticulture",
+      "orchard",
+      "cold storage",
+      "greenhouse polyhouse"
+    ],
+    "question": "What support does MIDH provide for horticulture development?",
+    "answer": "The Mission for Integrated Development of Horticulture (MIDH) provides 50% to 75% subsidy for establishing new orchards, nurseries, tissue culture labs, greenhouses, shade net houses, and cold storage facilities. It covers fruits, vegetables, spices, flowers, and medicinal plants. Apply through your State Horticulture Mission office."
+  },
+  {
+    "keywords": [
+      "nfsm",
+      "food security",
+      "pulses production",
+      "rice wheat mission"
+    ],
+    "question": "What is the National Food Security Mission (NFSM)?",
+    "answer": "NFSM aims to increase production of rice, wheat, pulses, coarse cereals, and commercial crops through area expansion, productivity enhancement, and restoring soil fertility. Farmers receive subsidies for certified seeds, farm mechanization, demonstrations, and integrated nutrient/pest management. Apply at your district agriculture office."
+  },
+  {
+    "keywords": [
+      "atma",
+      "extension service",
+      "farmer training",
+      "field school",
+      "krishi vigyan kendra"
+    ],
+    "question": "What is ATMA and how can farmers access training?",
+    "answer": "The Agricultural Technology Management Agency (ATMA) operates at the district level to provide extension services including farmer field schools, demonstration plots, exposure visits, and training programs. Contact your block agriculture officer or district ATMA office for upcoming training schedules. Services are free for registered farmers."
+  },
+  {
+    "keywords": [
+      "dbt",
+      "direct benefit transfer",
+      "subsidy money transfer",
+      "how subsidy reaches"
+    ],
+    "question": "How does the DBT (Direct Benefit Transfer) mechanism work for subsidies?",
+    "answer": "All central and most state agricultural subsidies are now transferred directly to the farmer's Aadhaar-linked bank account via DBT. This eliminates middlemen and ensures faster payment. Make sure your bank account is linked to your Aadhaar (seeded) and your mobile number is registered with both the bank and Aadhaar for receiving notifications."
+  },
+  {
+    "keywords": [
+      "grievance",
+      "complaint",
+      "subsidy not received",
+      "problem scheme",
+      "helpline"
+    ],
+    "question": "How can I file a complaint if I haven't received my subsidy?",
+    "answer": "You can file grievances through multiple channels: 1) PM-Kisan Helpline: 155261 or 011-24300606, 2) State Agriculture Helplines (varies by state), 3) CPGRAMS portal (pgportal.gov.in) for central schemes, 4) District Agriculture Officer office in person. For PM-Kisan specific issues, use the 'Grievance' section on pmkisan.gov.in."
+  },
+  {
+    "keywords": [
+      "pension",
+      "kisan maandhan",
+      "old age farmer",
+      "retirement farmer"
+    ],
+    "question": "Is there a pension scheme for farmers?",
+    "answer": "Yes, Pradhan Mantri Kisan Maandhan Yojana (PM-KMY) provides a pension of \u20b93,000 per month after age 60 for small and marginal farmers. Farmers aged 18-40 can enroll by contributing \u20b955-200 per month (matched by the government). Register at your nearest Common Service Centre (CSC) with Aadhaar and bank details."
+  },
+  {
+    "keywords": [
+      "millet",
+      "shree anna",
+      "bajra",
+      "jowar",
+      "ragi",
+      "millet mission"
+    ],
+    "question": "What support is available for millet cultivation?",
+    "answer": "Under the National Mission on Millets (formerly part of NFSM), farmers receive subsidized millet seeds, demonstrations of improved cultivation practices, and post-harvest support. India's 2023 International Year of Millets initiative has boosted marketing support. States like Rajasthan, Karnataka, and Odisha offer additional state-level incentives for bajra, jowar, and ragi."
+  },
+  {
+    "keywords": [
+      "livestock",
+      "poultry",
+      "goat",
+      "sheep",
+      "pig farming",
+      "national livestock mission"
+    ],
+    "question": "Are there subsidies for poultry, goat, or sheep farming?",
+    "answer": "The National Livestock Mission (NLM) provides entrepreneurship support for poultry, sheep, goat, and pig rearing. Subsidies of 25-33% are available for establishing poultry units (up to 5000 birds), sheep/goat units (up to 500 animals), and piggery units. Apply through the NLM portal or your district Animal Husbandry office."
+  },
+  {
+    "keywords": [
+      "warehouse",
+      "cold storage",
+      "market infrastructure",
+      "godown",
+      "isam"
+    ],
+    "question": "How can I get a subsidy for building a warehouse or cold storage?",
+    "answer": "Under the Integrated Scheme for Agricultural Marketing (ISAM) and MIDH, subsidies of 25-50% are available for constructing rural godowns, cold storages, pack houses, and ripening chambers. The Warehousing Development and Regulatory Authority (WDRA) also provides negotiable warehouse receipts. Apply through NABARD or your State Agricultural Marketing Board."
+  },
+  {
+    "keywords": [
+      "farm pond",
+      "rain water harvesting",
+      "water conservation",
+      "check dam"
+    ],
+    "question": "Are there subsidies for farm ponds and water harvesting?",
+    "answer": "Yes, multiple schemes support farm ponds: 1) PMKSY provides 90% subsidy for community farm ponds, 2) MGNREGA covers farm pond construction under 60:40 labor-material ratio, 3) State schemes like Karnataka's Krishi Bhagya and MP's Balram Tal Yojana provide 80-90% subsidy. Contact your block development office for MGNREGA support or district agriculture office for scheme-specific support."
+  },
+  {
+    "keywords": [
+      "tea grower",
+      "tea subsidy",
+      "tea board",
+      "small tea garden"
+    ],
+    "question": "What subsidies are available for tea growers?",
+    "answer": "The Tea Board of India provides subsidies for small tea growers: 25% subsidy for replanting (up to \u20b91.5 lakh/hectare), 50% for factory modernization, and quality certification support. Assam provides additional state subsidies. Register with the Tea Board at teaboard.gov.in to access benefits."
+  },
+  {
+    "keywords": [
+      "coffee",
+      "coffee board",
+      "coffee subsidy",
+      "coffee plantation"
+    ],
+    "question": "What support does the Coffee Board provide?",
+    "answer": "The Coffee Board provides subsidies for replanting (\u20b940,000/hectare), water augmentation (drip irrigation), quality improvement, and organic certification for coffee growers. Shade-grown and specialty coffee receives additional marketing support. Apply through the Coffee Board's regional offices in Karnataka, Kerala, and Tamil Nadu."
+  },
+  {
+    "keywords": [
+      "rubber",
+      "rubber board",
+      "rubber subsidy",
+      "rubber plantation"
+    ],
+    "question": "Are there subsidies for rubber cultivation?",
+    "answer": "The Rubber Board provides financial assistance for new rubber planting (\u20b925,000/hectare over 6 years), replanting of old rubber trees, rain guarding, and rubber processing. Kerala, Tripura, and other NE states are primary beneficiaries. Register with your nearest Rubber Board office."
+  },
+  {
+    "keywords": [
+      "kalia odisha",
+      "kalia scheme",
+      "odisha farmer"
+    ],
+    "question": "What is the KALIA scheme in Odisha?",
+    "answer": "KALIA (Krushak Assistance for Livelihood and Income Augmentation) provides \u20b910,000 per family per year in two installments for cultivation assistance to small and marginal farmers. Landless agricultural households receive \u20b912,500 per family per year. Vulnerable farmers also receive life insurance coverage of \u20b92 lakh and personal accident cover of \u20b92 lakh."
+  },
+  {
+    "keywords": [
+      "rajiv gandhi kisan nyay",
+      "chhattisgarh farmer",
+      "paddy subsidy chhattisgarh"
+    ],
+    "question": "What is the Rajiv Gandhi Kisan Nyay Yojana in Chhattisgarh?",
+    "answer": "This Chhattisgarh state scheme provides input subsidy of \u20b99,000 per acre to paddy farmers and incentives for crop diversification. Farmers growing sugarcane receive \u20b913,000 per acre and those growing maize or other diversified crops receive \u20b910,000 per acre. The amount is transferred directly to bank accounts."
+  },
+  {
+    "keywords": [
+      "interest subvention",
+      "crop loan interest",
+      "4 percent loan",
+      "cheap farm loan"
+    ],
+    "question": "How does the Interest Subvention Scheme for crop loans work?",
+    "answer": "The government provides 2% interest subvention on short-term crop loans up to \u20b93 lakh, reducing the effective rate from 7% to 5%. Farmers who repay on time get an additional 3% prompt repayment incentive, bringing the effective rate to just 4%. Available through all scheduled commercial banks, cooperative banks, and RRBs."
+  },
+  {
+    "keywords": [
+      "bamboo",
+      "bamboo mission",
+      "bamboo plantation",
+      "bamboo products"
+    ],
+    "question": "What support is available under the National Bamboo Mission?",
+    "answer": "The National Bamboo Mission provides subsidies for bamboo plantation (\u20b950,000/hectare over 3 years), nursery development, and post-harvest processing units. It promotes bamboo for construction, furniture, handicrafts, and biomass energy. Apply through your State Bamboo Mission or district forest department."
+  },
+  {
+    "keywords": [
+      "power",
+      "rotavators",
+      "harvester",
+      "technology",
+      "how to apply smam farm mechanization",
+      "subsidy smam farm mechanization",
+      "apply smam farm mechanization",
+      "weeders",
+      "tillers",
+      "smam farm mechanization",
+      "purchasing",
+      "equipment",
+      "tractors"
+    ],
+    "question": "What is the SMAM Farm Mechanization and who is eligible?",
+    "answer": "The SMAM Farm Mechanization is a government initiative under the Technology category. It provides 50% to 80% financial assistance for purchasing tractors tillers rotavators power weeders and harvester equipment. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b9150,000. It is available for farmers with landholdings up to 20.0 acres, and a maximum annual family income of \u20b9800,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "how to apply national horticulture mission",
+      "packhouses",
+      "storages",
+      "subsidy",
+      "greenhouses",
+      "developing",
+      "apply national horticulture mission",
+      "shade",
+      "cultivation",
+      "agriculture",
+      "orchards",
+      "subsidy national horticulture mission",
+      "fruits",
+      "national horticulture mission",
+      "cold"
+    ],
+    "question": "What is the National Horticulture Mission and who is eligible?",
+    "answer": "The National Horticulture Mission is a government initiative under the Agriculture category. It provides 50% subsidy for developing orchards cold storages packhouses greenhouses or shade net cultivation. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b985,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b91,000,000. This scheme is applicable for Fruits in all states across India."
+  },
+  {
+    "keywords": [
+      "how to apply solar pump",
+      "10hp",
+      "subsidy",
+      "irrigation",
+      "apply solar pump",
+      "solar",
+      "status pm-kusum component b",
+      "apply pm-kusum component b",
+      "technology",
+      "central",
+      "combined",
+      "pm-kusum component b",
+      "installing",
+      "standalone",
+      "pumps",
+      "documents pm-kusum component b",
+      "subsidy solar pump",
+      "eligibility pm-kusum component b",
+      "solar pump",
+      "state",
+      "solar pump (pm-kusum component b)",
+      "register pm-kusum component b"
+    ],
+    "question": "What is the Solar Pump (PM-KUSUM Component B) and who is eligible?",
+    "answer": "The Solar Pump (PM-KUSUM Component B) is a government initiative under the Technology category. It provides up to 60% combined central and state subsidy for installing standalone solar irrigation pumps (3hp to 10hp). Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b9180,000. It is available for farmers with landholdings up to 15.0 acres, and a maximum annual family income of \u20b9700,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "how to apply custom hiring centre scheme",
+      "rental",
+      "technology",
+      "subsidy",
+      "custom hiring centre scheme",
+      "machinery",
+      "bank",
+      "agricultural",
+      "youth",
+      "subsidy custom hiring centre scheme",
+      "hubs",
+      "apply custom hiring centre scheme",
+      "rural"
+    ],
+    "question": "What is the Custom Hiring Centre Scheme and who is eligible?",
+    "answer": "The Custom Hiring Centre Scheme is a government initiative under the Technology category. It provides 40% subsidy for farmers or rural youth to set up agricultural machinery rental bank hubs. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b9400,000. It is available for farmers with landholdings up to 30.0 acres, and a maximum annual family income of \u20b91,200,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "dosage",
+      "documents free testing",
+      "register free testing",
+      "cards",
+      "apply soil health card",
+      "eligibility free testing",
+      "samples",
+      "analysis",
+      "how to apply soil health card",
+      "chemical",
+      "essential",
+      "free testing",
+      "agriculture",
+      "apply free testing",
+      "soil",
+      "subsidy soil health card",
+      "customized",
+      "soil health card (free testing)",
+      "soil health card",
+      "providing",
+      "free",
+      "status free testing",
+      "parameters",
+      "nutrient"
+    ],
+    "question": "What is the Soil Health Card (Free Testing) and who is eligible?",
+    "answer": "The Soil Health Card (Free Testing) is a government initiative under the Agriculture category. It provides 100% free chemical analysis of soil samples providing customized nutrient dosage cards for 12 essential parameters. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b91,000. It is available for farmers with landholdings up to 100.0 acres, and a maximum annual family income of \u20b95,000,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "certified",
+      "subsidy",
+      "seeds",
+      "buying",
+      "wheat",
+      "government",
+      "yield",
+      "depots",
+      "how to apply subsidized seed distribution",
+      "agriculture",
+      "oilseeds",
+      "from",
+      "subsidy subsidized seed distribution",
+      "apply subsidized seed distribution",
+      "variety",
+      "subsidized seed distribution",
+      "high",
+      "paddy",
+      "pulses"
+    ],
+    "question": "What is the Subsidized Seed Distribution and who is eligible?",
+    "answer": "The Subsidized Seed Distribution is a government initiative under the Agriculture category. It provides 50% subsidy on buying certified high-yield variety (hyv) seeds of wheat paddy pulses and oilseeds from government depots. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b95,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9300,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "individual",
+      "purchase",
+      "spray",
+      "technology",
+      "subsidy",
+      "how to apply krishi drones subsidy",
+      "subsidy krishi drones subsidy",
+      "drones",
+      "agricultural",
+      "krishi drones subsidy",
+      "societies",
+      "apply krishi drones subsidy",
+      "cooperative",
+      "grant"
+    ],
+    "question": "What is the Krishi Drones Subsidy and who is eligible?",
+    "answer": "The Krishi Drones Subsidy is a government initiative under the Technology category. It provides up to 100% grant for cooperative societies and 40% to 50% subsidy for individual farmers to purchase agricultural spray drones. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b9500,000. It is available for farmers with landholdings up to 15.0 acres, and a maximum annual family income of \u20b91,000,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "certified",
+      "oilseed",
+      "subsidy",
+      "seed",
+      "nfsm oilseeds",
+      "distribution",
+      "how to apply nfsm oilseeds",
+      "subsidy nfsm oilseeds",
+      "mechanization",
+      "agriculture",
+      "demonstration",
+      "apply nfsm oilseeds",
+      "programs",
+      "farm",
+      "cultivation",
+      "oilseeds"
+    ],
+    "question": "What is the NFSM Oilseeds and who is eligible?",
+    "answer": "The NFSM Oilseeds is a government initiative under the Agriculture category. It provides subsidy for certified seed distribution demonstration programs and farm mechanization for oilseed cultivation. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b930,000. It is available for farmers with landholdings up to 15.0 acres, and a maximum annual family income of \u20b9800,000. This scheme is applicable for Oilseeds in all states across India."
+  },
+  {
+    "keywords": [
+      "mobilize",
+      "apply mif",
+      "register mif",
+      "irrigation",
+      "nabard",
+      "states",
+      "documents mif",
+      "micro irrigation fund",
+      "coverage",
+      "status mif",
+      "how to apply micro irrigation fund",
+      "with",
+      "expand",
+      "dedicated",
+      "systems",
+      "fund",
+      "micro irrigation fund (mif)",
+      "micro",
+      "apply micro irrigation fund",
+      "subsidy micro irrigation fund",
+      "resources",
+      "mif",
+      "eligibility mif"
+    ],
+    "question": "What is the Micro Irrigation Fund (MIF) and who is eligible?",
+    "answer": "The Micro Irrigation Fund (MIF) is a government initiative under the Irrigation category. It provides dedicated fund with nabard for states to mobilize resources and expand coverage of micro irrigation systems. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b9100,000. It is available for farmers with landholdings up to 20.0 acres, and a maximum annual family income of \u20b9800,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "power",
+      "apply pm-kusum component a",
+      "subsidy pm-kusum component a",
+      "how to apply pm-kusum component a",
+      "renewable",
+      "energy",
+      "technology",
+      "plants",
+      "pm-kusum component a",
+      "connected",
+      "land",
+      "10000",
+      "grid",
+      "barren",
+      "decentralized",
+      "setting",
+      "fallow"
+    ],
+    "question": "What is the PM-KUSUM Component A and who is eligible?",
+    "answer": "The PM-KUSUM Component A is a government initiative under the Technology category. It provides setting up 10000 mw decentralized grid-connected renewable energy power plants on barren or fallow land. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b9500,000. It is available for farmers with landholdings up to 25.0 acres, and a maximum annual family income of \u20b91,200,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "pumps",
+      "pm-kusum component c",
+      "technology",
+      "subsidy",
+      "with",
+      "subsidy pm-kusum component c",
+      "existing",
+      "connected",
+      "central",
+      "solarisation",
+      "grid",
+      "apply pm-kusum component c",
+      "how to apply pm-kusum component c",
+      "agriculture",
+      "state"
+    ],
+    "question": "What is the PM-KUSUM Component C and who is eligible?",
+    "answer": "The PM-KUSUM Component C is a government initiative under the Technology category. It provides solarisation of existing grid-connected agriculture pumps with 60% central and state subsidy. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b9100,000. It is available for farmers with landholdings up to 15.0 acres, and a maximum annual family income of \u20b9700,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "income",
+      "sub mission on agroforestry",
+      "register smaf",
+      "sub mission on agroforestry (smaf)",
+      "improve",
+      "health",
+      "trees",
+      "agriculture",
+      "supplement",
+      "soil",
+      "status smaf",
+      "eligibility smaf",
+      "smaf",
+      "farmlands",
+      "documents smaf",
+      "apply sub mission on agroforestry",
+      "planting",
+      "subsidy sub mission on agroforestry",
+      "apply smaf",
+      "how to apply sub mission on agroforestry"
+    ],
+    "question": "What is the Sub Mission on Agroforestry (SMAF) and who is eligible?",
+    "answer": "The Sub Mission on Agroforestry (SMAF) is a government initiative under the Agriculture category. It provides assistance for planting trees on farmlands to supplement income and improve soil health. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b925,000. It is available for farmers with landholdings up to 15.0 acres, and a maximum annual family income of \u20b9800,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "oilseed",
+      "subsidy",
+      "documents nmoop",
+      "nmoop",
+      "eligibility nmoop",
+      "status nmoop",
+      "infrastructure",
+      "processing",
+      "agriculture",
+      "oilseeds",
+      "national mission on oilseeds and oil palm",
+      "subsidy national mission on oilseeds and oil palm",
+      "tree",
+      "apply national mission on oilseeds and oil palm",
+      "plantation",
+      "apply nmoop",
+      "borne",
+      "palm",
+      "national mission on oilseeds and oil palm (nmoop)",
+      "how to apply national mission on oilseeds and oil palm",
+      "register nmoop"
+    ],
+    "question": "What is the National Mission on Oilseeds and Oil Palm (NMOOP) and who is eligible?",
+    "answer": "The National Mission on Oilseeds and Oil Palm (NMOOP) is a government initiative under the Agriculture category. It provides subsidy for oil palm and tree-borne oilseed plantation and processing infrastructure. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b930,000. It is available for farmers with landholdings up to 15.0 acres, and a maximum annual family income of \u20b9900,000. This scheme is applicable for Oilseeds in all states across India."
+  },
+  {
+    "keywords": [
+      "mechanisms",
+      "price",
+      "through",
+      "copra",
+      "pm-aasha",
+      "how to apply pradhan mantri annadata aay sanrakshan abhiyan",
+      "apply pradhan mantri annadata aay sanrakshan abhiyan",
+      "procurement",
+      "oilseeds",
+      "apply pm-aasha",
+      "pradhan mantri annadata aay sanrakshan abhiyan (pm-aasha)",
+      "documents pm-aasha",
+      "finance",
+      "register pm-aasha",
+      "status pm-aasha",
+      "pradhan mantri annadata aay sanrakshan abhiyan",
+      "subsidy pradhan mantri annadata aay sanrakshan abhiyan",
+      "pulses",
+      "eligibility pm-aasha",
+      "ensuring",
+      "multiple"
+    ],
+    "question": "What is the Pradhan Mantri Annadata Aay Sanrakshan Abhiyan (PM-AASHA) and who is eligible?",
+    "answer": "The Pradhan Mantri Annadata Aay Sanrakshan Abhiyan (PM-AASHA) is a government initiative under the Finance category. It provides price support scheme ensuring msp procurement for pulses oilseeds and copra through multiple procurement mechanisms. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b9200,000. It is available for farmers with landholdings up to 30.0 acres, and a maximum annual family income of \u20b91,500,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "marketing",
+      "based",
+      "groups",
+      "farming",
+      "apply paramparagat krishi vikas yojana cluster",
+      "paramparagat krishi vikas yojana cluster",
+      "subsidy paramparagat krishi vikas yojana cluster",
+      "cluster",
+      "covering",
+      "certification",
+      "agriculture",
+      "organic",
+      "how to apply paramparagat krishi vikas yojana cluster",
+      "inputs",
+      "more"
+    ],
+    "question": "What is the Paramparagat Krishi Vikas Yojana Cluster and who is eligible?",
+    "answer": "The Paramparagat Krishi Vikas Yojana Cluster is a government initiative under the Agriculture category. It provides cluster-based organic farming support for groups of 50 or more farmers covering certification inputs and marketing. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b950,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9400,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "resilient",
+      "nmsa",
+      "subsidy national mission for sustainable agriculture",
+      "management",
+      "development",
+      "health",
+      "eligibility nmsa",
+      "how to apply national mission for sustainable agriculture",
+      "agriculture",
+      "soil",
+      "national mission for sustainable agriculture (nmsa)",
+      "rainfed",
+      "national mission for sustainable agriculture",
+      "area",
+      "register nmsa",
+      "efficiency",
+      "documents nmsa",
+      "status nmsa",
+      "apply nmsa",
+      "practices",
+      "water",
+      "apply national mission for sustainable agriculture",
+      "climate"
+    ],
+    "question": "What is the National Mission for Sustainable Agriculture (NMSA) and who is eligible?",
+    "answer": "The National Mission for Sustainable Agriculture (NMSA) is a government initiative under the Agriculture category. It provides support for climate-resilient agriculture practices soil health management water use efficiency and rainfed area development. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b940,000. It is available for farmers with landholdings up to 15.0 acres, and a maximum annual family income of \u20b9700,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "dairy",
+      "subsidy dairy entrepreneurship development scheme",
+      "animals",
+      "how to apply dairy entrepreneurship development scheme",
+      "back",
+      "capital",
+      "subsidy",
+      "with",
+      "apply dairy entrepreneurship development scheme",
+      "farms",
+      "infrastructure",
+      "small",
+      "dairy entrepreneurship development scheme",
+      "ended",
+      "milch",
+      "including",
+      "finance",
+      "setting"
+    ],
+    "question": "What is the Dairy Entrepreneurship Development Scheme and who is eligible?",
+    "answer": "The Dairy Entrepreneurship Development Scheme is a government initiative under the Finance category. It provides back-ended capital subsidy for setting up small dairy farms with 2 to 10 milch animals including infrastructure. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b9175,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9500,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "apply venture capital assistance for agri-business",
+      "equity",
+      "marketing",
+      "subsidy venture capital assistance for agri-business",
+      "agribusiness",
+      "sfac",
+      "agricultural",
+      "ventures",
+      "how to apply venture capital assistance for agri-business",
+      "processing",
+      "produce",
+      "venture capital assistance for agri-business",
+      "finance",
+      "production"
+    ],
+    "question": "What is the Venture Capital Assistance for Agri-Business and who is eligible?",
+    "answer": "The Venture Capital Assistance for Agri-Business is a government initiative under the Finance category. It provides 26% equity support by sfac for agribusiness ventures in production processing and marketing of agricultural produce. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b91,000,000. It is available for farmers with landholdings up to 20.0 acres, and a maximum annual family income of \u20b91,500,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "income",
+      "how to apply mukhyamantri kisan kalyan yojana",
+      "apply mukhyamantri kisan kalyan yojana",
+      "direct",
+      "madhya pradesh scheme",
+      "subsidy mukhyamantri kisan kalyan yojana",
+      "madhya pradesh",
+      "beneficiaries",
+      "kisan",
+      "mukhyamantri kisan kalyan yojana",
+      "year",
+      "4000",
+      "finance"
+    ],
+    "question": "What is the Mukhyamantri Kisan Kalyan Yojana and who is eligible?",
+    "answer": "The Mukhyamantri Kisan Kalyan Yojana is a government initiative under the Finance category. It provides direct income support of rs 4000 per year to beneficiaries of pm-kisan in mp. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b94,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9300,000. This scheme is applicable for all crops in Madhya Pradesh."
+  },
+  {
+    "keywords": [
+      "bangla shasya bima",
+      "apply bangla shasya bima",
+      "selected",
+      "west bengal",
+      "rice",
+      "west bengal scheme",
+      "insurance",
+      "paid",
+      "food",
+      "grains",
+      "subsidy bangla shasya bima",
+      "premium",
+      "state",
+      "how to apply bangla shasya bima",
+      "crop",
+      "government",
+      "oilseeds",
+      "finance"
+    ],
+    "question": "What is the Bangla Shasya Bima and who is eligible?",
+    "answer": "The Bangla Shasya Bima is a government initiative under the Finance category. It provides 100% premium paid by state government for crop insurance of selected food grains and oilseeds. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b915,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9500,000. This scheme is applicable for Rice in West Bengal."
+  },
+  {
+    "keywords": [
+      "suryashakti",
+      "powered",
+      "pumps",
+      "gujarat scheme",
+      "gujarat",
+      "technology",
+      "subsidy",
+      "yojana",
+      "kisan",
+      "solar",
+      "subsidy solar water pump scheme",
+      "apply solar water pump scheme",
+      "state",
+      "solar water pump scheme",
+      "how to apply solar water pump scheme",
+      "installing"
+    ],
+    "question": "What is the Solar Water Pump Scheme and who is eligible?",
+    "answer": "The Solar Water Pump Scheme is a government initiative under the Technology category. It provides 60% state subsidy for farmers installing solar powered pumps under suryashakti kisan yojana. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b9120,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9600,000. This scheme is applicable for all crops in Gujarat."
+  },
+  {
+    "keywords": [
+      "shifting",
+      "from",
+      "haryana",
+      "incentive",
+      "acre",
+      "how to apply crop diversification scheme",
+      "apply crop diversification scheme",
+      "maize",
+      "paddy",
+      "pulses",
+      "agriculture",
+      "subsidy crop diversification scheme",
+      "crop diversification scheme",
+      "haryana scheme",
+      "7000"
+    ],
+    "question": "What is the Crop Diversification Scheme and who is eligible?",
+    "answer": "The Crop Diversification Scheme is a government initiative under the Agriculture category. It provides financial incentive of rs 7000 per acre for shifting from paddy to maize or pulses. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b97,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9400,000. This scheme is applicable for Maize in Haryana."
+  },
+  {
+    "keywords": [
+      "power",
+      "krishi yantra subsidy scheme",
+      "technology",
+      "subsidy",
+      "threshers",
+      "apply krishi yantra subsidy scheme",
+      "bihar",
+      "buying",
+      "subsidy krishi yantra subsidy scheme",
+      "machines",
+      "tillage",
+      "tillers",
+      "zero",
+      "bihar scheme",
+      "how to apply krishi yantra subsidy scheme"
+    ],
+    "question": "What is the Krishi Yantra Subsidy Scheme and who is eligible?",
+    "answer": "The Krishi Yantra Subsidy Scheme is a government initiative under the Technology category. It provides 50% subsidy on buying power tillers threshers and zero tillage machines. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b940,000. It is available for farmers with landholdings up to 15.0 acres, and a maximum annual family income of \u20b9500,000. This scheme is applicable for all crops in Bihar."
+  },
+  {
+    "keywords": [
+      "acre",
+      "jharkhand scheme",
+      "apply mukhyamantri krishi ashirwad yojana",
+      "marginal",
+      "how to apply mukhyamantri krishi ashirwad yojana",
+      "small",
+      "subsidy mukhyamantri krishi ashirwad yojana",
+      "jharkhand",
+      "year",
+      "mukhyamantri krishi ashirwad yojana",
+      "5000",
+      "finance"
+    ],
+    "question": "What is the Mukhyamantri Krishi Ashirwad Yojana and who is eligible?",
+    "answer": "The Mukhyamantri Krishi Ashirwad Yojana is a government initiative under the Finance category. It provides financial assistance of rs 5000 per acre per year to small and marginal farmers. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b95,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9200,000. This scheme is applicable for all crops in Jharkhand."
+  },
+  {
+    "keywords": [
+      "subsidy krishi bhagya scheme",
+      "karnataka",
+      "subsidy",
+      "pump",
+      "harvesting",
+      "diesel",
+      "rain",
+      "water",
+      "sets",
+      "apply krishi bhagya scheme",
+      "irrigation",
+      "how to apply krishi bhagya scheme",
+      "karnataka scheme",
+      "regions",
+      "farm",
+      "krishi bhagya scheme",
+      "ponds"
+    ],
+    "question": "What is the Krishi Bhagya Scheme and who is eligible?",
+    "answer": "The Krishi Bhagya Scheme is a government initiative under the Irrigation category. It provides 80% to 90% subsidy for rain-water harvesting farm ponds and diesel pump sets in dry regions. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b980,000. It is available for farmers with landholdings up to 12.0 acres, and a maximum annual family income of \u20b9600,000. This scheme is applicable for all crops in Karnataka."
+  },
+  {
+    "keywords": [
+      "cooperative",
+      "waiver",
+      "holding",
+      "banks",
+      "how to apply cooperative crop loan waiver",
+      "crop",
+      "cooperative crop loan waiver",
+      "punjab",
+      "loans",
+      "lakh",
+      "marginal",
+      "small",
+      "punjab scheme",
+      "debt",
+      "apply cooperative crop loan waiver",
+      "subsidy cooperative crop loan waiver",
+      "finance"
+    ],
+    "question": "What is the Cooperative Crop Loan Waiver and who is eligible?",
+    "answer": "The Cooperative Crop Loan Waiver is a government initiative under the Finance category. It provides debt waiver up to rs 2 lakh for small and marginal farmers holding crop loans in cooperative banks. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b9200,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9300,000. This scheme is applicable for all crops in Punjab."
+  },
+  {
+    "keywords": [
+      "how to apply tamil nadu micro irrigation scheme",
+      "subsidy tamil nadu micro irrigation scheme",
+      "tamil nadu micro irrigation scheme",
+      "subsidy",
+      "other",
+      "tamil nadu scheme",
+      "drip",
+      "irrigation",
+      "marginal",
+      "small",
+      "installations",
+      "apply tamil nadu micro irrigation scheme",
+      "tamil nadu"
+    ],
+    "question": "What is the Tamil Nadu Micro Irrigation Scheme and who is eligible?",
+    "answer": "The Tamil Nadu Micro Irrigation Scheme is a government initiative under the Irrigation category. It provides 100% subsidy for small/marginal farmers and 75% for other farmers for drip irrigation installations. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b960,000. It is available for farmers with landholdings up to 12.0 acres, and a maximum annual family income of \u20b9500,000. This scheme is applicable for all crops in Tamil Nadu."
+  },
+  {
+    "keywords": [
+      "registered",
+      "finance",
+      "portal",
+      "pm-kisan up",
+      "incentive",
+      "yield",
+      "uttar pradesh scheme",
+      "high",
+      "uttar pradesh",
+      "apply pm-kisan up",
+      "agriculture",
+      "state",
+      "crop",
+      "how to apply pm-kisan up",
+      "subsidy pm-kisan up",
+      "growers"
+    ],
+    "question": "What is the PM-Kisan UP and who is eligible?",
+    "answer": "The PM-Kisan UP is a government initiative under the Finance category. It provides top-up incentive for high yield crop growers registered under state agriculture portal. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b92,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9300,000. This scheme is applicable for all crops in Uttar Pradesh."
+  },
+  {
+    "keywords": [
+      "kusum",
+      "pumps",
+      "how to apply solar pump subsidy scheme",
+      "technology",
+      "subsidy",
+      "rajasthan",
+      "rajasthan scheme",
+      "connected",
+      "component",
+      "grid",
+      "solar",
+      "subsidy solar pump subsidy scheme",
+      "solar pump subsidy scheme",
+      "setting",
+      "apply solar pump subsidy scheme"
+    ],
+    "question": "What is the Solar Pump Subsidy Scheme and who is eligible?",
+    "answer": "The Solar Pump Subsidy Scheme is a government initiative under the Technology category. It provides 60% subsidy for setting up grid-connected solar pumps under pm-kusum component c. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b9150,000. It is available for farmers with landholdings up to 15.0 acres, and a maximum annual family income of \u20b9600,000. This scheme is applicable for all crops in Rajasthan."
+  },
+  {
+    "keywords": [
+      "gujarat scheme",
+      "gujarat",
+      "groundnut",
+      "above",
+      "how to apply mukhyamantri kisan sahay yojana",
+      "mukhyamantri kisan sahay yojana",
+      "20000",
+      "hectare",
+      "rain",
+      "losses",
+      "subsidy mukhyamantri kisan sahay yojana",
+      "drought",
+      "compensation",
+      "excess",
+      "crop",
+      "apply mukhyamantri kisan sahay yojana",
+      "finance"
+    ],
+    "question": "What is the Mukhyamantri Kisan Sahay Yojana and who is eligible?",
+    "answer": "The Mukhyamantri Kisan Sahay Yojana is a government initiative under the Finance category. It provides crop compensation assistance of rs 20000 per hectare for losses above 33% due to drought or excess rain. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b920,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9500,000. This scheme is applicable for Groundnut in Gujarat."
+  },
+  {
+    "keywords": [
+      "maharashtra scheme",
+      "apply horti-tourism project scheme",
+      "how to apply horti-tourism project scheme",
+      "subsidy",
+      "centres",
+      "subsidy horti-tourism project scheme",
+      "tourism",
+      "horti-tourism project scheme",
+      "horti",
+      "maharashtra",
+      "fruits",
+      "agriculture",
+      "orchards",
+      "setting",
+      "hubs",
+      "agro"
+    ],
+    "question": "What is the Horti-tourism Project Scheme and who is eligible?",
+    "answer": "The Horti-tourism Project Scheme is a government initiative under the Agriculture category. It provides 50% subsidy for setting up horti-tourism centres and agro-tourism hubs in orchards. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b9100,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9800,000. This scheme is applicable for Fruits in Maharashtra."
+  },
+  {
+    "keywords": [
+      "storage",
+      "maharashtra scheme",
+      "subsidized",
+      "fencing",
+      "water",
+      "balasaheb thackeray sheti yojana",
+      "apply balasaheb thackeray sheti yojana",
+      "tank",
+      "how to apply balasaheb thackeray sheti yojana",
+      "maharashtra",
+      "agriculture",
+      "farm",
+      "construction",
+      "subsidy balasaheb thackeray sheti yojana"
+    ],
+    "question": "What is the Balasaheb Thackeray Sheti Yojana and who is eligible?",
+    "answer": "The Balasaheb Thackeray Sheti Yojana is a government initiative under the Agriculture category. It provides subsidized farm fencing and water storage tank construction for sc/st farmers. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b950,000. It is available for farmers with landholdings up to 8.0 acres, and a maximum annual family income of \u20b9400,000. This scheme is applicable for all crops in Maharashtra."
+  },
+  {
+    "keywords": [
+      "apply chief minister crop diversification scheme",
+      "subsidy",
+      "subsidy chief minister crop diversification scheme",
+      "vegetable",
+      "himachal pradesh",
+      "cost",
+      "irrigation",
+      "how to apply chief minister crop diversification scheme",
+      "polyhouses",
+      "vegetables",
+      "agriculture",
+      "chief minister crop diversification scheme",
+      "himachal pradesh scheme",
+      "micro",
+      "growers"
+    ],
+    "question": "What is the Chief Minister Crop Diversification Scheme and who is eligible?",
+    "answer": "The Chief Minister Crop Diversification Scheme is a government initiative under the Agriculture category. It provides 80% subsidy on low cost polyhouses and micro-irrigation for vegetable growers. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b945,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9300,000. This scheme is applicable for Vegetables in Himachal Pradesh."
+  },
+  {
+    "keywords": [
+      "kerala",
+      "seedlings",
+      "subsidy",
+      "vegetable",
+      "kerala scheme",
+      "bags",
+      "apply organic seedling subsidy",
+      "grow",
+      "vegetables",
+      "agriculture",
+      "organic",
+      "inputs",
+      "premium",
+      "how to apply organic seedling subsidy",
+      "organic seedling subsidy",
+      "subsidy organic seedling subsidy"
+    ],
+    "question": "What is the Organic Seedling Subsidy and who is eligible?",
+    "answer": "The Organic Seedling Subsidy is a government initiative under the Agriculture category. It provides 75% subsidy on organic inputs grow bags and premium vegetable seedlings. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b98,000. It is available for farmers with landholdings up to 3.0 acres, and a maximum annual family income of \u20b9200,000. This scheme is applicable for Vegetables in Kerala."
+  },
+  {
+    "keywords": [
+      "tea",
+      "apply assam darshan agri scheme",
+      "assam scheme",
+      "replanting",
+      "costs",
+      "subsidy",
+      "pruning",
+      "subsidy assam darshan agri scheme",
+      "how to apply assam darshan agri scheme",
+      "small",
+      "agriculture",
+      "assam",
+      "factory",
+      "setup",
+      "assam darshan agri scheme",
+      "growers"
+    ],
+    "question": "What is the Assam Darshan Agri Scheme and who is eligible?",
+    "answer": "The Assam Darshan Agri Scheme is a government initiative under the Agriculture category. It provides 50% subsidy for small tea growers for replanting pruning and factory setup costs. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b925,000. It is available for farmers with landholdings up to 8.0 acres, and a maximum annual family income of \u20b9400,000. This scheme is applicable for Tea in Assam."
+  },
+  {
+    "keywords": [
+      "seed",
+      "subsidy",
+      "how to apply mukhyamantri krishi yojana",
+      "uttarakhand",
+      "uttarakhand scheme",
+      "polyhouse",
+      "certification",
+      "agriculture",
+      "hill",
+      "organic",
+      "including",
+      "construction",
+      "mukhyamantri krishi yojana",
+      "subsidy mukhyamantri krishi yojana",
+      "apply mukhyamantri krishi yojana"
+    ],
+    "question": "What is the Mukhyamantri Krishi Yojana and who is eligible?",
+    "answer": "The Mukhyamantri Krishi Yojana is a government initiative under the Agriculture category. It provides financial support for hill farmers including seed subsidy polyhouse construction and organic certification. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b915,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9300,000. This scheme is applicable for all crops in Uttarakhand."
+  },
+  {
+    "keywords": [
+      "how to apply j&k holistic agriculture development programme",
+      "density",
+      "saffron",
+      "subsidy j&k holistic agriculture development programme",
+      "high",
+      "jammu and kashmir",
+      "plantation",
+      "j&k holistic agriculture development programme",
+      "cultivation",
+      "apply j&k holistic agriculture development programme",
+      "agriculture",
+      "protected",
+      "jammu and kashmir scheme"
+    ],
+    "question": "What is the J&K Holistic Agriculture Development Programme and who is eligible?",
+    "answer": "The J&K Holistic Agriculture Development Programme is a government initiative under the Agriculture category. It provides support for high density plantation saffron cultivation and protected cultivation in the ut of j&k. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b930,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9400,000. This scheme is applicable for all crops in Jammu and Kashmir."
+  },
+  {
+    "keywords": [
+      "income",
+      "goa scheme",
+      "with",
+      "how to apply goa shetkari aadhar scheme",
+      "land",
+      "holdings",
+      "goa",
+      "apply goa shetkari aadhar scheme",
+      "acres",
+      "subsidy goa shetkari aadhar scheme",
+      "year",
+      "10000",
+      "goa shetkari aadhar scheme",
+      "finance"
+    ],
+    "question": "What is the Goa Shetkari Aadhar Scheme and who is eligible?",
+    "answer": "The Goa Shetkari Aadhar Scheme is a government initiative under the Finance category. It provides income support of rs 10000 per year to farmers with land holdings up to 3 acres. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b910,000. It is available for farmers with landholdings up to 3.0 acres, and a maximum annual family income of \u20b9200,000. This scheme is applicable for all crops in Goa."
+  },
+  {
+    "keywords": [
+      "apply meghalaya livelihood support",
+      "integrated",
+      "meghalaya livelihood support",
+      "farming",
+      "meghalaya scheme",
+      "fishery",
+      "hills",
+      "subsidy meghalaya livelihood support",
+      "how to apply meghalaya livelihood support",
+      "piggery",
+      "poultry",
+      "agriculture",
+      "including",
+      "meghalaya",
+      "horticulture"
+    ],
+    "question": "What is the Meghalaya Livelihood Support and who is eligible?",
+    "answer": "The Meghalaya Livelihood Support is a government initiative under the Agriculture category. It provides financial assistance for integrated farming including piggery poultry fishery and horticulture in ne hills. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b920,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9300,000. This scheme is applicable for all crops in Meghalaya."
+  },
+  {
+    "keywords": [
+      "projects",
+      "animal",
+      "development",
+      "apply north east special package",
+      "central",
+      "husbandry",
+      "nagaland",
+      "nagaland scheme",
+      "how to apply north east special package",
+      "north east special package",
+      "states",
+      "agriculture",
+      "subsidy north east special package",
+      "horticulture"
+    ],
+    "question": "What is the North East Special Package and who is eligible?",
+    "answer": "The North East Special Package is a government initiative under the Agriculture category. It provides 90% central assistance for agriculture horticulture and animal husbandry development projects in ne states. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b935,000. It is available for farmers with landholdings up to 8.0 acres, and a maximum annual family income of \u20b9400,000. This scheme is applicable for all crops in Nagaland."
+  },
+  {
+    "keywords": [
+      "apply manipur organic mission",
+      "marketing",
+      "subsidy",
+      "mission",
+      "manipur scheme",
+      "with",
+      "farming",
+      "how to apply manipur organic mission",
+      "manipur organic mission",
+      "certification",
+      "agriculture",
+      "state",
+      "organic",
+      "inputs",
+      "subsidy manipur organic mission",
+      "manipur"
+    ],
+    "question": "What is the Manipur Organic Mission and who is eligible?",
+    "answer": "The Manipur Organic Mission is a government initiative under the Agriculture category. It provides state mission for organic farming with subsidy for organic inputs certification and marketing support. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b915,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9300,000. This scheme is applicable for all crops in Manipur."
+  },
+  {
+    "keywords": [
+      "aquaculture",
+      "tripura scheme",
+      "apply tripura agriculture mission",
+      "rubber",
+      "development",
+      "subsidy tripura agriculture mission",
+      "plantation",
+      "tripura",
+      "pineapple",
+      "how to apply tripura agriculture mission",
+      "cultivation",
+      "agriculture",
+      "tripura agriculture mission"
+    ],
+    "question": "What is the Tripura Agriculture Mission and who is eligible?",
+    "answer": "The Tripura Agriculture Mission is a government initiative under the Agriculture category. It provides support for rubber plantation pineapple cultivation and aquaculture development in tripura. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b912,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9300,000. This scheme is applicable for all crops in Tripura."
+  },
+  {
+    "keywords": [
+      "farmer",
+      "providing",
+      "state",
+      "sikkim",
+      "marketing",
+      "how to apply sikkim organic mission",
+      "subsidy sikkim organic mission",
+      "training",
+      "apply sikkim organic mission",
+      "sikkim scheme",
+      "continued",
+      "sikkim organic mission",
+      "agriculture",
+      "organic",
+      "inputs"
+    ],
+    "question": "What is the Sikkim Organic Mission and who is eligible?",
+    "answer": "The Sikkim Organic Mission is a government initiative under the Agriculture category. It provides 100% organic state providing continued support for organic inputs marketing and farmer training. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b920,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9300,000. This scheme is applicable for all crops in Sikkim."
+  },
+  {
+    "keywords": [
+      "rice",
+      "integrated",
+      "apply mizoram agriculture extension",
+      "mizoram agriculture extension",
+      "subsidy mizoram agriculture extension",
+      "farming",
+      "systems",
+      "palm",
+      "plantation",
+      "mizoram scheme",
+      "cultivation",
+      "agriculture",
+      "mizoram",
+      "how to apply mizoram agriculture extension"
+    ],
+    "question": "What is the Mizoram Agriculture Extension and who is eligible?",
+    "answer": "The Mizoram Agriculture Extension is a government initiative under the Agriculture category. It provides support for wet rice cultivation oil palm plantation and integrated farming systems. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b918,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9300,000. This scheme is applicable for all crops in Mizoram."
+  },
+  {
+    "keywords": [
+      "citrus",
+      "subsidy arunachal pradesh horticulture mission",
+      "subsidy",
+      "areas",
+      "arunachal pradesh horticulture mission",
+      "high",
+      "arunachal pradesh scheme",
+      "apply arunachal pradesh horticulture mission",
+      "fruit",
+      "fruits",
+      "agriculture",
+      "orchards",
+      "altitude",
+      "how to apply arunachal pradesh horticulture mission",
+      "arunachal pradesh",
+      "kiwi",
+      "apple"
+    ],
+    "question": "What is the Arunachal Pradesh Horticulture Mission and who is eligible?",
+    "answer": "The Arunachal Pradesh Horticulture Mission is a government initiative under the Agriculture category. It provides subsidy for kiwi apple and citrus fruit orchards in high altitude areas. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b925,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9300,000. This scheme is applicable for Fruits in Arunachal Pradesh."
+  },
+  {
+    "keywords": [
+      "certified",
+      "pest",
+      "subsidy",
+      "seeds",
+      "system",
+      "maharashtra",
+      "maharashtra scheme",
+      "density",
+      "cotton",
+      "management",
+      "how to apply cotton development programme",
+      "agriculture",
+      "integrated",
+      "hdps",
+      "apply cotton development programme",
+      "planting",
+      "cotton development programme",
+      "high",
+      "subsidy cotton development programme"
+    ],
+    "question": "What is the Cotton Development Programme and who is eligible?",
+    "answer": "The Cotton Development Programme is a government initiative under the Agriculture category. It provides subsidy for high-density planting system (hdps) certified seeds and integrated pest management for cotton. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b925,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9600,000. This scheme is applicable for Cotton in Maharashtra."
+  },
+  {
+    "keywords": [
+      "subsidy sugarcane development programme",
+      "varietal",
+      "drip",
+      "sugarcane",
+      "irrigation",
+      "sugarcane development programme",
+      "apply sugarcane development programme",
+      "agriculture",
+      "replacement",
+      "intercropping",
+      "uttar pradesh scheme",
+      "how to apply sugarcane development programme",
+      "uttar pradesh"
+    ],
+    "question": "What is the Sugarcane Development Programme and who is eligible?",
+    "answer": "The Sugarcane Development Programme is a government initiative under the Agriculture category. It provides financial support for drip irrigation in sugarcane intercropping and varietal replacement. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b935,000. It is available for farmers with landholdings up to 15.0 acres, and a maximum annual family income of \u20b9800,000. This scheme is applicable for Sugarcane in Uttar Pradesh."
+  },
+  {
+    "keywords": [
+      "registered",
+      "tea",
+      "assam scheme",
+      "how to apply tea board small grower subsidy",
+      "replanting",
+      "assam",
+      "subsidy",
+      "pruning",
+      "with",
+      "board",
+      "small",
+      "tea board small grower subsidy",
+      "growers",
+      "agriculture",
+      "modernisation",
+      "factory",
+      "apply tea board small grower subsidy",
+      "subsidy tea board small grower subsidy"
+    ],
+    "question": "What is the Tea Board Small Grower Subsidy and who is eligible?",
+    "answer": "The Tea Board Small Grower Subsidy is a government initiative under the Agriculture category. It provides subsidy for replanting pruning and factory modernisation for small tea growers registered with tea board. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b930,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9500,000. This scheme is applicable for Tea in Assam."
+  },
+  {
+    "keywords": [
+      "replanting",
+      "karnataka",
+      "subsidy",
+      "augmentation",
+      "water",
+      "improvement",
+      "how to apply coffee board development scheme",
+      "apply coffee board development scheme",
+      "karnataka scheme",
+      "certification",
+      "coffee",
+      "subsidy coffee board development scheme",
+      "agriculture",
+      "quality",
+      "coffee board development scheme",
+      "growers"
+    ],
+    "question": "What is the Coffee Board Development Scheme and who is eligible?",
+    "answer": "The Coffee Board Development Scheme is a government initiative under the Agriculture category. It provides subsidy for replanting water augmentation quality improvement and certification for coffee growers. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b940,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9600,000. This scheme is applicable for Coffee in Karnataka."
+  },
+  {
+    "keywords": [
+      "how to apply rubber board planting subsidy",
+      "replanting",
+      "kerala",
+      "rubber",
+      "kerala scheme",
+      "rain",
+      "subsidy rubber board planting subsidy",
+      "smallholders",
+      "guarding",
+      "agriculture",
+      "rubber board planting subsidy",
+      "planting",
+      "apply rubber board planting subsidy"
+    ],
+    "question": "What is the Rubber Board Planting Subsidy and who is eligible?",
+    "answer": "The Rubber Board Planting Subsidy is a government initiative under the Agriculture category. It provides financial assistance for new rubber planting replanting and rain guarding for rubber smallholders. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b925,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9400,000. This scheme is applicable for all crops in Kerala."
+  },
+  {
+    "keywords": [
+      "certified",
+      "chemicals",
+      "providing",
+      "west bengal",
+      "how to apply jute icare",
+      "seeds",
+      "subsidy jute icare",
+      "apply jute icare",
+      "west bengal scheme",
+      "mechanical",
+      "jute icare",
+      "cultivation",
+      "agriculture",
+      "retting",
+      "jute",
+      "improved",
+      "exercise",
+      "advanced"
+    ],
+    "question": "What is the Jute ICARE and who is eligible?",
+    "answer": "The Jute ICARE is a government initiative under the Agriculture category. It provides improved cultivation and advanced retting exercise providing certified seeds retting chemicals and mechanical support. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b912,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9400,000. This scheme is applicable for Jute in West Bengal."
+  },
+  {
+    "keywords": [
+      "increasing",
+      "millets",
+      "value",
+      "subsidy national mission on millets",
+      "apply national mission on millets",
+      "how to apply national mission on millets",
+      "national mission on millets",
+      "marketing",
+      "area",
+      "agriculture",
+      "consumption",
+      "addition",
+      "including",
+      "production"
+    ],
+    "question": "What is the National Mission on Millets and who is eligible?",
+    "answer": "The National Mission on Millets is a government initiative under the Agriculture category. It provides support for increasing area production and consumption of millets including value addition and marketing. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b915,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9500,000. This scheme is applicable for Millets in all states across India."
+  },
+  {
+    "keywords": [
+      "seeds",
+      "rajasthan",
+      "subsidy millet promotion scheme",
+      "bajra",
+      "cultivation",
+      "millet promotion scheme",
+      "millets",
+      "subsidized",
+      "rajasthan scheme",
+      "incentive",
+      "with",
+      "how to apply millet promotion scheme",
+      "agriculture",
+      "jowar",
+      "ragi",
+      "apply millet promotion scheme",
+      "extension",
+      "services",
+      "state"
+    ],
+    "question": "What is the Millet Promotion Scheme and who is eligible?",
+    "answer": "The Millet Promotion Scheme is a government initiative under the Agriculture category. It provides state incentive for bajra jowar and ragi cultivation with subsidized seeds and extension services. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b910,000. It is available for farmers with landholdings up to 8.0 acres, and a maximum annual family income of \u20b9400,000. This scheme is applicable for Millets in Rajasthan."
+  },
+  {
+    "keywords": [
+      "pension",
+      "apply pradhan mantri kisan maandhan yojana",
+      "pradhan mantri kisan maandhan yojana",
+      "month",
+      "after",
+      "marginal",
+      "how to apply pradhan mantri kisan maandhan yojana",
+      "small",
+      "providing",
+      "3000",
+      "finance",
+      "subsidy pradhan mantri kisan maandhan yojana"
+    ],
+    "question": "What is the Pradhan Mantri Kisan Maandhan Yojana and who is eligible?",
+    "answer": "The Pradhan Mantri Kisan Maandhan Yojana is a government initiative under the Finance category. It provides pension scheme for small and marginal farmers providing rs 3000 per month after age 60. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b936,000. It is available for farmers with landholdings up to 5.0 acres, and a maximum annual family income of \u20b9180,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "sub mission on agricultural extension",
+      "register smae",
+      "apply smae",
+      "digital",
+      "through",
+      "platforms",
+      "apply sub mission on agricultural extension",
+      "farmer",
+      "eligibility smae",
+      "call",
+      "centres",
+      "kisan",
+      "documents smae",
+      "how to apply sub mission on agricultural extension",
+      "agriculture",
+      "campaigns",
+      "smae",
+      "sub mission on agricultural extension (smae)",
+      "mass",
+      "advisory",
+      "services",
+      "status smae",
+      "subsidy sub mission on agricultural extension",
+      "media"
+    ],
+    "question": "What is the Sub Mission on Agricultural Extension (SMAE) and who is eligible?",
+    "answer": "The Sub Mission on Agricultural Extension (SMAE) is a government initiative under the Agriculture category. It provides support for farmer advisory services through kisan call centres mass media campaigns and digital platforms. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b915,000. It is available for farmers with landholdings up to 15.0 acres, and a maximum annual family income of \u20b9600,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "how to apply neem coated urea scheme",
+      "coating",
+      "mandatory",
+      "subsidy neem coated urea scheme",
+      "urea",
+      "nitrogen",
+      "reduce",
+      "neem coated urea scheme",
+      "agricultural",
+      "improve",
+      "apply neem coated urea scheme",
+      "agriculture",
+      "diversion",
+      "neem",
+      "efficiency"
+    ],
+    "question": "What is the Neem Coated Urea Scheme and who is eligible?",
+    "answer": "The Neem Coated Urea Scheme is a government initiative under the Agriculture category. It provides mandatory neem coating of urea to improve nitrogen use efficiency and reduce diversion for non-agricultural use. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b92,000. It is available for farmers with landholdings up to 50.0 acres, and a maximum annual family income of \u20b95,000,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "register npof",
+      "how to apply national project on organic farming",
+      "national project on organic farming",
+      "through",
+      "npof",
+      "national project on organic farming (npof)",
+      "centres",
+      "agriculture",
+      "organic",
+      "subsidy national project on organic farming",
+      "india",
+      "production",
+      "across",
+      "apply npof",
+      "inputs",
+      "apply national project on organic farming",
+      "eligibility npof",
+      "fertilizers",
+      "regional",
+      "capacity",
+      "documents npof",
+      "status npof",
+      "building"
+    ],
+    "question": "What is the National Project on Organic Farming (NPOF) and who is eligible?",
+    "answer": "The National Project on Organic Farming (NPOF) is a government initiative under the Agriculture category. It provides production of bio-fertilizers organic inputs and capacity building through regional centres across india. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b925,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9500,000. This scheme is applicable for all crops in all states across India."
+  },
+  {
+    "keywords": [
+      "karnataka",
+      "subsidy",
+      "harvesting",
+      "rainwater",
+      "farm pond scheme",
+      "apply farm pond scheme",
+      "irrigation",
+      "karnataka scheme",
+      "farm",
+      "supplementary",
+      "ponds",
+      "construction",
+      "subsidy farm pond scheme",
+      "how to apply farm pond scheme"
+    ],
+    "question": "What is the Farm Pond Scheme and who is eligible?",
+    "answer": "The Farm Pond Scheme is a government initiative under the Irrigation category. It provides 90% subsidy for construction of farm ponds for rainwater harvesting and supplementary irrigation. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b950,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9500,000. This scheme is applicable for all crops in Karnataka."
+  },
+  {
+    "keywords": [
+      "storage",
+      "subsidy balram tal yojana",
+      "madhya pradesh scheme",
+      "apply balram tal yojana",
+      "water",
+      "structures",
+      "land",
+      "madhya pradesh",
+      "irrigation",
+      "agricultural",
+      "how to apply balram tal yojana",
+      "balram tal yojana",
+      "farm",
+      "ponds",
+      "construction"
+    ],
+    "question": "What is the Balram Tal Yojana and who is eligible?",
+    "answer": "The Balram Tal Yojana is a government initiative under the Irrigation category. It provides financial assistance for construction of water storage structures and farm ponds on agricultural land. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b980,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9500,000. This scheme is applicable for all crops in Madhya Pradesh."
+  },
+  {
+    "keywords": [
+      "check",
+      "subsidy mukhyamantri jal swavlamban abhiyan",
+      "dams",
+      "rajasthan scheme",
+      "subsidy",
+      "rajasthan",
+      "harvesting",
+      "with",
+      "water",
+      "irrigation",
+      "anicuts",
+      "conservation",
+      "apply mukhyamantri jal swavlamban abhiyan",
+      "mukhyamantri jal swavlamban abhiyan",
+      "farm",
+      "ponds",
+      "how to apply mukhyamantri jal swavlamban abhiyan"
+    ],
+    "question": "What is the Mukhyamantri Jal Swavlamban Abhiyan and who is eligible?",
+    "answer": "The Mukhyamantri Jal Swavlamban Abhiyan is a government initiative under the Irrigation category. It provides water harvesting and conservation scheme with subsidy for check dams anicuts and farm ponds. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b960,000. It is available for farmers with landholdings up to 10.0 acres, and a maximum annual family income of \u20b9500,000. This scheme is applicable for all crops in Rajasthan."
+  },
+  {
+    "keywords": [
+      "apply ap micro irrigation project",
+      "projects",
+      "community",
+      "how to apply ap micro irrigation project",
+      "andhra pradesh scheme",
+      "subsidy",
+      "based",
+      "with",
+      "irrigation",
+      "subsidy ap micro irrigation project",
+      "small",
+      "ap micro irrigation project",
+      "andhra pradesh",
+      "micro"
+    ],
+    "question": "What is the AP Micro Irrigation Project and who is eligible?",
+    "answer": "The AP Micro Irrigation Project is a government initiative under the Irrigation category. It provides community-based micro irrigation projects with 90% subsidy for sc/st and small farmers. Under this scheme, eligible farmers can receive financial assistance/subsidy of up to \u20b970,000. It is available for farmers with landholdings up to 12.0 acres, and a maximum annual family income of \u20b9600,000. This scheme is applicable for all crops in Andhra Pradesh."
+  }
+]

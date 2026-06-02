@@ -1,6 +1,7 @@
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
 const User = require('../models/User');
 const Analytics = require('../models/Analytics');
 const Log = require('../models/Log');
@@ -13,14 +14,14 @@ const tempSignups = {};
 const OTP_COOLDOWN_MS = 15 * 60 * 1000; // 15 minutes
 
 exports.requestOTP = async (req, res) => {
-  const { name, email, phno, password } = req.body;
+  const { name, email, phno, password, role } = req.body;
 
   if (!name || !email || !password || !phno) {
     return res.status(400).json({ message: 'All fields are required' });
   }
 
   try {
-    // Step 1: Check for existing registered users
+    // Check for existing registered users
     const existingUser = await User.findOne({
       $or: [{ email }, { phno }]
     });
@@ -33,7 +34,7 @@ exports.requestOTP = async (req, res) => {
       });
     }
 
-    // Step 2: Check if OTP was recently sent
+    // Check if OTP was recently sent
     const existingSignup = tempSignups[email];
     if (existingSignup?.lastSentAt) {
       const timeSinceLast = Date.now() - existingSignup.lastSentAt;
@@ -45,11 +46,11 @@ exports.requestOTP = async (req, res) => {
       }
     }
 
-    // Step 3: Generate OTP and store temp data
+    // Generate OTP and store temp data
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
     tempSignups[email] = {
-      name, email, phno, password, otp,
+      name, email, phno, password, role: role || 'Customer', otp,
       lastSentAt: Date.now() // store cooldown timestamp
     };
 
@@ -84,13 +85,13 @@ exports.verifyOTP = async (req, res) => {
       phno: pending.phno,
       password: hashedPassword,
       provider: 'local',
-      role: 'user',
+      role: pending.role ? pending.role.toLowerCase() : 'customer',
       verified: true
     });
     delete tempSignups[email];  // cleanup
 
     // Generate JWT
-    const token = jwt.sign({ id: user._id, role: user.role },
+    const token = jwt.sign({ id: user._id, role: user.role, email: user.email, username: user.username },
                             process.env.JWT_SECRET || 'jwt-secret',
                             { expiresIn: '1h' });
     res.status(201).json({ message: 'User created successfully', token });
@@ -113,7 +114,7 @@ exports.signIn = async (req, res) => {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
     // Successful login
-    const token = jwt.sign({ id: user._id, role: user.role },
+    const token = jwt.sign({ id: user._id, role: user.role, email: user.email, username: user.username },
                            process.env.JWT_SECRET || 'jwt-secret',
                            { expiresIn: '1h' });
     // Log analytics
@@ -143,11 +144,12 @@ exports.googleCallback = async (req, res) => {
     }
   }
   // Issue JWT token and redirect to client dashboard
-  const token = jwt.sign({ id: user._id, role: user.role },
+  const token = jwt.sign({ id: user._id, role: user.role, email: user.email, username: user.username },
                          process.env.JWT_SECRET || 'jwt-secret',
                          { expiresIn: '1h' });
   // Redirect with token as query (client will capture it)
-  res.redirect(`/dashboard?token=${token}`);
+  const frontendUrl = process.env.FRONTEND_URL || '';
+  res.redirect(`${frontendUrl}/dashboard?token=${token}`);
 };
 
 // POST /logout

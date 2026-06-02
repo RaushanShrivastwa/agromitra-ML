@@ -1,8 +1,10 @@
 import React from 'react';
 import '../styles/footer.css';
 import { FaInstagram, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -10,31 +12,30 @@ const Footer = () => {
         <div className="footer-columns">
             <div className="footer-brand">
                 <h1 className="app-name">AgroMitra</h1>
-                <p className="app-quote">"Cultivating the future of <br/>sustainable farming"</p>
+                <p className="app-quote">"{t('cultivatingFuture') || 'Cultivating the future of sustainable farming'}"</p>
             </div>
           <div className="footer-column">
-            <h3 className="column-title">Quick Links</h3>
+            <h3 className="column-title">{t('quickLinks') || 'Quick Links'}</h3>
             <ul className="footer-links">
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/services">Services</a></li>
-              <li><a href="/blog">Blog</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li><a href="/aboutus">{t('about') || 'About Us'}</a></li>
+              <li><a href="/services">{t('services') || 'Services'}</a></li>
+              <li><a href="/contact">{t('contact') || 'Contact'}</a></li>
             </ul>
           </div>
 
           <div className="footer-column">
-            <h3 className="column-title">Our Office</h3>
+            <h3 className="column-title">{t('ourOffice') || 'Our Office'}</h3>
             <address className="footer-address">
               VIT-AP<br />
               Amaravati, AP<br />
               India<br />
-              Phone: +91 9821656724<br />
-              Email: Kunal.ashutosh@agromitra.com
+              {t('phoneLabel') || 'Phone'}: +91 9821656724<br />
+              {t('emailLabelShort') || 'Email'}: vrishank.raushan@agromitra.com
             </address>
           </div>
 
           <div className="footer-column">
-            <h3 className="column-title">Connect With Us</h3>
+            <h3 className="column-title">{t('connectWithUs') || 'Connect With Us'}</h3>
             <div className="social-links">
               <a href="https://instagram.com" aria-label="Instagram">
                 <FaInstagram className="social-icon" />
@@ -54,7 +55,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p className="license-text">
-            © 2025 AgroMitra. Licensed under MIT License.
+            {t('copyright') || '© 2025 AgroMitra. Licensed under MIT License.'}
           </p>
         </div>
       </div>

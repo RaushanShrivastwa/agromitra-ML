@@ -119,7 +119,7 @@ function Auth() {
               />
             </div>
             <button type="submit" className="btn solid">Login</button>
-            <a href="/auth/google" className="btn transparent">
+            <a href={`${process.env.REACT_APP_API_URL || ''}/auth/google`} className="btn transparent">
               <img src="https://i.postimg.cc/3NGKBY4V/google-icon.png" alt="Google" className="icon-img" />
               Sign in with Google
             </a>

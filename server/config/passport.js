@@ -5,21 +5,39 @@ const User = require('../models/User');
 
 // List of admin emails (assign 'admin' role if matched)
 const adminEmails = ['admin@example.com', 'manager@yourdomain.com'];
-console.log('Google ID:', process.env.GOOGLE_CLIENT_ID);
-console.log('Google Secret:', process.env.GOOGLE_CLIENT_SECRET);
 
 passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,          
+    clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: '/auth/google/callback'
+    callbackURL: (process.env.BASE_URL || 'http://localhost:5000') + '/auth/google/callback',
+    passReqToCallback: true
   },
-  async (accessToken, refreshToken, profile, done) => {
+  async (req, accessToken, refreshToken, profile, done) => {
     try {
       if (!profile.emails || !profile.emails.length) {
         return done(new Error('No email found in Google profile'), null);
       }
       const email = profile.emails[0].value;
-      const role = adminEmails.includes(email) ? 'admin' : 'user';
+
+      let role = 'customer'; // Default fallback
+      if (req.query && req.query.state) {
+        try {
+          const stateObj = JSON.parse(req.query.state);
+          if (stateObj.role) {
+            const parsedRole = stateObj.role.toLowerCase();
+            if (parsedRole === 'farmer' || parsedRole === 'customer') {
+              role = parsedRole;
+            }
+          }
+        } catch (e) {
+          console.error('Error parsing OAuth state:', e);
+        }
+      }
+
+      // Override if admin
+      if (adminEmails.includes(email)) {
+        role = 'admin';
+      }
 
       let user = await User.findOne({ email });
       if (user) {

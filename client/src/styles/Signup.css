@@ -7,7 +7,9 @@
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background: #fdfdfd;
+  background: var(--bg-card);
+  color: var(--text-body);
+  border: 1px solid var(--border-color);
 }
 
 .auth-form {
@@ -24,7 +26,9 @@
 .auth-form input {
   padding: 10px;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-input);
+  color: var(--text-body);
   border-radius: 8px;
 }
 
@@ -52,16 +56,16 @@
   justify-content: center;
   gap: 10px;
   padding: 10px;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   text-decoration: none;
-  color: #333;
+  color: var(--text-body);
   transition: background 0.3s;
 }
 
 .google-login-btn:hover {
-  background: #f0f0f0;
+  background: var(--hover-bg);
 }
 
 .google-login-btn img {

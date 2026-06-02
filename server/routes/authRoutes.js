@@ -12,7 +12,13 @@ router.post('/verify-otp', authCtrl.verifyOTP);
 router.post('/signin', authCtrl.signIn);
 
 // Google OAuth routes
-router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.get('/auth/google', (req, res, next) => {
+  const role = req.query.role || 'Customer';
+  passport.authenticate('google', { 
+    scope: ['profile', 'email'],
+    state: JSON.stringify({ role })
+  })(req, res, next);
+});
 router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), authCtrl.googleCallback);
 
 // Logout (JWT protected)

@@ -11,6 +11,17 @@ export const AuthProvider = ({ children }) => {
   // Memoize checkAuthStatus to prevent unnecessary re-creations
   const checkAuthStatus = useCallback(() => {
     setLoading(true); // Start loading when checking status
+    
+    // Check if token is present in the URL query parameters (Google OAuth callback redirect)
+    const params = new URLSearchParams(window.location.search);
+    const urlToken = params.get('token');
+    if (urlToken) {
+      localStorage.setItem('token', urlToken);
+      // Clean up search parameters from the URL bar
+      const cleanUrl = window.location.pathname;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
+
     const token = localStorage.getItem('token');
     if (token) {
       try {
@@ -24,8 +35,9 @@ export const AuthProvider = ({ children }) => {
           setUser(null);
         } else {
           setUser({
-            id: decoded._id,
+            id: decoded.id,
             email: decoded.email,
+            username: decoded.username,
             role: decoded.role,
             banned: decoded.banned,
             token: token

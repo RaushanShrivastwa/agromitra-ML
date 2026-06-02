@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String },
   provider: { type: String, required: true },        // 'local' or 'google'
   role:     { type: String, default: 'user' },
-  verified: { type: Boolean, default: false }
+  verified: { type: Boolean, default: false },
+  banned:   { type: Boolean, default: false }
 });
 module.exports = mongoose.model('User', userSchema);

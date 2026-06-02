@@ -1,0 +1,85 @@
+Scheme,State,Crop,Max_Land_Acres,Max_Income,Subsidy_Amount,Description,Category
+PM-Kisan,All,All,5,300000,6000,Direct income support of Rs 6000 per year paid in three equal installments of Rs 2000 to all small landholding families.,Finance
+PM Fasal Bima Yojana,All,Cereals,50,1000000,20000,Crop insurance with low premium (1.5% to 5%) covering yield loss due to droughts floods pests and localized calamities.,Finance
+Per Drop More Crop (PMKSY),All,All,12,600000,55000,Up to 90% subsidy for small and marginal farmers on installing drip and sprinkler micro-irrigation systems.,Irrigation
+SMAM Farm Mechanization,All,All,20,800000,150000,50% to 80% financial assistance for purchasing tractors tillers rotavators power weeders and harvester equipment.,Technology
+National Horticulture Mission,All,Fruits,10,1000000,85000,50% subsidy for developing orchards cold storages packhouses greenhouses or shade net cultivation.,Agriculture
+Solar Pump (PM-KUSUM Component B),All,All,15,700000,180000,Up to 60% combined central and state subsidy for installing standalone solar irrigation pumps (3HP to 10HP).,Technology
+Organic Farming (PKVY),All,All,8,400000,31000,Financial assistance of Rs 31000 per hectare for purchasing organic seeds compost bio-pesticides and cluster branding.,Agriculture
+Custom Hiring Centre Scheme,All,All,30,1200000,400000,40% subsidy for farmers or rural youth to set up agricultural machinery rental bank hubs.,Technology
+National Beekeeping Mission (NBHM),All,All,5,500000,40000,50% financial assistance for starting apiary units purchasing bee hives colonies and extraction equipment.,Agriculture
+Fisheries Unit Subsidy (PMMSY),All,All,10,750000,120000,40% to 60% subsidy for constructing aquaculture ponds purchasing fingerlings and establishing fish feed mills.,Agriculture
+Animal Husbandry Fund (AHIDF),All,All,25,1500000,300000,3% interest subvention on credit loans for setting up dairy processing meat plants or animal feed units.,Finance
+Soil Health Card (Free Testing),All,All,100,5000000,1000,100% free chemical analysis of soil samples providing customized nutrient dosage cards for 12 essential parameters.,Agriculture
+Subsidized Seed Distribution,All,All,10,300000,5000,50% subsidy on buying certified high-yield variety (HYV) seeds of wheat paddy pulses and oilseeds from government depots.,Agriculture
+Krishi Drones Subsidy,All,All,15,1000000,500000,Up to 100% grant for cooperative societies and 40% to 50% subsidy for individual farmers to purchase agricultural spray drones.,Technology
+Agri-Clinic Agri-Business (ACABC),All,All,20,1000000,720000,36% to 44% subsidy on start-up loans up to Rs 20 lakh for setting up agricultural consulting or input dealer clinics.,Finance
+Kisan Credit Card (KCC),All,All,50,2000000,300000,Subsidized credit at 4% interest rate (after subvention) for crop production animal husbandry and fisheries with insurance coverage.,Finance
+Rashtriya Krishi Vikas Yojana (RKVY),All,All,25,1500000,250000,Flexible funding for states to plan and execute agriculture and allied sector projects including infrastructure and innovation.,Agriculture
+National Food Security Mission (NFSM),All,Pulses,15,800000,35000,Financial support for production of rice wheat pulses coarse cereals and commercial crops through area expansion and productivity enhancement.,Agriculture
+NFSM Oilseeds,All,Oilseeds,15,800000,30000,Subsidy for certified seed distribution demonstration programs and farm mechanization for oilseed cultivation.,Agriculture
+Mission for Integrated Development of Horticulture (MIDH),All,Fruits,12,1000000,100000,Support for nurseries tissue culture labs mechanized packhouses cold chains integrated post-harvest management and marketing.,Agriculture
+Agricultural Technology Management Agency (ATMA),All,All,20,600000,25000,Support for farmer field schools demonstration plots farm schools and extension activities at district level.,Agriculture
+National Agricultural Market (e-NAM),All,All,50,5000000,75000,Financial support for integrating mandis to e-NAM platform and infrastructure for quality assaying and logistics.,Technology
+Micro Irrigation Fund (MIF),All,All,20,800000,100000,Dedicated fund with NABARD for states to mobilize resources and expand coverage of micro irrigation systems.,Irrigation
+PM-KUSUM Component A,All,All,25,1200000,500000,Setting up 10000 MW decentralized grid-connected renewable energy power plants on barren or fallow land.,Technology
+PM-KUSUM Component C,All,All,15,700000,100000,Solarisation of existing grid-connected agriculture pumps with 60% central and state subsidy.,Technology
+Rainfed Area Development (RAD),All,All,10,500000,45000,Integrated farming system approach for rainfed areas covering livestock horticulture fishery and forestry along with crops.,Agriculture
+National Bamboo Mission,All,All,10,600000,50000,Financial support for bamboo plantation nursery development and processing units for livelihood generation.,Agriculture
+Sub Mission on Agroforestry (SMAF),All,All,15,800000,25000,Assistance for planting trees on farmlands to supplement income and improve soil health.,Agriculture
+National Mission on Oilseeds and Oil Palm (NMOOP),All,Oilseeds,15,900000,30000,Subsidy for oil palm and tree-borne oilseed plantation and processing infrastructure.,Agriculture
+Pradhan Mantri Annadata Aay Sanrakshan Abhiyan (PM-AASHA),All,All,30,1500000,200000,Price support scheme ensuring MSP procurement for pulses oilseeds and copra through multiple procurement mechanisms.,Finance
+Interest Subvention Scheme,All,All,50,2000000,150000,2% interest subvention on short-term crop loans up to Rs 3 lakh and additional 3% for prompt repayment.,Finance
+Paramparagat Krishi Vikas Yojana Cluster,All,All,5,400000,50000,Cluster-based organic farming support for groups of 50 or more farmers covering certification inputs and marketing.,Agriculture
+National Mission for Sustainable Agriculture (NMSA),All,All,15,700000,40000,Support for climate-resilient agriculture practices soil health management water use efficiency and rainfed area development.,Agriculture
+Dairy Entrepreneurship Development Scheme,All,All,10,500000,175000,Back-ended capital subsidy for setting up small dairy farms with 2 to 10 milch animals including infrastructure.,Finance
+Venture Capital Assistance for Agri-Business,All,All,20,1500000,1000000,26% equity support by SFAC for agribusiness ventures in production processing and marketing of agricultural produce.,Finance
+Rythu Bandhu,Telangana,All,5,500000,10000,Rs 10000 per acre per year as investment support for agriculture and horticulture crops.,Finance
+YSR Rythu Bharosa,Andhra Pradesh,All,5,300000,13500,Financial assistance of Rs 13500 per year for farmer families including tenant farmers in AP.,Finance
+KALIA Scheme,Odisha,All,5,200000,10000,Financial assistance of Rs 10000 per family for cultivation for small and marginal farmers.,Finance
+Rajiv Gandhi Kisan Nyay Yojana,Chhattisgarh,Paddy,15,400000,9000,Input subsidy of Rs 9000 per acre to paddy and crop-diversifying farmers.,Finance
+Mukhyamantri Kisan Kalyan Yojana,Madhya Pradesh,All,5,300000,4000,Direct income support of Rs 4000 per year to beneficiaries of PM-Kisan in MP.,Finance
+Bangla Shasya Bima,West Bengal,Rice,10,500000,15000,100% premium paid by state government for crop insurance of selected food grains and oilseeds.,Finance
+Solar Water Pump Scheme,Gujarat,All,10,600000,120000,60% state subsidy for farmers installing solar powered pumps under Suryashakti Kisan Yojana.,Technology
+Crop Diversification Scheme,Haryana,Maize,10,400000,7000,Financial incentive of Rs 7000 per acre for shifting from paddy to maize or pulses.,Agriculture
+Krishi Yantra Subsidy Scheme,Bihar,All,15,500000,40000,50% subsidy on buying power tillers threshers and zero tillage machines.,Technology
+Mukhyamantri Krishi Ashirwad Yojana,Jharkhand,All,5,200000,5000,Financial assistance of Rs 5000 per acre per year to small and marginal farmers.,Finance
+Krishi Bhagya Scheme,Karnataka,All,12,600000,80000,80% to 90% subsidy for rain-water harvesting farm ponds and diesel pump sets in dry regions.,Irrigation
+Cooperative Crop Loan Waiver,Punjab,All,5,300000,200000,Debt waiver up to Rs 2 lakh for small and marginal farmers holding crop loans in cooperative banks.,Finance
+Tamil Nadu Micro Irrigation Scheme,Tamil Nadu,All,12,500000,60000,100% subsidy for small/marginal farmers and 75% for other farmers for drip irrigation installations.,Irrigation
+PM-Kisan UP,Uttar Pradesh,All,5,300000,2000,Top-up incentive for high yield crop growers registered under state agriculture portal.,Finance
+Solar Pump Subsidy Scheme,Rajasthan,All,15,600000,150000,60% subsidy for setting up grid-connected solar pumps under PM-KUSUM Component C.,Technology
+Mukhyamantri Kisan Sahay Yojana,Gujarat,Groundnut,10,500000,20000,Crop compensation assistance of Rs 20000 per hectare for losses above 33% due to drought or excess rain.,Finance
+Horti-tourism Project Scheme,Maharashtra,Fruits,10,800000,100000,50% subsidy for setting up horti-tourism centres and agro-tourism hubs in orchards.,Agriculture
+Balasaheb Thackeray Sheti Yojana,Maharashtra,All,8,400000,50000,Subsidized farm fencing and water storage tank construction for SC/ST farmers.,Agriculture
+Chief Minister Crop Diversification Scheme,Himachal Pradesh,Vegetables,5,300000,45000,80% subsidy on low cost polyhouses and micro-irrigation for vegetable growers.,Agriculture
+Organic Seedling Subsidy,Kerala,Vegetables,3,200000,8000,75% subsidy on organic inputs grow bags and premium vegetable seedlings.,Agriculture
+Assam Darshan Agri Scheme,Assam,Tea,8,400000,25000,50% subsidy for small tea growers for replanting pruning and factory setup costs.,Agriculture
+Mukhyamantri Krishi Yojana,Uttarakhand,All,5,300000,15000,Financial support for hill farmers including seed subsidy polyhouse construction and organic certification.,Agriculture
+J&K Holistic Agriculture Development Programme,Jammu and Kashmir,All,5,400000,30000,Support for high density plantation saffron cultivation and protected cultivation in the UT of J&K.,Agriculture
+Goa Shetkari Aadhar Scheme,Goa,All,3,200000,10000,Income support of Rs 10000 per year to farmers with land holdings up to 3 acres.,Finance
+Meghalaya Livelihood Support,Meghalaya,All,5,300000,20000,Financial assistance for integrated farming including piggery poultry fishery and horticulture in NE hills.,Agriculture
+North East Special Package,Nagaland,All,8,400000,35000,90% central assistance for agriculture horticulture and animal husbandry development projects in NE states.,Agriculture
+Manipur Organic Mission,Manipur,All,5,300000,15000,State mission for organic farming with subsidy for organic inputs certification and marketing support.,Agriculture
+Tripura Agriculture Mission,Tripura,All,5,300000,12000,Support for rubber plantation pineapple cultivation and aquaculture development in Tripura.,Agriculture
+Sikkim Organic Mission,Sikkim,All,5,300000,20000,100% organic state providing continued support for organic inputs marketing and farmer training.,Agriculture
+Mizoram Agriculture Extension,Mizoram,All,5,300000,18000,Support for wet rice cultivation oil palm plantation and integrated farming systems.,Agriculture
+Arunachal Pradesh Horticulture Mission,Arunachal Pradesh,Fruits,5,300000,25000,Subsidy for kiwi apple and citrus fruit orchards in high altitude areas.,Agriculture
+Cotton Development Programme,Maharashtra,Cotton,10,600000,25000,Subsidy for high-density planting system (HDPS) certified seeds and integrated pest management for cotton.,Agriculture
+Sugarcane Development Programme,Uttar Pradesh,Sugarcane,15,800000,35000,Financial support for drip irrigation in sugarcane intercropping and varietal replacement.,Agriculture
+Tea Board Small Grower Subsidy,Assam,Tea,10,500000,30000,Subsidy for replanting pruning and factory modernisation for small tea growers registered with Tea Board.,Agriculture
+Coffee Board Development Scheme,Karnataka,Coffee,10,600000,40000,Subsidy for replanting water augmentation quality improvement and certification for coffee growers.,Agriculture
+Rubber Board Planting Subsidy,Kerala,All,5,400000,25000,Financial assistance for new rubber planting replanting and rain guarding for rubber smallholders.,Agriculture
+Jute ICARE,West Bengal,Jute,10,400000,12000,Improved Cultivation and Advanced Retting Exercise providing certified seeds retting chemicals and mechanical support.,Agriculture
+National Mission on Millets,All,Millets,10,500000,15000,Support for increasing area production and consumption of millets including value addition and marketing.,Agriculture
+Millet Promotion Scheme,Rajasthan,Millets,8,400000,10000,State incentive for bajra jowar and ragi cultivation with subsidized seeds and extension services.,Agriculture
+Pradhan Mantri Kisan Maandhan Yojana,All,All,5,180000,36000,Pension scheme for small and marginal farmers providing Rs 3000 per month after age 60.,Finance
+National Livestock Mission,All,All,20,1000000,250000,Entrepreneurship support for poultry sheep goat and pig rearing including feed and breed improvement.,Agriculture
+Integrated Scheme for Agricultural Marketing (ISAM),All,All,30,2000000,500000,Assistance for creation and modernization of agricultural marketing infrastructure including cold storages and warehouses.,Technology
+Sub Mission on Agricultural Extension (SMAE),All,All,15,600000,15000,Support for farmer advisory services through Kisan Call Centres mass media campaigns and digital platforms.,Agriculture
+Neem Coated Urea Scheme,All,All,50,5000000,2000,Mandatory neem coating of urea to improve nitrogen use efficiency and reduce diversion for non-agricultural use.,Agriculture
+National Project on Organic Farming (NPOF),All,All,10,500000,25000,Production of bio-fertilizers organic inputs and capacity building through regional centres across India.,Agriculture
+Farm Pond Scheme,Karnataka,All,10,500000,50000,90% subsidy for construction of farm ponds for rainwater harvesting and supplementary irrigation.,Irrigation
+Balram Tal Yojana,Madhya Pradesh,All,10,500000,80000,Financial assistance for construction of water storage structures and farm ponds on agricultural land.,Irrigation
+Mukhyamantri Jal Swavlamban Abhiyan,Rajasthan,All,10,500000,60000,Water harvesting and conservation scheme with subsidy for check dams anicuts and farm ponds.,Irrigation
+AP Micro Irrigation Project,Andhra Pradesh,All,12,600000,70000,Community-based micro irrigation projects with 90% subsidy for SC/ST and small farmers.,Irrigation

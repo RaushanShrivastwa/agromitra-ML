@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-// import * as jwtDecode from 'jwt-decode'; // REMOVED: No longer needed, using custom parseJWT
+import { useLanguage } from '../context/LanguageContext';
 import '../styles/Verify.css'; // add whatever styles you like
 
 // Custom parseJWT function (copied from your first snippet)
@@ -22,6 +22,7 @@ function Verify() {
   const location = useLocation();
   const navigate = useNavigate();
   const { email } = location.state || {}; // Still using this destructuring, as it's fine
+  const { t } = useLanguage();
 
   const [otp, setOTP] = useState('');
   const [loading, setLoading] = useState(false);
@@ -92,18 +93,18 @@ function Verify() {
 
   return (
     <div className="vauth-card">
-      <h2>Verify OTP</h2>
-      <p>Please enter the OTP sent to <strong>{email}</strong></p>
+      <h2>{t('verifyOtpHeader') || 'Verify OTP'}</h2>
+      <p>{t('verifyOtpPrompt') || 'Please enter the OTP sent to'} <strong>{email}</strong></p>
       <form onSubmit={handleSubmit} className="verify-form">
         <input
           type="text"
-          placeholder="Enter OTP"
+          placeholder={t('enterOtpPlaceholder') || 'Enter OTP'}
           value={otp}
           onChange={e => setOTP(e.target.value)}
           required
         />
         <button type="submit" className="btn solid" disabled={loading}>
-          {loading ? 'Verifying…' : 'Verify OTP'}
+          {loading ? (t('verifying') || 'Verifying…') : (t('verifyOtpHeader') || 'Verify OTP')}
         </button>
       </form>
     </div>
