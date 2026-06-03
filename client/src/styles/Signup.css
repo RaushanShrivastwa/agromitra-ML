@@ -6,10 +6,11 @@
   margin: 60px auto;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px var(--card-3d-shadow);
   background: var(--bg-card);
   color: var(--text-body);
   border: 1px solid var(--border-color);
+  border-bottom: 5px solid var(--card-3d-border-bottom);
 }
 
 .auth-form {
@@ -21,6 +22,7 @@
 .auth-form h2 {
   text-align: center;
   margin-bottom: 1rem;
+  color: var(--text-color);
 }
 
 .auth-form input {
@@ -34,20 +36,27 @@
 
 .auth-form button {
   padding: 10px;
-  background: #2196F3;
-  color: white;
+  background: var(--text-color);
+  color: var(--bg-main);
   border: none;
+  border-bottom: 4px solid var(--btn-3d-border-bottom);
   font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
 .auth-form button:disabled {
-  background: #b0d4f1;
+  background: var(--hover-bg);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  border-bottom-width: 1px;
 }
 
 .auth-form button:hover:enabled {
-  background: #1976D2;
+  background: var(--hover-bg);
+  color: var(--text-color);
 }
 
 .google-login-btn {
@@ -66,6 +75,7 @@
 
 .google-login-btn:hover {
   background: var(--hover-bg);
+  color: var(--text-color);
 }
 
 .google-login-btn img {

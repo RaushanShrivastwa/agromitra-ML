@@ -66,7 +66,7 @@ function Faq() {
   return (
     <>
       <Navbar />
-      <div className="container my-5 animate-fade-in" style={{ minHeight: '80vh' }}>
+      <div className="container my-5 animate-fade-in faq-page-content" style={{ minHeight: '80vh' }}>
         <div className="text-center mb-5">
           <h1 className="fw-bold text-success mb-2">{t('faqTitle') || 'AgroMitra Help Center'}</h1>
           <p className="text-muted">{t('faqSubtitle') || 'Find answers to common questions or ask our AI assistant anything about our services.'}</p>
@@ -75,7 +75,7 @@ function Faq() {
         {/* AI FAQ Search Bar */}
         <div className="row justify-content-center mb-5">
           <div className="col-md-8">
-            <div className="card shadow border-0 rounded-4 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-color)' }}>
+            <div className="card shadow border-0 rounded-4 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-body)' }}>
               <h4 className="fw-bold text-success mb-3 d-flex align-items-center">
                 <FaSearch className="me-2" /> {t('aiSearchTitle') || 'Ask AgroMitra AI Assistant'}
               </h4>
@@ -86,7 +86,7 @@ function Faq() {
                   placeholder={t('aiSearchPlaceholder') || "Type your question here (e.g. 'Who built this?' or 'How does soil testing work?')..."}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid #ccc' }}
+                  style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid #ccc' }}
                   required
                 />
                 <button type="submit" className="btn btn-success px-4 rounded-3 fw-bold" disabled={searching}>
@@ -130,7 +130,7 @@ function Faq() {
             ) : (
               <div className="accordion" id="faqAccordion">
                 {faqs.map((faq) => (
-                  <div key={faq._id} className="card mb-3 border shadow-sm rounded-3 overflow-hidden" style={{ background: 'var(--bg-card)', color: 'var(--text-color)' }}>
+                  <div key={faq._id} className="card mb-3 border shadow-sm rounded-3 overflow-hidden" style={{ background: 'var(--bg-card)', color: 'var(--text-body)' }}>
                     <div
                       className="card-header p-3 d-flex justify-content-between align-items-center cursor-pointer"
                       onClick={() => toggleFaq(faq._id)}
@@ -142,7 +142,7 @@ function Faq() {
                       {openFaqId === faq._id ? <FaAngleUp className="text-muted" /> : <FaAngleDown className="text-muted" />}
                     </div>
                     {openFaqId === faq._id && (
-                      <div className="card-body p-3 bg-white" style={{ background: 'var(--bg-card)', color: 'var(--text-color)' }}>
+                      <div className="card-body p-3 bg-white" style={{ background: 'var(--bg-card)', color: 'var(--text-body)' }}>
                         <p className="mb-0 text-muted">{faq.answer}</p>
                       </div>
                     )}

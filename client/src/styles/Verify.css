@@ -6,19 +6,23 @@
   margin: 80px auto;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-bottom: 5px solid var(--card-3d-border-bottom);
+  box-shadow: 0 4px 12px var(--card-3d-shadow);
   text-align: center;
+  color: var(--text-body);
 }
 
 .vauth-card h2 {
   margin-bottom: 1rem;
   font-size: 1.5rem;
+  color: var(--text-color);
 }
 
 .vauth-card p {
   margin-bottom: 1.5rem;
-  color: #555;
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 
@@ -32,25 +36,33 @@
 .verify-form input {
   padding: 0.75rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-input);
+  color: var(--text-body);
   border-radius: 8px;
 }
 
 .verify-form button {
   padding: 0.75rem;
   font-size: 1rem;
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--text-color);
+  color: var(--bg-main);
   border: none;
+  border-bottom: 4px solid var(--btn-3d-border-bottom);
   border-radius: 8px;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
 .verify-form button:disabled {
-  background-color: #a3cdfd;
+  background-color: var(--hover-bg);
+  color: var(--text-muted);
   cursor: not-allowed;
+  border-bottom-width: 1px;
 }
 
 .verify-form button:hover:enabled {
-  background-color: #0069d9;
+  background-color: var(--hover-bg);
+  color: var(--text-color);
 }

@@ -66,7 +66,7 @@ function ContactUs() {
       <div className="container my-5 animate-fade-in" style={{ minHeight: '70vh' }}>
         <div className="row justify-content-center">
           <div className="col-md-8">
-            <div className="card shadow-lg border-0 rounded-4 p-4 p-md-5" style={{ background: 'var(--bg-card)', color: 'var(--text-color)' }}>
+            <div className="card shadow-lg border-0 rounded-4 p-4 p-md-5" style={{ background: 'var(--bg-card)', color: 'var(--text-body)' }}>
               <div className="text-center mb-5">
                 <h1 className="fw-bold text-success mb-2">{t('contactUsTitle') || 'Contact Us / Support'}</h1>
                 <p className="text-muted">{t('contactUsSubtitle') || 'Have questions or feedback? Send us a query and our experts will reply promptly.'}</p>
@@ -89,7 +89,7 @@ function ContactUs() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder={t('contactNamePlaceholder') || 'Enter your name'}
-                      style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid #ccc', opacity: 0.8 }}
+                      style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid #ccc', opacity: 0.8 }}
                       readOnly
                       required
                     />
@@ -103,7 +103,7 @@ function ContactUs() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder={t('contactEmailPlaceholder') || 'Enter your email'}
-                      style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid #ccc', opacity: 0.8 }}
+                      style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid #ccc', opacity: 0.8 }}
                       readOnly
                       required
                     />
@@ -119,7 +119,7 @@ function ContactUs() {
                     value={formData.subject}
                     onChange={handleChange}
                     placeholder={t('subjectPlaceholder') || 'What is this regarding?'}
-                    style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid #ccc' }}
+                    style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid #ccc' }}
                     required
                   />
                 </div>
@@ -133,7 +133,7 @@ function ContactUs() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder={t('messagePlaceholder') || 'Describe your inquiry in detail...'}
-                    style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid #ccc' }}
+                    style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid #ccc' }}
                     required
                   ></textarea>
                 </div>

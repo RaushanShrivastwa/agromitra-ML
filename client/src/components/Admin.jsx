@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
-import { FaUserShield, FaUsers, FaClipboardList, FaFileContract, FaBan, FaCheck, FaTimes, FaSpinner, FaBell, FaShoppingCart, FaBox, FaPlus, FaEdit, FaTrash } from 'react-icons/fa';
+import { useTheme } from '../context/ThemeContext';
+import { FaUserShield, FaUsers, FaClipboardList, FaFileContract, FaBan, FaCheck, FaTimes, FaSpinner, FaBell, FaShoppingCart, FaBox, FaPlus, FaEdit, FaTrash, FaSun, FaMoon } from 'react-icons/fa';
 
 export default function Admin() {
   const { user, logout } = useAuth();
   const { t } = useLanguage();
+  const { theme, toggleTheme, isDark } = useTheme();
   const [activeTab, setActiveTab] = useState('users');
   const [users, setUsers] = useState([]);
   const [requests, setRequests] = useState([]);
@@ -24,10 +26,13 @@ export default function Admin() {
   const [broadcasting, setBroadcasting] = useState(false);
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([]);
-  const [newProduct, setNewProduct] = useState({ name: '', category: 'Seeds', price: '', oldPrice: '', image: '', description: '', inStock: true });
+  const [newProduct, setNewProduct] = useState({ name: '', category: 'Seeds', price: '', oldPrice: '', rating: '', image: '', description: '', inStock: true });
   const [editingProduct, setEditingProduct] = useState(null);
   const [crops, setCrops] = useState([]);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [newCategory, setNewCategory] = useState({ name: '', imageUrl: '' });
+  const [uploadingCategoryImage, setUploadingCategoryImage] = useState(false);
 
   // Soil Request Form Modal State
   const [showModal, setShowModal] = useState(false);
@@ -86,6 +91,10 @@ export default function Admin() {
         const res = await fetch('/api/admin/crops', { headers: { 'Authorization': token } });
         const data = await res.json();
         setCrops(data.crops || []);
+      } else if (activeTab === 'categories') {
+        const res = await fetch('/api/crops/categories', { headers: { 'Authorization': token } });
+        const data = await res.json();
+        setCategories(data.categories || []);
       }
     } catch (err) {
       console.error(err);
@@ -134,6 +143,87 @@ export default function Admin() {
     }
   };
 
+  const handleCategoryImageUpload = async (e, categoryName) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    setUploadingCategoryImage(true);
+    const token = localStorage.getItem('token');
+    try {
+      const res = await fetch('/api/admin/products/upload', {
+        method: 'POST',
+        headers: {
+          'Authorization': token
+        },
+        body: formData
+      });
+      const data = await res.json();
+      if (res.ok && data.imageUrl) {
+        if (categoryName === 'new') {
+          setNewCategory(prev => ({ ...prev, imageUrl: data.imageUrl }));
+          alert('Category image uploaded successfully!');
+        } else {
+          // Immediately update category image in database
+          const updateRes = await fetch('/api/admin/categories', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': token
+            },
+            body: JSON.stringify({ name: categoryName, imageUrl: data.imageUrl })
+          });
+          const updateData = await updateRes.json();
+          if (updateRes.ok) {
+            alert(`Category "${categoryName}" thumbnail updated successfully!`);
+            fetchData();
+          } else {
+            alert(updateData.message || 'Failed to save category thumbnail.');
+          }
+        }
+      } else {
+        alert(data.message || 'Image upload failed.');
+      }
+    } catch (err) {
+      console.error('Error uploading category image:', err);
+      alert('Error uploading image to server.');
+    } finally {
+      setUploadingCategoryImage(false);
+    }
+  };
+
+  const handleCreateCategory = async (e) => {
+    e.preventDefault();
+    if (!newCategory.name.trim() || !newCategory.imageUrl) {
+      alert('Name and Image are required.');
+      return;
+    }
+    const token = localStorage.getItem('token');
+    try {
+      const res = await fetch('/api/admin/categories', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+        },
+        body: JSON.stringify({ name: newCategory.name.trim(), imageUrl: newCategory.imageUrl })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        alert('Category created/updated successfully!');
+        setNewCategory({ name: '', imageUrl: '' });
+        fetchData();
+      } else {
+        alert(data.message || 'Failed to save category.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Error saving category.');
+    }
+  };
+
   const handleCropApproval = async (cropId, status) => {
     const token = localStorage.getItem('token');
     try {
@@ -158,6 +248,29 @@ export default function Admin() {
     }
   };
 
+  const handleDeleteCrop = async (cropId) => {
+    if (!window.confirm('Are you sure you want to delete this crop listing?')) return;
+    const token = localStorage.getItem('token');
+    try {
+      const res = await fetch(`/api/crops/${cropId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': token
+        }
+      });
+      const data = await res.json();
+      if (res.ok) {
+        alert('Crop listing deleted successfully');
+        fetchData();
+      } else {
+        alert(data.message || 'Failed to delete crop listing');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Error deleting crop listing');
+    }
+  };
+
   const handleCreateProduct = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
@@ -173,7 +286,7 @@ export default function Admin() {
       const data = await res.json();
       if (res.ok) {
         alert('Product created successfully');
-        setNewProduct({ name: '', category: 'Seeds', price: '', oldPrice: '', image: '', description: '', inStock: true });
+        setNewProduct({ name: '', category: 'Seeds', price: '', oldPrice: '', rating: '', image: '', description: '', inStock: true });
         fetchData();
       } else {
         alert(data.message || 'Failed to create product');
@@ -508,7 +621,7 @@ export default function Admin() {
   };
 
   return (
-    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-color)' }}>
+    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-body)' }}>
       <style>{`
         .admin-sidebar-btn {
           color: #198754 !important;
@@ -536,7 +649,7 @@ export default function Admin() {
           box-shadow: none !important;
         }
         .admin-back-link {
-          color: #6c757d !important;
+          color: var(--text-muted) !important;
           text-decoration: none;
           padding: 8px 15px;
           display: block;
@@ -545,7 +658,7 @@ export default function Admin() {
           border-radius: 6px;
         }
         .admin-back-link:hover {
-          color: #198754 !important;
+          color: var(--text-color) !important;
           background-color: rgba(25, 135, 84, 0.05);
         }
       `}</style>
@@ -557,6 +670,15 @@ export default function Admin() {
           </span>
           <div className="navbar-nav">
             <div className="nav-item text-nowrap d-flex align-items-center gap-3">
+              {/* Theme Toggle */}
+              <button 
+                className="btn btn-link text-white p-0 fs-5 d-flex align-items-center me-2" 
+                onClick={toggleTheme} 
+                title="Toggle Theme"
+                style={{ border: 'none', background: 'transparent' }}
+              >
+                {isDark ? <FaSun /> : <FaMoon />}
+              </button>
               <span className="text-white">Admin: {user?.email}</span>
               <button className="btn btn-outline-light btn-sm me-3" onClick={logout}>Sign out</button>
             </div>
@@ -640,6 +762,14 @@ export default function Admin() {
                     <FaClipboardList className="me-2" /> Crop Approvals
                   </button>
                 </li>
+                <li className="nav-item">
+                  <button 
+                    className={`admin-sidebar-btn ${activeTab === 'categories' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('categories')}
+                  >
+                    <FaClipboardList className="me-2" /> Manage Categories
+                  </button>
+                </li>
                 <li className="nav-item mt-4 border-top pt-3">
                   <a href="/dashboard" className="admin-back-link mb-1">
                     ← Back to Farmer Dashboard
@@ -668,6 +798,7 @@ export default function Admin() {
               {activeTab === 'orders' && 'Order Fulfillment & Management'}
               {activeTab === 'products' && 'Product Catalog Management'}
               {activeTab === 'crops' && 'Farmer Crop Listing Approvals'}
+              {activeTab === 'categories' && 'Crop Categories Management'}
             </h2>
 
             {loading ? (
@@ -675,12 +806,12 @@ export default function Admin() {
                 <FaSpinner className="spinner-border text-success" />
               </div>
             ) : (
-              <div className="card shadow-sm border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-color)', borderRadius: '15px' }}>
+              <div className="card shadow-sm border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', borderRadius: '15px' }}>
                 
                 {/* Tab 1: Users */}
                 {activeTab === 'users' && (
                   <div className="table-responsive">
-                    <table className="table align-middle" style={{ color: 'var(--text-color)' }}>
+                    <table className="table align-middle" style={{ color: 'var(--text-body)' }}>
                       <thead>
                         <tr>
                           <th>Username</th>
@@ -723,7 +854,7 @@ export default function Admin() {
                 {/* Tab 2: Requests */}
                 {activeTab === 'requests' && (
                   <div className="table-responsive">
-                    <table className="table align-middle" style={{ color: 'var(--text-color)' }}>
+                    <table className="table align-middle" style={{ color: 'var(--text-body)' }}>
                       <thead>
                         <tr>
                           <th>Farmer</th>
@@ -777,30 +908,30 @@ export default function Admin() {
                 {/* Tab 3: Logs */}
                 {activeTab === 'logs' && (
                   <div className="row g-4">
-                    <div className="col-md-6 border-end" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+                    <div className="col-md-6 border-end security-audits-section" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
                       <h4 className="fw-bold mb-3 text-success">Security Audits</h4>
                       <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
                         <ul className="list-group list-group-flush">
                           {logs.map((log, idx) => (
-                            <li key={idx} className="list-group-item bg-transparent border-0 text-muted px-0 py-2">
+                            <li key={idx} className="list-group-item bg-transparent border-0 text-body px-0 py-2">
                               <div className="d-flex justify-content-between align-items-center">
                                 <small className="text-success fw-bold">{new Date(log.timestamp).toLocaleString()}</small>
                                 <span className={`badge ${log.status === 'Completed' ? 'bg-success' : 'bg-warning text-dark'}`} style={{ fontSize: '9px' }}>
                                   {log.status || 'Completed'}
                                 </span>
                               </div>
-                              <span className="text-white"><strong>{log.userId?.username || 'User'}</strong>: {log.action}</span>
+                              <span className="text-body"><strong>{log.userId?.username || 'User'}</strong>: {log.action}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 session-analytics-section">
                       <h4 className="fw-bold mb-3 text-success">Session Analytics</h4>
                       <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
                         <ul className="list-group list-group-flush">
                           {sessions.map((sess, idx) => (
-                            <li key={idx} className="list-group-item bg-transparent border-0 text-muted px-0 py-2">
+                            <li key={idx} className="list-group-item bg-transparent border-0 text-body px-0 py-2">
                               <small className="text-info fw-bold d-block">Login: {new Date(sess.loginTime).toLocaleString()}</small>
                               <span><strong>{sess.userId?.username || 'User'}</strong> ({sess.userId?.email}) initiated active session.</span>
                             </li>
@@ -830,11 +961,11 @@ export default function Admin() {
                                 {q.status}
                               </span>
                             </div>
-                            <p className="mb-3 text-muted p-2 rounded" style={{ background: 'rgba(255,255,255,0.02)' }}>{q.message}</p>
+                            <p className="mb-3 text-body p-2 rounded" style={{ background: 'rgba(255,255,255,0.02)' }}>{q.message}</p>
                             
                             {q.status === 'Answered' ? (
                               <div className="p-3 rounded" style={{ background: 'rgba(25, 135, 84, 0.05)' }}>
-                                <strong>Answered:</strong> <p className="mb-0 mt-1 text-muted">{q.answer}</p>
+                                <strong>Answered:</strong> <p className="mb-0 mt-1 text-body">{q.answer}</p>
                                 {q.approvedForSearch && <small className="badge bg-success mt-2">Approved for FAQ ML Search</small>}
                               </div>
                             ) : (
@@ -855,7 +986,7 @@ export default function Admin() {
                                       checked={approveSearch[q._id] || false}
                                       onChange={(e) => setApproveSearch({ ...approveSearch, [q._id]: e.target.checked })}
                                     />
-                                    <label className="form-check-label text-muted small" htmlFor={`search-check-${q._id}`}>
+                                    <label className="form-check-label text-body small" htmlFor={`search-check-${q._id}`}>
                                       Approve for Search Index
                                     </label>
                                   </div>
@@ -865,7 +996,7 @@ export default function Admin() {
                                   placeholder="Write a response..."
                                   value={replyText[q._id] || ''}
                                   onChange={(e) => setReplyText({ ...replyText, [q._id]: e.target.value })}
-                                  style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}
+                                  style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
                                   rows="3"
                                 ></textarea>
                                 <div className="d-flex gap-2">
@@ -914,7 +1045,7 @@ export default function Admin() {
                                 value={newFaq.question}
                                 onChange={(e) => setNewFaq({ ...newFaq, question: e.target.value })}
                                 required
-                                style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}
+                                style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
                               />
                             </div>
                             <div className="mb-3">
@@ -926,7 +1057,7 @@ export default function Admin() {
                                 value={newFaq.answer}
                                 onChange={(e) => setNewFaq({ ...newFaq, answer: e.target.value })}
                                 required
-                                style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}
+                                style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
                               ></textarea>
                             </div>
                             <div className="mb-3">
@@ -937,7 +1068,7 @@ export default function Admin() {
                                 placeholder="e.g. build, who, team, weather"
                                 value={newFaq.keywords}
                                 onChange={(e) => setNewFaq({ ...newFaq, keywords: e.target.value })}
-                                style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}
+                                style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
                               />
                             </div>
                             <button type="submit" className="btn btn-success w-100 fw-bold">
@@ -948,7 +1079,7 @@ export default function Admin() {
                       </div>
 
                       {/* FAQs list for delete */}
-                      <div className="col-md-7">
+                      <div className="col-md-7 admin-faq-list">
                         <h5 className="fw-bold text-success mb-3">Existing Formal FAQs</h5>
                         {faqs.length === 0 ? (
                           <div className="text-muted small">No formal FAQs listed. Add one using the form on the left.</div>
@@ -956,11 +1087,11 @@ export default function Admin() {
                           <div style={{ maxHeight: '450px', overflowY: 'auto' }} className="pe-2">
                             <ul className="list-group list-group-flush">
                               {faqs.map((faq) => (
-                                <li key={faq._id} className="list-group-item bg-transparent px-0 py-3 border-bottom" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+                                <li key={faq._id} className="list-group-item bg-transparent px-0 py-3 border-bottom" style={{ borderColor: 'var(--border-color)' }}>
                                   <div className="d-flex justify-content-between align-items-start">
                                     <div className="pe-3">
-                                      <strong className="text-white d-block mb-1">{faq.question}</strong>
-                                      <p className="text-muted small mb-1">{faq.answer}</p>
+                                      <strong className="text-body d-block mb-1">{faq.question}</strong>
+                                      <p className="text-body small mb-1">{faq.answer}</p>
                                       {faq.keywords && faq.keywords.length > 0 && (
                                         <small className="text-success fw-semibold">Keywords: {faq.keywords.join(', ')}</small>
                                       )}
@@ -995,7 +1126,7 @@ export default function Admin() {
                                 className="form-select" 
                                 value={newNotification.targetRole}
                                 onChange={(e) => setNewNotification({ ...newNotification, targetRole: e.target.value })}
-                                style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}
+                                style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
                               >
                                 <option value="All">All Users</option>
                                 <option value="Farmer">Farmers Only</option>
@@ -1011,7 +1142,7 @@ export default function Admin() {
                                 value={newNotification.message}
                                 onChange={(e) => setNewNotification({ ...newNotification, message: e.target.value })}
                                 required
-                                style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}
+                                style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
                               ></textarea>
                             </div>
                             <button type="submit" className="btn btn-success w-100 fw-bold" disabled={broadcasting}>
@@ -1030,7 +1161,7 @@ export default function Admin() {
                           <div style={{ maxHeight: '450px', overflowY: 'auto' }} className="pe-2">
                             <ul className="list-group list-group-flush">
                               {notifications.map((notif) => (
-                                <li key={notif._id} className="list-group-item bg-transparent px-0 py-3 border-bottom" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+                                <li key={notif._id} className="list-group-item bg-transparent px-0 py-3 border-bottom" style={{ borderColor: 'var(--border-color)' }}>
                                   <div className="d-flex justify-content-between align-items-start">
                                     <div className="pe-3">
                                       <div className="d-flex gap-2 align-items-center mb-1">
@@ -1039,7 +1170,7 @@ export default function Admin() {
                                         </span>
                                         <small className="text-muted">{new Date(notif.createdAt).toLocaleString()}</small>
                                       </div>
-                                      <p className="text-white small mb-0">{notif.message}</p>
+                                      <p className="text-body small mb-0">{notif.message}</p>
                                     </div>
                                     <button className="btn btn-sm btn-outline-danger" onClick={() => handleDeleteNotification(notif._id)}>
                                       Delete
@@ -1058,7 +1189,7 @@ export default function Admin() {
                 {/* Tab 7: Orders */}
                 {activeTab === 'orders' && (
                   <div className="table-responsive animate__animated animate__fadeIn">
-                    <table className="table align-middle" style={{ color: 'var(--text-color)' }}>
+                    <table className="table align-middle" style={{ color: 'var(--text-body)' }}>
                       <thead>
                         <tr>
                           <th>Order Date</th>
@@ -1077,10 +1208,10 @@ export default function Admin() {
                           </tr>
                         ) : (
                           orders.map(order => (
-                            <tr key={order._id} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <tr key={order._id} style={{ borderBottom: '1px solid var(--border-color)' }}>
                               <td>{new Date(order.createdAt).toLocaleDateString()}</td>
-                              <td>
-                                <strong className="text-white">{order.userId?.username || 'Guest'}</strong>
+                              <td className="order-customer-details">
+                                <strong className="text-body">{order.userId?.username || 'Guest'}</strong>
                                 <small className="text-muted d-block">{order.userId?.email || 'N/A'}</small>
                               </td>
                               <td>
@@ -1093,11 +1224,11 @@ export default function Admin() {
                                 </div>
                               </td>
                               <td className="fw-bold text-success">₹{order.totalAmount.toLocaleString()}</td>
-                              <td>
+                              <td className="order-shipping-details">
                                 {order.shippingDetails ? (
                                   <div style={{ fontSize: '0.8rem', maxWidth: '200px' }}>
-                                    <strong className="text-white">{order.shippingDetails.fullName}</strong> ({order.shippingDetails.phone})
-                                    <div className="text-muted text-truncate" title={order.shippingDetails.address}>{order.shippingDetails.address}</div>
+                                    <strong className="text-body">{order.shippingDetails.fullName}</strong> ({order.shippingDetails.phone})
+                                    <div className="text-body text-truncate" title={order.shippingDetails.address}>{order.shippingDetails.address}</div>
                                   </div>
                                 ) : (
                                   <span className="text-muted">-</span>
@@ -1124,7 +1255,7 @@ export default function Admin() {
                                 </select>
                               </td>
                               <td className="text-end">
-                                <span className="text-muted small text-monospace">{order.razorpayOrderId}</span>
+                                <span className="text-body small text-monospace">{order.razorpayOrderId}</span>
                               </td>
                             </tr>
                           ))
@@ -1138,7 +1269,7 @@ export default function Admin() {
                 {activeTab === 'products' && (
                   <div className="animate__animated animate__fadeIn">
                     {/* Add/Edit Product Form */}
-                    <div className="card border-0 mb-4 p-4 text-white shadow-sm" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <div className="card mb-4 p-4 shadow-sm" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}>
                       <h4 className="fw-bold text-success mb-3">
                         {editingProduct ? '✏️ Edit Product details' : '➕ Add New Shop Product'}
                       </h4>
@@ -1152,7 +1283,7 @@ export default function Admin() {
                               value={editingProduct ? editingProduct.name : newProduct.name}
                               onChange={e => editingProduct ? setEditingProduct({...editingProduct, name: e.target.value}) : setNewProduct({...newProduct, name: e.target.value})}
                               required
-                              style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}
+                              style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
                             />
                           </div>
                           <div className="col-md-6 col-lg-2">
@@ -1161,7 +1292,7 @@ export default function Admin() {
                               className="form-select"
                               value={editingProduct ? editingProduct.category : newProduct.category}
                               onChange={e => editingProduct ? setEditingProduct({...editingProduct, category: e.target.value}) : setNewProduct({...newProduct, category: e.target.value})}
-                              style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}
+                              style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
                             >
                               <option value="Seeds">Seeds</option>
                               <option value="Fertilizers">Fertilizers</option>
@@ -1176,7 +1307,7 @@ export default function Admin() {
                               value={editingProduct ? editingProduct.price : newProduct.price}
                               onChange={e => editingProduct ? setEditingProduct({...editingProduct, price: Number(e.target.value)}) : setNewProduct({...newProduct, price: Number(e.target.value)})}
                               required
-                              style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}
+                              style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
                             />
                           </div>
                           <div className="col-md-6 col-lg-2">
@@ -1186,7 +1317,20 @@ export default function Admin() {
                               className="form-control"
                               value={editingProduct ? editingProduct.oldPrice : newProduct.oldPrice}
                               onChange={e => editingProduct ? setEditingProduct({...editingProduct, oldPrice: Number(e.target.value)}) : setNewProduct({...newProduct, oldPrice: Number(e.target.value)})}
-                              style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}
+                              style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
+                            />
+                          </div>
+                          <div className="col-md-6 col-lg-2">
+                            <label className="form-label small">Rating</label>
+                            <input
+                              type="number"
+                              step="0.1"
+                              min="1"
+                              max="5"
+                              className="form-control"
+                              value={editingProduct ? (editingProduct.rating !== undefined ? editingProduct.rating : '') : newProduct.rating}
+                              onChange={e => editingProduct ? setEditingProduct({...editingProduct, rating: Number(e.target.value)}) : setNewProduct({...newProduct, rating: Number(e.target.value)})}
+                              style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
                             />
                           </div>
                           <div className="col-md-6 col-lg-3">
@@ -1202,7 +1346,7 @@ export default function Admin() {
                                 accept="image/*"
                                 className="form-control"
                                 onChange={handleImageUpload}
-                                style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}
+                                style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
                               />
                             )}
                             {(editingProduct ? editingProduct.image : newProduct.image) && (
@@ -1224,7 +1368,7 @@ export default function Admin() {
                               placeholder="Brief description of product features..."
                               value={editingProduct ? editingProduct.description : newProduct.description}
                               onChange={e => editingProduct ? setEditingProduct({...editingProduct, description: e.target.value}) : setNewProduct({...newProduct, description: e.target.value})}
-                              style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}
+                              style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
                             />
                           </div>
                           <div className="col-6 col-md-2 d-flex align-items-end">
@@ -1259,7 +1403,7 @@ export default function Admin() {
 
                     {/* Products List Table */}
                     <div className="table-responsive">
-                      <table className="table align-middle" style={{ color: 'var(--text-color)' }}>
+                      <table className="table align-middle" style={{ color: 'var(--text-body)' }}>
                         <thead>
                           <tr>
                             <th>Image</th>
@@ -1277,7 +1421,7 @@ export default function Admin() {
                             </tr>
                           ) : (
                             products.map(p => (
-                              <tr key={p._id} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                              <tr key={p._id} style={{ borderBottom: '1px solid var(--border-color)' }}>
                                 <td>
                                   {p.image ? (
                                     <img src={p.image} alt={p.name} style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '6px' }} />
@@ -1285,9 +1429,9 @@ export default function Admin() {
                                     <div className="bg-secondary rounded" style={{ width: '40px', height: '40px' }} />
                                   )}
                                 </td>
-                                <td>
-                                  <strong className="text-white">{p.name}</strong>
-                                  {p.description && <small className="text-muted d-block text-truncate" style={{ maxWidth: '300px' }}>{p.description}</small>}
+                                <td className="product-details-cell">
+                                  <strong className="text-body">{p.name}</strong>
+                                  {p.description && <small className="text-body d-block text-truncate" style={{ maxWidth: '300px' }}>{p.description}</small>}
                                 </td>
                                 <td>
                                   <span className="badge bg-secondary">{p.category}</span>
@@ -1323,7 +1467,7 @@ export default function Admin() {
                 {/* Tab 9: Crop Approvals */}
                 {activeTab === 'crops' && (
                   <div className="table-responsive">
-                    <table className="table align-middle" style={{ color: 'var(--text-color)' }}>
+                    <table className="table align-middle" style={{ color: 'var(--text-body)' }}>
                       <thead>
                         <tr>
                           <th>Crop Name</th>
@@ -1342,16 +1486,16 @@ export default function Admin() {
                           </tr>
                         ) : (
                           crops.map(c => (
-                            <tr key={c._id} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <tr key={c._id} style={{ borderBottom: '1px solid var(--border-color)' }}>
                               <td>
-                                <strong className="text-white">{c.cropName.charAt(0).toUpperCase() + c.cropName.slice(1)}</strong>
+                                <strong className="text-success">{c.cropName.charAt(0).toUpperCase() + c.cropName.slice(1)}</strong>
                               </td>
                               <td>
                                 <span className="badge bg-secondary">{c.category}</span>
                               </td>
                               <td>
                                 <strong>{c.farmerName}</strong>
-                                <small className="text-muted d-block">{c.farmerPhone}</small>
+                                <small className="text-body d-block">{c.farmerPhone}</small>
                               </td>
                               <td className="text-center font-monospace">{c.quantity}</td>
                               <td className="text-center font-monospace text-success fw-bold">₹{c.price}</td>
@@ -1375,7 +1519,14 @@ export default function Admin() {
                                     </button>
                                   </div>
                                 ) : (
-                                  <span className="text-muted small">Processed</span>
+                                  <div className="d-inline-flex gap-2 align-items-center justify-content-end">
+                                    <span className="text-muted small">Processed</span>
+                                    {c.approvalStatus === 'Approved' && (
+                                      <button className="btn btn-sm btn-outline-danger fw-bold d-inline-flex align-items-center gap-1" onClick={() => handleDeleteCrop(c._id)}>
+                                        <FaTrash size={12} /> Delete
+                                      </button>
+                                    )}
+                                  </div>
                                 )}
                               </td>
                             </tr>
@@ -1383,6 +1534,96 @@ export default function Admin() {
                         )}
                       </tbody>
                     </table>
+                  </div>
+                )}
+
+                {/* Tab 10: Manage Categories */}
+                {activeTab === 'categories' && (
+                  <div className="animate__animated animate__fadeIn">
+                    <div className="row g-4">
+                      {/* Add New Category Form */}
+                      <div className="col-md-4">
+                        <div className="p-3 border rounded-3" style={{ borderColor: 'var(--border-color)', background: 'rgba(255,255,255,0.01)' }}>
+                          <h5 className="fw-bold text-success mb-3">➕ Add New Category</h5>
+                          <form onSubmit={handleCreateCategory}>
+                            <div className="mb-3">
+                              <label className="form-label small fw-semibold">Category Name</label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                placeholder="e.g. Fruits"
+                                value={newCategory.name}
+                                onChange={(e) => setNewCategory({ ...newCategory, name: e.target.value })}
+                                required
+                                style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
+                              />
+                            </div>
+                            <div className="mb-3">
+                              <label className="form-label small fw-semibold">Category Image (Cloudinary)</label>
+                              <input
+                                type="file"
+                                accept="image/*"
+                                className="form-control form-control-sm"
+                                onChange={(e) => handleCategoryImageUpload(e, 'new')}
+                                disabled={uploadingCategoryImage}
+                                style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
+                              />
+                              {uploadingCategoryImage && (
+                                <div className="d-flex align-items-center gap-2 mt-1">
+                                  <FaSpinner className="spin-animation text-success" />
+                                  <span className="small text-muted">Uploading...</span>
+                                </div>
+                              )}
+                              {newCategory.imageUrl && (
+                                <div className="mt-2 d-flex align-items-center gap-2">
+                                  <img src={newCategory.imageUrl} alt="Preview" style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '4px' }} />
+                                  <span className="small text-success">✓ Uploaded</span>
+                                </div>
+                              )}
+                            </div>
+                            <button type="submit" className="btn btn-success w-100 fw-bold">
+                              Save Category
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+
+                      {/* Categories List */}
+                      <div className="col-md-8">
+                        <h5 className="fw-bold text-success mb-3">Existing Categories & Thumbnails</h5>
+                        <div className="table-responsive">
+                          <table className="table align-middle" style={{ color: 'var(--text-body)' }}>
+                            <thead>
+                              <tr>
+                                <th>Category Name</th>
+                                <th>Thumbnail Preview</th>
+                                <th className="text-end">Upload New Image</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {categories.map((cat) => (
+                                <tr key={cat._id} style={{ borderBottom: '1px solid var(--border-color)' }}>
+                                  <td><strong>{cat.name}</strong></td>
+                                  <td>
+                                    <img src={cat.imageUrl} alt={cat.name} style={{ width: '50px', height: '50px', objectFit: 'cover', borderRadius: '6px' }} />
+                                  </td>
+                                  <td className="text-end d-flex justify-content-end">
+                                    <input
+                                      type="file"
+                                      accept="image/*"
+                                      className="form-control form-control-sm"
+                                      onChange={(e) => handleCategoryImageUpload(e, cat.name)}
+                                      disabled={uploadingCategoryImage}
+                                      style={{ maxWidth: '220px', background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
+                                    />
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 )}
 
@@ -1396,10 +1637,10 @@ export default function Admin() {
       {showModal && (
         <div className="modal show d-block" tabIndex="-1" style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(5px)' }}>
           <div className="modal-dialog modal-dialog-centered">
-            <div className="modal-content text-white" style={{ background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.1)' }}>
-              <div className="modal-header border-bottom" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+            <div className="modal-content" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}>
+              <div className="modal-header border-bottom" style={{ borderColor: 'var(--border-color)' }}>
                 <h5 className="modal-title fw-bold text-success">Soil Test Health Report</h5>
-                <button type="button" className="btn-close btn-close-white" onClick={() => setShowModal(false)}></button>
+                <button type="button" className="btn-close" onClick={() => setShowModal(false)} style={{ filter: 'var(--is-dark) ? "invert(1)" : "none"' }}></button>
               </div>
               <form onSubmit={handleSubmitResults}>
                 <div className="modal-body">
@@ -1408,50 +1649,50 @@ export default function Admin() {
                   <div className="row g-2 mb-3">
                     <div className="col-4">
                       <label className="form-label small">Nitrogen (N)</label>
-                      <input type="number" className="form-control" value={testResults.nitrogen} onChange={e => setTestResults({...testResults, nitrogen: e.target.value})} required style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }} />
+                      <input type="number" className="form-control" value={testResults.nitrogen} onChange={e => setTestResults({...testResults, nitrogen: e.target.value})} required style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }} />
                     </div>
                     <div className="col-4">
                       <label className="form-label small">Phosphorus (P)</label>
-                      <input type="number" className="form-control" value={testResults.phosphorous} onChange={e => setTestResults({...testResults, phosphorous: e.target.value})} required style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }} />
+                      <input type="number" className="form-control" value={testResults.phosphorous} onChange={e => setTestResults({...testResults, phosphorous: e.target.value})} required style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }} />
                     </div>
                     <div className="col-4">
                       <label className="form-label small">Potassium (K)</label>
-                      <input type="number" className="form-control" value={testResults.potassium} onChange={e => setTestResults({...testResults, potassium: e.target.value})} required style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }} />
+                      <input type="number" className="form-control" value={testResults.potassium} onChange={e => setTestResults({...testResults, potassium: e.target.value})} required style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }} />
                     </div>
                   </div>
 
                   <div className="row g-2 mb-3">
                     <div className="col-6">
                       <label className="form-label small">Soil pH</label>
-                      <input type="number" step="0.1" className="form-control" value={testResults.ph} onChange={e => setTestResults({...testResults, ph: e.target.value})} required style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }} />
+                      <input type="number" step="0.1" className="form-control" value={testResults.ph} onChange={e => setTestResults({...testResults, ph: e.target.value})} required style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }} />
                     </div>
                     <div className="col-6">
                       <label className="form-label small">Moisture (%)</label>
-                      <input type="number" step="0.1" className="form-control" value={testResults.moisture} onChange={e => setTestResults({...testResults, moisture: e.target.value})} required style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }} />
+                      <input type="number" step="0.1" className="form-control" value={testResults.moisture} onChange={e => setTestResults({...testResults, moisture: e.target.value})} required style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }} />
                     </div>
                   </div>
 
                   <div className="row g-2 mb-3">
                     <div className="col-6">
                       <label className="form-label small">Temperature (°C)</label>
-                      <input type="number" step="0.1" className="form-control" value={testResults.temperature} onChange={e => setTestResults({...testResults, temperature: e.target.value})} style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }} />
+                      <input type="number" step="0.1" className="form-control" value={testResults.temperature} onChange={e => setTestResults({...testResults, temperature: e.target.value})} style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }} />
                     </div>
                     <div className="col-6">
                       <label className="form-label small">Humidity (%)</label>
-                      <input type="number" step="0.1" className="form-control" value={testResults.humidity} onChange={e => setTestResults({...testResults, humidity: e.target.value})} style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }} />
+                      <input type="number" step="0.1" className="form-control" value={testResults.humidity} onChange={e => setTestResults({...testResults, humidity: e.target.value})} style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }} />
                     </div>
                   </div>
 
                   <div className="row g-2 mb-3">
                     <div className="col-6">
                       <label className="form-label small">Soil Classification</label>
-                      <select className="form-select" value={testResults.soilType} onChange={e => setTestResults({...testResults, soilType: e.target.value})} style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}>
+                      <select className="form-select" value={testResults.soilType} onChange={e => setTestResults({...testResults, soilType: e.target.value})} style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}>
                         {['Sandy', 'Loamy', 'Black', 'Red', 'Clayey'].map(s => <option key={s} value={s}>{s}</option>)}
                       </select>
                     </div>
                     <div className="col-6">
                       <label className="form-label small">Target Crop</label>
-                      <select className="form-select" value={testResults.cropType} onChange={e => setTestResults({...testResults, cropType: e.target.value})} style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}>
+                      <select className="form-select" value={testResults.cropType} onChange={e => setTestResults({...testResults, cropType: e.target.value})} style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}>
                         {['Sugarcane', 'Paddy', 'Wheat', 'Maize', 'Cotton'].map(c => <option key={c} value={c}>{c}</option>)}
                       </select>
                     </div>
@@ -1465,13 +1706,13 @@ export default function Admin() {
                       placeholder="e.g. Soil health is moderate. Nitrogen replenishment recommended..." 
                       value={testResults.remarks} 
                       onChange={e => setTestResults({...testResults, remarks: e.target.value})} 
-                      style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}
+                      style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
                     />
                   </div>
 
                 </div>
-                <div className="modal-footer border-top" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-                  <button type="button" className="btn btn-outline-light" onClick={() => setShowModal(false)}>Cancel</button>
+                <div className="modal-footer border-top" style={{ borderColor: 'var(--border-color)' }}>
+                  <button type="button" className="btn btn-light" onClick={() => setShowModal(false)}>Cancel</button>
                   <button type="submit" className="btn btn-success">Save Report Findings</button>
                 </div>
               </form>

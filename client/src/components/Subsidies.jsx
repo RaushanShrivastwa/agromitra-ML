@@ -116,7 +116,7 @@ export default function Subsidies() {
   }, [messages, sendingMessage]);
 
   return (
-    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-color)' }}>
+    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-body)' }}>
       <Navbar />
       <div className="container py-5" style={{ marginTop: '90px' }}>
         
@@ -146,7 +146,7 @@ export default function Subsidies() {
           <div className="row g-4">
             {/* Filter Form */}
             <div className="col-md-4">
-              <div className="card shadow border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-color)', borderRadius: '15px' }}>
+              <div className="card shadow border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', borderRadius: '15px' }}>
                 <h3 className="mb-3 d-flex align-items-center" style={{ fontWeight: 700 }}>
                   <FaFilter className="me-2 text-success" /> {t('filterEligibility') || 'Filter Eligibility'}
                 </h3>
@@ -155,25 +155,25 @@ export default function Subsidies() {
                 <form onSubmit={handleMatch} className="mt-3">
                   <div className="mb-3">
                     <label className="form-label">{t('matcherFormState') || 'State'}</label>
-                    <select name="state" className="form-select" value={filter.state} onChange={handleFilterChange} style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <select name="state" className="form-select" value={filter.state} onChange={handleFilterChange} style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)' }}>
                       <option value="">{t('allCentral') || 'All / Central'}</option>
                       {['Andhra Pradesh', 'Telangana', 'Uttar Pradesh', 'Haryana', 'Karnataka', 'Punjab'].map(st => <option key={st} value={st}>{st}</option>)}
                     </select>
                   </div>
                   <div className="mb-3">
                     <label className="form-label">{t('matcherFormCrop') || 'Primary Crop'}</label>
-                    <select name="crop" className="form-select" value={filter.crop} onChange={handleFilterChange} style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <select name="crop" className="form-select" value={filter.crop} onChange={handleFilterChange} style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)' }}>
                       <option value="">{t('allCrops') || 'All Crops'}</option>
                       {['Cereals', 'Vegetables', 'Fruits'].map(cr => <option key={cr} value={cr}>{cr}</option>)}
                     </select>
                   </div>
                   <div className="mb-3">
                     <label className="form-label">{t('matcherFormLand') || 'Total Land Holding (Acres)'}</label>
-                    <input type="number" name="land_acres" className="form-control" value={filter.land_acres} onChange={handleFilterChange} placeholder="e.g. 4" style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)' }} />
+                    <input type="number" name="land_acres" className="form-control" value={filter.land_acres} onChange={handleFilterChange} placeholder="e.g. 4" style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)' }} />
                   </div>
                   <div className="mb-4">
                     <label className="form-label">{t('matcherFormIncome') || 'Annual Family Income (₹)'}</label>
-                    <input type="number" name="income" className="form-control" value={filter.income} onChange={handleFilterChange} placeholder="e.g. 200000" style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)' }} />
+                    <input type="number" name="income" className="form-control" value={filter.income} onChange={handleFilterChange} placeholder="e.g. 200000" style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)' }} />
                   </div>
                   <button type="submit" className="btn btn-success w-100 py-2" disabled={loadingMatcher}>
                     {loadingMatcher ? (t('searching') || 'Searching...') : (t('matcherCheckBtn') || 'Find Matches')}
@@ -184,7 +184,7 @@ export default function Subsidies() {
 
             {/* Subsidies List */}
             <div className="col-md-8">
-              <div className="card shadow border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-color)', borderRadius: '15px' }}>
+              <div className="card shadow border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', borderRadius: '15px' }}>
                 <div className="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
                   <h3 className="mb-0" style={{ fontWeight: 700 }}>{t('matchedSchemes') || 'Eligible Subsidies & Benefits'}</h3>
                   <div className="d-flex flex-wrap gap-1">
@@ -224,7 +224,7 @@ export default function Subsidies() {
                         style={{ 
                           background: 'rgba(255,255,255,0.03)', 
                           borderRadius: '10px', 
-                          borderLeft: `5px solid ${scheme.is_eligible ? '#2e7d32' : 'rgba(255,255,255,0.1)'}` 
+                          borderLeft: `5px solid ${scheme.is_eligible ? 'var(--text-color)' : 'var(--border-color)'}` 
                         }}
                       >
                         <div className="d-flex justify-content-between align-items-start flex-wrap gap-2">
@@ -252,7 +252,7 @@ export default function Subsidies() {
           </div>
         ) : (
           /* Chatbot UI */
-          <div className="card shadow border-0 mx-auto" style={{ background: 'var(--bg-card)', color: 'var(--text-color)', borderRadius: '15px', maxWidth: '800px', height: '600px', display: 'flex', flexDirection: 'column' }}>
+          <div className="card shadow border-0 mx-auto" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', borderRadius: '15px', maxWidth: '800px', height: '600px', display: 'flex', flexDirection: 'column' }}>
             <div className="card-header border-0 p-3 bg-success text-white d-flex align-items-center" style={{ borderTopLeftRadius: '15px', borderTopRightRadius: '15px' }}>
               <FaRobot className="fs-3 me-2" />
               <div>
@@ -278,7 +278,7 @@ export default function Subsidies() {
                       className={`p-3 rounded`}
                       style={{ 
                         background: msg.sender === 'user' ? '#2e7d32' : 'var(--bg-card)', 
-                        color: msg.sender === 'user' ? '#fff' : 'var(--text-color)',
+                        color: msg.sender === 'user' ? '#fff' : 'var(--text-body)',
                         borderRadius: msg.sender === 'user' ? '15px 15px 0 15px' : '15px 15px 15px 0',
                         boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
                         whiteSpace: 'pre-line'
@@ -315,7 +315,7 @@ export default function Subsidies() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder={t('botPlaceholder') || 'Type your subsidy question here...'}
-                  style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)' }}
+                  style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)' }}
                   required
                 />
                 <button type="submit" className="btn btn-success px-4" disabled={sendingMessage}>

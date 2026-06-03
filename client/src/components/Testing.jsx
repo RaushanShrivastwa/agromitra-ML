@@ -75,14 +75,14 @@ export default function Testing() {
   };
 
   return (
-    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-color)' }}>
+    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-body)' }}>
       <Navbar />
       <div className="container py-5" style={{ marginTop: '80px' }}>
         <div className="row g-4">
           {/* Request Form */}
           <div className="col-md-5">
-            <div className="card shadow border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-color)', backdropFilter: 'blur(10px)', borderRadius: '15px' }}>
-              <h2 className="mb-4 d-flex align-items-center" style={{ fontWeight: 700, color: '#2e7d32' }}>
+            <div className="card shadow border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', backdropFilter: 'blur(10px)', borderRadius: '15px' }}>
+              <h2 className="mb-4 d-flex align-items-center" style={{ fontWeight: 700, color: 'var(--text-color)' }}>
                 <FaFlask className="me-2" /> {t('requestSoilTestTitle') || 'Request Soil Test'}
               </h2>
               <p className="text-muted">{t('requestSoilTestDesc') || 'Schedule a physical soil sample collection from your farm. Our experts will test and upload your soil health report.'}</p>
@@ -97,7 +97,7 @@ export default function Testing() {
                     onChange={e => setAddress(e.target.value)} 
                     placeholder={t('farmAddressPlaceholder') || 'Enter full farm address for sample pickup'}
                     required
-                    style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)' }}
+                    style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)' }}
                   />
                 </div>
                 <div className="mb-4">
@@ -109,7 +109,7 @@ export default function Testing() {
                     onChange={e => setCollectionDate(e.target.value)} 
                     required 
                     min={new Date().toISOString().split('T')[0]}
-                    style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)' }}
+                    style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)' }}
                   />
                 </div>
                 <button type="submit" className="btn btn-success w-100 py-2" disabled={submitting} style={{ fontWeight: 600, borderRadius: '8px' }}>
@@ -121,7 +121,7 @@ export default function Testing() {
 
           {/* Requests History & Reports */}
           <div className="col-md-7">
-            <div className="card shadow border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-color)', borderRadius: '15px' }}>
+            <div className="card shadow border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', borderRadius: '15px' }}>
               <h3 className="mb-4" style={{ fontWeight: 700 }}>{t('yourSoilReports') || 'Your Soil Reports & Requests'}</h3>
               
               {loading ? (
@@ -135,7 +135,7 @@ export default function Testing() {
               ) : (
                 <div className="d-flex flex-column gap-3">
                   {requests.map((req) => (
-                    <div key={req._id} className="card p-3 border-0 shadow-sm" style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '10px', borderLeft: '5px solid #2e7d32' }}>
+                    <div key={req._id} className="card p-3 border-0 shadow-sm" style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '10px', borderLeft: '5px solid var(--text-color)' }}>
                       <div className="d-flex justify-content-between align-items-start flex-wrap gap-2">
                         <div>
                           <span className={`badge ${getStatusBadgeClass(req.status)} mb-2`}>

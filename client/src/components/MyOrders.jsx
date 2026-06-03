@@ -9,6 +9,53 @@ export default function MyOrders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Review states
+  const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [reviewProductId, setReviewProductId] = useState('');
+  const [reviewProductName, setReviewProductName] = useState('');
+  const [selectedRating, setSelectedRating] = useState(5);
+  const [reviewComment, setReviewComment] = useState('');
+  const [submittingReview, setSubmittingReview] = useState(false);
+
+  const handleOpenReviewModal = (productId, productName) => {
+    setReviewProductId(productId);
+    setReviewProductName(productName);
+    setSelectedRating(5);
+    setReviewComment('');
+    setReviewModalOpen(true);
+  };
+
+  const handleReviewSubmit = async (e) => {
+    e.preventDefault();
+    if (!reviewProductId) return;
+    setSubmittingReview(true);
+    try {
+      const res = await fetch(`/api/products/${reviewProductId}/review`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token') || ''
+        },
+        body: JSON.stringify({
+          rating: selectedRating,
+          comment: reviewComment
+        })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        alert(data.message || 'Review submitted successfully!');
+        setReviewModalOpen(false);
+      } else {
+        alert(data.message || 'Failed to submit review.');
+      }
+    } catch (err) {
+      console.error('Error submitting review:', err);
+      alert('Error submitting review. Please try again.');
+    } finally {
+      setSubmittingReview(false);
+    }
+  };
+
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -48,7 +95,7 @@ export default function MyOrders() {
   };
 
   return (
-    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-color)' }}>
+    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-body)' }}>
       <Navbar />
       <div className="container py-5" style={{ marginTop: '90px', maxWidth: '800px' }}>
         
@@ -108,7 +155,7 @@ export default function MyOrders() {
                       <h6 className="fw-bold text-success mb-3">{t('itemsOrdered') || 'Items Ordered'}</h6>
                       <div className="d-flex flex-column gap-3">
                         {order.items.map((item, idx) => (
-                          <div key={idx} className="d-flex gap-3 align-items-center">
+                          <div key={idx} className="d-flex gap-3 align-items-center flex-wrap">
                             {item.image && (
                               <img 
                                 src={item.image} 
@@ -116,12 +163,23 @@ export default function MyOrders() {
                                 style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }} 
                               />
                             )}
-                            <div className="flex-grow-1">
-                              <span className="fw-semibold d-block text-truncate" style={{ maxWidth: '280px' }}>{item.name}</span>
+                            <div className="flex-grow-1" style={{ minWidth: '150px' }}>
+                              <span className="fw-semibold d-block text-truncate" style={{ maxWidth: '250px' }}>{item.name}</span>
                               <small className="text-muted">{item.category} | {t('qtyLabel') || 'Qty'}: {item.qty}</small>
                             </div>
-                            <div className="text-end">
-                              <span className="fw-bold">₹{(item.price * item.qty).toLocaleString()}</span>
+                            <div className="d-flex align-items-center gap-3 ms-auto">
+                              <div className="text-end">
+                                <span className="fw-bold">₹{(item.price * item.qty).toLocaleString()}</span>
+                              </div>
+                              {order.status === 'Delivered' && (
+                                <button 
+                                  className="btn btn-sm btn-outline-warning text-warning" 
+                                  onClick={() => handleOpenReviewModal(item.id || item._id, item.name)}
+                                  style={{ fontSize: '0.78rem', padding: '3px 8px', borderRadius: '6px' }}
+                                >
+                                  ★ Rate
+                                </button>
+                              )}
                             </div>
                           </div>
                         ))}
@@ -151,6 +209,68 @@ export default function MyOrders() {
         )}
 
       </div>
+      {reviewModalOpen && (
+        <div className="modal show d-block" tabIndex="-1" style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(5px)', zIndex: 1050 }}>
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', border: '1px solid var(--border-color)', borderRadius: '15px' }}>
+              <div className="modal-header">
+                <h5 className="modal-title fw-bold text-success">Rate & Review Product</h5>
+                <button type="button" className="btn-close" onClick={() => setReviewModalOpen(false)} style={{ filter: 'var(--is-dark) ? "invert(1)" : "none"' }}></button>
+              </div>
+              <form onSubmit={handleReviewSubmit}>
+                <div className="modal-body">
+                  <p className="mb-3">How is your experience with <strong>{reviewProductName}</strong>?</p>
+                  
+                  {/* Star Selector */}
+                  <div className="mb-3">
+                    <label className="form-label small fw-semibold text-muted d-block">Rating</label>
+                    <div className="d-flex gap-2 justify-content-center py-2 bg-dark-subtle rounded">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <span 
+                          key={star} 
+                          onClick={() => setSelectedRating(star)}
+                          style={{ 
+                            color: star <= selectedRating ? '#ffc107' : 'rgba(255,255,255,0.2)', 
+                            cursor: 'pointer',
+                            fontSize: '2rem',
+                            transition: 'transform 0.1s ease',
+                            display: 'inline-block'
+                          }}
+                          className="star-icon"
+                        >
+                          ★
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Comment input */}
+                  <div className="mb-3">
+                    <label className="form-label small fw-semibold text-muted">Your Comments (Optional)</label>
+                    <textarea 
+                      className="form-control" 
+                      rows="3"
+                      placeholder="Write your product review here..."
+                      value={reviewComment}
+                      onChange={(e) => setReviewComment(e.target.value)}
+                      style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)' }}
+                    ></textarea>
+                  </div>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-light" onClick={() => setReviewModalOpen(false)} disabled={submittingReview}>Cancel</button>
+                  <button type="submit" className="btn btn-success" disabled={submittingReview}>
+                    {submittingReview ? (
+                      <span className="spinner-border spinner-border-sm me-2" role="status"></span>
+                    ) : null}
+                    Submit Review
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
       <Footer />
       <style>{`
         @keyframes spin {

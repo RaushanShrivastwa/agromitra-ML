@@ -160,11 +160,11 @@ export default function Mandi() {
     : prices;
 
   return (
-    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-color)' }}>
+    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-body)' }}>
       <Navbar />
       <div className="container py-5" style={{ marginTop: '90px' }}>
         {/* Header */}
-        <div className="card shadow border-0 p-4 mb-4" style={{ background: 'var(--bg-card)', color: 'var(--text-color)', borderRadius: '15px' }}>
+        <div className="card shadow border-0 p-4 mb-4" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', borderRadius: '15px' }}>
           <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
             <div>
               <h2 className="mb-1" style={{ fontWeight: 700 }}>
@@ -198,7 +198,7 @@ export default function Mandi() {
               onChange={(e) => setSelectedDate(e.target.value)}
               max={new Date().toISOString().split('T')[0]}
               min="2023-01-01"
-              style={{ width: '170px', background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.15)' }}
+              style={{ width: '170px', background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.15)' }}
             />
             <button className="btn btn-sm btn-outline-secondary d-flex align-items-center"
               onClick={() => shiftDate(1)} title="Next day"
@@ -222,7 +222,7 @@ export default function Mandi() {
                 <input type="text" className="form-control border-start-0"
                   placeholder="e.g. Wheat, Onion, Paddy..."
                   value={searchInput} onChange={handleSearchChange}
-                  style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)' }}
+                  style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)' }}
                 />
               </div>
             </div>
@@ -230,7 +230,7 @@ export default function Mandi() {
               <label className="form-label small text-muted mb-1">{t('searchState') || 'State'}</label>
               <select className="form-select" value={stateFilter}
                 onChange={(e) => setStateFilter(e.target.value)}
-                style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)', height: '48px' }}>
+                style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)', height: '48px' }}>
                 <option value="">All States ({availableStates.length})</option>
                 {availableStates.map(st => <option key={st} value={st}>{st}</option>)}
               </select>
@@ -240,7 +240,7 @@ export default function Mandi() {
               <input type="text" className="form-control"
                 placeholder="Filter by district or market..."
                 value={districtSearch} onChange={(e) => setDistrictSearch(e.target.value)}
-                style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)', height: '48px' }}
+                style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)', height: '48px' }}
               />
             </div>
           </div>
@@ -263,11 +263,11 @@ export default function Mandi() {
         )}
 
         {/* Table */}
-        <div className="card shadow border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-color)', borderRadius: '15px' }}>
+        <div className="card shadow border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', borderRadius: '15px' }}>
           <div className="table-responsive">
-            <table className="table align-middle mb-0" style={{ color: 'var(--text-color)' }}>
+            <table className="table align-middle mb-0" style={{ color: 'var(--text-body)' }}>
               <thead>
-                <tr style={{ borderBottom: '2px solid rgba(255,255,255,0.1)' }}>
+                <tr style={{ borderBottom: '2px solid var(--border-color)' }}>
                   <th>{t('mandiTableCrop') || 'Crop'}</th>
                   <th>{t('mandiTableVariety') || 'Variety'}</th>
                   <th>{t('searchState') || 'State'}</th>
@@ -296,7 +296,7 @@ export default function Mandi() {
                   </tr>
                 ) : (
                   displayed.map((price, idx) => (
-                    <tr key={idx} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                    <tr key={idx} style={{ borderBottom: '1px solid var(--border-color)' }}>
                       <td className="fw-bold">{price.crop}</td>
                       <td><small className="text-muted">{price.variety || '—'}</small></td>
                       <td>

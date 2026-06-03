@@ -116,7 +116,7 @@ export default function Fertilizer() {
   };
 
   return (
-    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-color)' }}>
+    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-body)' }}>
       <Navbar />
       <div className="container py-5" style={{ marginTop: '90px' }}>
         {report && (
@@ -128,9 +128,9 @@ export default function Fertilizer() {
         <div className="row g-4 justify-content-center">
           {/* Input Form */}
           <div className="col-md-6">
-            <div className="card shadow border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-color)', borderRadius: '15px' }}>
+            <div className="card shadow border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', borderRadius: '15px' }}>
               <div className="d-flex justify-content-between align-items-center mb-3">
-                <h2 className="mb-0 d-flex align-items-center" style={{ fontWeight: 700, color: '#2e7d32' }}>
+                <h2 className="mb-0 d-flex align-items-center" style={{ fontWeight: 700, color: 'var(--text-color)' }}>
                   <FaFlask className="me-2" /> {t('soilAdvisorTitle') || 'Fertilizer Advisor'}
                 </h2>
               </div>
@@ -198,7 +198,7 @@ export default function Fertilizer() {
 
               {/* Remarks/Summary display if a report has been imported */}
               {selectedReportRemarks && (
-                <div className="card p-3 mt-4 text-start shadow-sm border-0" style={{ background: 'rgba(25, 135, 84, 0.05)', borderLeft: '4px solid #2e7d32', borderRadius: '10px' }}>
+                <div className="card p-3 mt-4 text-start shadow-sm border-0" style={{ background: 'rgba(25, 135, 84, 0.05)', borderLeft: '4px solid var(--text-color)', borderRadius: '10px' }}>
                   <span className="fw-bold text-success d-flex align-items-center gap-1 mb-1" style={{ fontSize: '0.9rem' }}>
                     <FaBookOpen /> {t('soilTestSummary') || 'Soil Test Summary / Remarks'}
                   </span>
@@ -212,16 +212,16 @@ export default function Fertilizer() {
 
           {/* Report Display */}
           <div className="col-md-5">
-            <div className="card shadow border-0 p-4 h-100 d-flex flex-column justify-content-center align-items-center text-center" style={{ background: 'var(--bg-card)', color: 'var(--text-color)', borderRadius: '15px', minHeight: '350px' }}>
+            <div className="card shadow border-0 p-4 h-100 d-flex flex-column justify-content-center align-items-center text-center" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', borderRadius: '15px', minHeight: '350px' }}>
               {prediction ? (
                 <div className="animate__animated animate__fadeIn w-100">
                   <div className="mb-3 text-success fs-1">
                     <FaLeaf />
                   </div>
-                  <h1 className="fw-bold" style={{ color: '#2e7d32' }}>{prediction.recommendation}</h1>
+                  <h1 className="fw-bold" style={{ color: 'var(--text-color)' }}>{prediction.recommendation}</h1>
                   <h4 className="mt-2 text-muted">Recommended Fertilizer</h4>
 
-                  <div className="card p-4 mt-4 text-start shadow-sm border-0" style={{ background: 'rgba(255,255,255,0.03)', borderLeft: '6px solid #2e7d32', borderRadius: '10px' }}>
+                  <div className="card p-4 mt-4 text-start shadow-sm border-0" style={{ background: 'rgba(255,255,255,0.03)', borderLeft: '6px solid var(--text-color)', borderRadius: '10px' }}>
                     <h5 className="fw-bold mb-2 text-success">💡 Application Guidelines</h5>
                     <p className="mb-0 text-muted" style={{ lineHeight: '1.6', fontSize: '0.95rem' }}>{prediction.guidelines}</p>
                   </div>
@@ -242,10 +242,10 @@ export default function Fertilizer() {
       {showImportModal && (
         <div className="modal show d-block" tabIndex="-1" style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(5px)' }}>
           <div className="modal-dialog modal-dialog-centered modal-lg">
-            <div className="modal-content text-white" style={{ background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '15px' }}>
-              <div className="modal-header border-bottom" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+            <div className="modal-content" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', border: '1px solid var(--border-color)', borderRadius: '15px' }}>
+              <div className="modal-header border-bottom" style={{ borderColor: 'var(--border-color)' }}>
                 <h5 className="modal-title fw-bold text-success">Import Soil Test Report</h5>
-                <button type="button" className="btn-close btn-close-white" onClick={() => setShowImportModal(false)}></button>
+                <button type="button" className="btn-close" onClick={() => setShowImportModal(false)} style={{ filter: 'var(--is-dark) ? "invert(1)" : "none"' }}></button>
               </div>
               <div className="modal-body" style={{ maxHeight: '450px', overflowY: 'auto' }}>
                 {fetchingReports ? (
@@ -264,7 +264,7 @@ export default function Fertilizer() {
                   <div className="d-flex flex-column gap-3">
                     <p className="text-muted small mb-2">Select a completed report from the list below to automatically apply its details to the advisor form.</p>
                     {userReports.map((rep) => (
-                      <div key={rep._id} className="card bg-transparent border p-3 rounded-3" style={{ borderColor: 'rgba(255,255,255,0.1)' }}>
+                      <div key={rep._id} className="card bg-transparent border p-3 rounded-3" style={{ borderColor: 'var(--border-color)' }}>
                         <div className="d-flex justify-content-between align-items-start mb-2 flex-wrap gap-2">
                           <div>
                             <h6 className="fw-bold mb-1 text-success">
@@ -314,7 +314,7 @@ export default function Fertilizer() {
                           </div>
                         </div>
                         {rep.remarks && (
-                          <div className="mt-3 p-2 rounded small" style={{ background: 'rgba(25, 135, 84, 0.03)', borderLeft: '3px solid #2e7d32' }}>
+                          <div className="mt-3 p-2 rounded small" style={{ background: 'rgba(25, 135, 84, 0.03)', borderLeft: '3px solid var(--text-color)' }}>
                             <span className="fw-bold text-success d-block mb-1">Remarks:</span>
                             <span className="text-muted">{rep.remarks}</span>
                           </div>
@@ -324,8 +324,8 @@ export default function Fertilizer() {
                   </div>
                 )}
               </div>
-              <div className="modal-footer border-top" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
-                <button type="button" className="btn btn-outline-light" onClick={() => setShowImportModal(false)}>Close</button>
+              <div className="modal-footer border-top" style={{ borderColor: 'var(--border-color)' }}>
+                <button type="button" className="btn btn-light" onClick={() => setShowImportModal(false)}>Close</button>
               </div>
             </div>
           </div>

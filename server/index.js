@@ -91,6 +91,23 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     } catch (seedErr) {
       console.error('Error seeding products:', seedErr.message);
     }
+
+    // Seed initial crop categories if empty
+    try {
+      const Category = require('./models/Category');
+      const categoryCount = await Category.countDocuments();
+      if (categoryCount === 0) {
+        await Category.create([
+          { name: 'Vegetables', imageUrl: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=300' },
+          { name: 'Cereals', imageUrl: 'https://images.unsplash.com/photo-1601593768799-76d6d8cde7dc?w=300' },
+          { name: 'Pulses', imageUrl: 'https://images.unsplash.com/photo-1603048719537-7a7387dfb1e1?w=300' },
+          { name: 'Spices', imageUrl: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=300' }
+        ]);
+        console.log('Initial categories seeded successfully.');
+      }
+    } catch (seedErr) {
+      console.error('Error seeding categories:', seedErr.message);
+    }
   })
   .catch((err) => console.error('DB connection error:', err));
 

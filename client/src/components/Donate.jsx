@@ -131,10 +131,10 @@ export default function Donate() {
   };
 
   return (
-    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-color)' }}>
+    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-body)' }}>
       <Navbar />
       <div className="container py-5 text-center" style={{ marginTop: '100px', maxWidth: '600px' }}>
-        <div className="card shadow border-0 p-5" style={{ background: 'var(--bg-card)', color: 'var(--text-color)', borderRadius: '20px' }}>
+        <div className="card shadow border-0 p-5" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', borderRadius: '20px' }}>
           <div className="mb-4 text-success fs-1">
             <FaHandHoldingHeart />
           </div>
@@ -169,7 +169,7 @@ export default function Donate() {
                 placeholder={t('enterAmountPlaceholder') || 'Enter amount (₹)'}
                 value={customAmount}
                 onChange={(e) => setCustomAmount(e.target.value)}
-                style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)' }}
+                style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)' }}
               />
             </div>
           )}

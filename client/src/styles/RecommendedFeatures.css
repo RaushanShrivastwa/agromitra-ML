@@ -6,15 +6,15 @@
 
 .section-title {
   font-size: 2rem;
-  color: #2c7d3f;
+  color: var(--text-color);
   margin-bottom: 1.5rem;
   text-align: center;
 }
 
 .feature-card {
-  background: #eafab2;
+  background: var(--feature-card-bg);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--card-3d-shadow);
   padding: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -24,17 +24,17 @@
   align-items: center;            /* vertical alignment */
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .card-header h3 {
   font-size: 1.7rem;
-  color: #2c7d3f;
+  color: var(--text-color);
   margin: 0;
 }
 
 .view-more {
-  color: #2c7d3f;
+  color: var(--text-color);
   text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
@@ -45,8 +45,8 @@
 }
 
 .view-more:hover {
-  color: white;
-  background-color: #2c7d3f;
+  color: var(--bg-card);
+  background-color: var(--text-color);
   transform: translateX(3px);
 }
 
@@ -63,12 +63,12 @@
   gap: 1rem;
   padding: 1rem;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  background-color: var(--item-card-bg);
   transition: all 0.3s ease;
 }
 
 .report-card:hover {
-  background-color: #e2e2e2;
+  background-color: var(--item-card-hover-bg);
   transform: translateY(-3px);
 }
 
@@ -80,24 +80,24 @@
 .report-content h4 {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--text-color);
 }
 
 .report-content p {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.4;
 }
 
 .view-reports {
-  background-color: #3b3b3b;
-  color: white;
+  background-color: var(--text-color);
+  color: var(--bg-card);
 }
 
 .view-reports:hover {
-  background-color: #000000;
+  background-color: var(--hover-bg);
+  color: var(--text-color);
 }
-
 
 /* Crop Listings Styles */
 .crop-categories {
@@ -109,15 +109,15 @@
 .category-card {
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px var(--card-3d-shadow);
   transition: all 0.3s ease;
-  background-color: #f9f9f9;
+  background-color: var(--item-card-bg);
 }
 
 .category-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  background-color: #e2e2e2;
+  box-shadow: 0 5px 15px var(--card-3d-shadow);
+  background-color: var(--item-card-hover-bg);
 }
 
 .category-image {
@@ -141,7 +141,7 @@
 .category-card h4 {
   padding: 0.8rem 1rem 0;
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-color);
 }
 
 .category-actions {
@@ -161,21 +161,23 @@
 }
 
 .add-items {
-  background-color: #3b3b3b;
-  color: white;
+  background-color: var(--text-color);
+  color: var(--bg-card);
 }
 
 .add-items:hover {
-  background-color: #000000;
+  background-color: var(--hover-bg);
+  color: var(--text-color);
 }
 
 .view-items {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: var(--bg-input);
+  color: var(--text-body);
 }
 
 .view-items:hover {
-  background-color: #e0e0e0;
+  background-color: var(--hover-bg);
+  color: var(--text-color);
 }
 
 /* Schemes Card Styles */
@@ -191,31 +193,31 @@
   justify-content: space-between;
   padding: 1.2rem;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  background-color: var(--item-card-bg);
   transition: all 0.3s ease;
 }
 
 .scheme-card:hover {
-  background-color: #e2e2e2;
+  background-color: var(--item-card-hover-bg);
   transform: translateY(-3px);
 }
 
 .scheme-info h4 {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--text-color);
 }
 
 .schemes-count {
   font-size: 0.9rem;
-  color: #4CAF50;
+  color: var(--text-color);
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
 
 .scheme-description {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.4;
   margin-bottom: 1rem;
 }
@@ -223,8 +225,8 @@
 .view-details {
   align-self: flex-start;
   padding: 0.6rem 1.2rem;
-  background-color: #3b3b3b;
-  color: white;
+  background-color: var(--text-color);
+  color: var(--bg-card);
   border: none;
   border-radius: 4px;
   font-weight: 500;
@@ -233,7 +235,8 @@
 }
 
 .view-details:hover {
-  background-color: #000000;
+  background-color: var(--hover-bg);
+  color: var(--text-color);
 }
 
 /* Responsive Styles */

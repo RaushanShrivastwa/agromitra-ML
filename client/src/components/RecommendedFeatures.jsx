@@ -51,16 +51,21 @@ const RecommendedFeatures = ({ viewMode }) => {
     { id: 3, name: t('technology') || "Technology", schemes: 7, description: t('schemeTechnologyDesc') || "Subsidies for farm tractors and solar pumps." }
   ];
 
-  // Interactive Crop Categories
-  const cropCategories = [
-    { id: 1, name: "Vegetables", label: t('vegetables') || "Vegetables", image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=300" },
-    { id: 2, name: "Cereals", label: t('cereals') || "Cereals", image: "https://images.unsplash.com/photo-1601593768799-76d6d8cde7dc?w=300" },
-    { id: 3, name: "Pulses", label: t('pulses') || "Pulses", image: "https://images.unsplash.com/photo-1603048719537-7a7387dfb1e1?w=300" },
-    { id: 4, name: "Spices", label: t('spices') || "Spices", image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=300" }
-  ];
+  // Helper to get fallback images or unsplash random image for custom categories
+  const getCategoryImage = (categoryName) => {
+    const defaults = {
+      'Vegetables': 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=300',
+      'Cereals': 'https://images.unsplash.com/photo-1601593768799-76d6d8cde7dc?w=300',
+      'Pulses': 'https://images.unsplash.com/photo-1603048719537-7a7387dfb1e1?w=300',
+      'Spices': 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=300'
+    };
+    if (defaults[categoryName]) return defaults[categoryName];
+    return 'https://images.unsplash.com/photo-1500937386664-56d159062255?w=300';
+  };
 
   const [activeListings, setActiveListings] = useState([]);
   const [loadingListings, setLoadingListings] = useState(true);
+  const [categories, setCategories] = useState([]);
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loadingProducts, setLoadingProducts] = useState(false);
 
@@ -75,8 +80,149 @@ const RecommendedFeatures = ({ viewMode }) => {
     qty: '',
     price: '',
     farmer: '',
-    ph: ''
+    ph: '',
+    imageUrl: '',
+    categoryImageUrl: '',
+    customCrop: '',
+    customCategory: ''
   });
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [uploadingCategoryImage, setUploadingCategoryImage] = useState(false);
+
+  // Dynamically compute active crop categories
+  const dynamicCategories = (() => {
+    const defaultCategories = ['Vegetables', 'Cereals', 'Pulses', 'Spices'];
+    
+    // Combine fetched categories and any listing categories that might not be saved in Category model yet
+    const combined = [...categories];
+    activeListings.forEach(l => {
+      if (l.category && !combined.some(c => c.name.toLowerCase() === l.category.toLowerCase())) {
+        combined.push({
+          name: l.category,
+          imageUrl: l.categoryImageUrl || 'https://images.unsplash.com/photo-1500937386664-56d159062255?w=300'
+        });
+      }
+    });
+
+    // Filter to show only default categories OR categories that have at least one approved listing
+    const filtered = combined.filter(cat => 
+      defaultCategories.some(dc => dc.toLowerCase() === cat.name.toLowerCase()) ||
+      activeListings.some(l => l.category.toLowerCase() === cat.name.toLowerCase())
+    );
+
+    return filtered.map((c, idx) => ({
+      id: idx + 1,
+      name: c.name,
+      label: t(c.name.toLowerCase()) || c.name,
+      image: c.imageUrl
+    }));
+  })();
+
+  // Unique crops from default + active listings for select dropdown
+  const dynamicCrops = (() => {
+    const list = [...ALLOWED_CROPS];
+    activeListings.forEach(l => {
+      const normalizedListingCrop = l.crop.toLowerCase().replace(/\s+/g, '');
+      const matchedAllowed = ALLOWED_CROPS.find(c => c.value === normalizedListingCrop || c.label.toLowerCase().replace(/\s+/g, '') === normalizedListingCrop);
+      
+      if (matchedAllowed) {
+        return;
+      }
+      
+      const displayVal = l.crop;
+      const alreadyExists = list.some(c => c.value.toLowerCase() === displayVal.toLowerCase());
+      if (!alreadyExists) {
+        list.push({
+          value: displayVal,
+          label: displayVal
+        });
+      }
+    });
+    return list;
+  })();
+
+  // Unique categories list for select dropdown
+  const dynamicCategoriesList = (() => {
+    const defaultList = ['Vegetables', 'Cereals', 'Pulses', 'Spices'];
+    const list = [...defaultList];
+    
+    categories.forEach(c => {
+      if (c.name && !list.some(item => item.toLowerCase() === c.name.toLowerCase())) {
+        list.push(c.name);
+      }
+    });
+
+    activeListings.forEach(l => {
+      if (l.category && !list.some(c => c.toLowerCase() === l.category.toLowerCase())) {
+        list.push(l.category);
+      }
+    });
+    return list;
+  })();
+
+  const handleCropImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    setUploadingImage(true);
+    const token = localStorage.getItem('token');
+    try {
+      const res = await fetch('/api/crops/upload', {
+        method: 'POST',
+        headers: {
+          'Authorization': token || ''
+        },
+        body: formData
+      });
+      const data = await res.json();
+      if (res.ok && data.imageUrl) {
+        setNewCrop(prev => ({ ...prev, imageUrl: data.imageUrl }));
+        alert('Crop image uploaded successfully!');
+      } else {
+        alert(data.message || 'Image upload failed.');
+      }
+    } catch (err) {
+      console.error('Error uploading crop image:', err);
+      alert('Error uploading image to server.');
+    } finally {
+      setUploadingImage(false);
+    }
+  };
+
+  const handleCategoryImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    setUploadingCategoryImage(true);
+    const token = localStorage.getItem('token');
+    try {
+      const res = await fetch('/api/crops/upload', {
+        method: 'POST',
+        headers: {
+          'Authorization': token || ''
+        },
+        body: formData
+      });
+      const data = await res.json();
+      if (res.ok && data.imageUrl) {
+        setNewCrop(prev => ({ ...prev, categoryImageUrl: data.imageUrl }));
+        alert('Category thumbnail image uploaded successfully!');
+      } else {
+        alert(data.message || 'Image upload failed.');
+      }
+    } catch (err) {
+      console.error('Error uploading category image:', err);
+      alert('Error uploading category image to server.');
+    } finally {
+      setUploadingCategoryImage(false);
+    }
+  };
 
   const fetchListings = async () => {
     const token = localStorage.getItem('token');
@@ -95,7 +241,9 @@ const RecommendedFeatures = ({ viewMode }) => {
           qty: `${l.quantity} ${t('listingsCount') || 'listings'}`,
           price: `${l.price}/q`,
           farmer: l.farmerName,
-          ph: l.farmerPhone
+          ph: l.farmerPhone,
+          imageUrl: l.imageUrl || '',
+          categoryImageUrl: l.categoryImageUrl || ''
         }));
         setActiveListings(mapped);
       }
@@ -121,6 +269,21 @@ const RecommendedFeatures = ({ viewMode }) => {
       console.error('Error fetching featured products:', err);
     } finally {
       setLoadingProducts(false);
+    }
+  };
+
+  const fetchCategories = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      const res = await fetch('/api/crops/categories', {
+        headers: { 'Authorization': token || '' }
+      });
+      const data = await res.json();
+      if (res.ok && data.categories) {
+        setCategories(data.categories);
+      }
+    } catch (err) {
+      console.error('Error fetching categories:', err);
     }
   };
 
@@ -156,11 +319,20 @@ const RecommendedFeatures = ({ viewMode }) => {
   useEffect(() => {
     fetchListings();
     fetchFeaturedProducts();
+    fetchCategories();
   }, [t, viewMode]);
 
   const handleAddCropSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
+    const finalCrop = newCrop.crop === 'custom' ? newCrop.customCrop : newCrop.crop;
+    const finalCategory = newCrop.category === 'custom' ? newCrop.customCategory : newCrop.category;
+
+    if (!finalCrop || !finalCategory) {
+      alert('Please fill out all required crop details.');
+      return;
+    }
+
     try {
       const res = await fetch('/api/crops', {
         method: 'POST',
@@ -169,12 +341,14 @@ const RecommendedFeatures = ({ viewMode }) => {
           'Authorization': token || ''
         },
         body: JSON.stringify({
-          cropName: newCrop.crop,
-          category: newCrop.category,
+          cropName: finalCrop,
+          category: finalCategory,
           quantity: Number(newCrop.qty),
           price: Number(newCrop.price),
           farmerName: newCrop.farmer,
-          farmerPhone: newCrop.ph
+          farmerPhone: newCrop.ph,
+          imageUrl: newCrop.imageUrl || '',
+          categoryImageUrl: newCrop.categoryImageUrl || ''
         })
       });
       const data = await res.json();
@@ -187,9 +361,14 @@ const RecommendedFeatures = ({ viewMode }) => {
           qty: '',
           price: '',
           farmer: '',
-          ph: ''
+          ph: '',
+          imageUrl: '',
+          categoryImageUrl: '',
+          customCrop: '',
+          customCategory: ''
         });
         fetchListings();
+        fetchCategories();
       } else {
         alert(data.message || 'Failed to post crop listing.');
       }
@@ -238,7 +417,7 @@ const RecommendedFeatures = ({ viewMode }) => {
           <div className="text-center p-4 text-muted">{t('loadingCropListings') || 'Loading crop listings...'}</div>
         ) : (
           <div className="crop-categories">
-            {cropCategories.map(category => (
+            {dynamicCategories.map(category => (
               <div key={category.id} className="category-card">
                 <div 
                   className="category-image"
@@ -326,53 +505,123 @@ const RecommendedFeatures = ({ viewMode }) => {
       {showAddModal && (
         <div className="modal show d-block" tabIndex="-1" style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(5px)', zIndex: 1050 }}>
           <div className="modal-dialog modal-dialog-centered">
-            <div className="modal-content text-white" style={{ background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <div className="modal-content" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}>
               <div className="modal-header">
                 <h5 className="modal-title fw-bold text-success">{t('postCropModalTitle') || 'Post Crop / Seed for Sale'}</h5>
-                <button type="button" className="btn-close btn-close-white" onClick={() => setShowAddModal(false)}></button>
+                <button type="button" className="btn-close" onClick={() => setShowAddModal(false)} style={{ filter: 'var(--is-dark) ? "invert(1)" : "none"' }}></button>
               </div>
               <form onSubmit={handleAddCropSubmit}>
                 <div className="modal-body">
                   <div className="mb-3">
                     <label className="form-label small">{t('selectCrop') || 'Crop Name'}</label>
-                    <select className="form-select" value={newCrop.crop} onChange={e => setNewCrop({...newCrop, crop: e.target.value})} style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}>
-                      {ALLOWED_CROPS.map(c => (
-                        <option key={c.value} value={c.value} style={{ background: 'var(--bg-card)', color: 'var(--text-color)' }}>{t(c.value) || c.label}</option>
+                    <select className="form-select mb-2" value={newCrop.crop} onChange={e => setNewCrop({...newCrop, crop: e.target.value})} style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}>
+                      {dynamicCrops.map(c => (
+                        <option key={c.value} value={c.value} style={{ background: 'var(--bg-card)', color: 'var(--text-body)' }}>{t(c.value) || c.label}</option>
                       ))}
+                      <option value="custom" style={{ background: 'var(--bg-card)', color: 'var(--text-color)', fontWeight: 'bold' }}>+ Other (Add Custom Crop)</option>
                     </select>
+                    {newCrop.crop === 'custom' && (
+                      <input 
+                        type="text" 
+                        className="form-control" 
+                        placeholder="Enter dynamic crop name (e.g. Wheat)" 
+                        value={newCrop.customCrop} 
+                        onChange={e => setNewCrop({...newCrop, customCrop: e.target.value})}
+                        required
+                        style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
+                      />
+                    )}
                   </div>
                   <div className="row g-2 mb-3">
                     <div className="col-6">
                       <label className="form-label small">{t('cropCategory') || 'Category'}</label>
-                      <select className="form-select" value={newCrop.category} onChange={e => setNewCrop({...newCrop, category: e.target.value})} style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }}>
-                        <option value="Vegetables">{t('vegetables') || 'Vegetables'}</option>
-                        <option value="Cereals">{t('cereals') || 'Cereals'}</option>
-                        <option value="Pulses">{t('pulses') || 'Pulses'}</option>
-                        <option value="Spices">{t('spices') || 'Spices'}</option>
+                      <select className="form-select mb-2" value={newCrop.category} onChange={e => setNewCrop({...newCrop, category: e.target.value})} style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}>
+                        {dynamicCategoriesList.map(cat => (
+                          <option key={cat} value={cat}>{t(cat.toLowerCase()) || cat}</option>
+                        ))}
+                        <option value="custom" style={{ color: 'var(--text-color)', fontWeight: 'bold' }}>+ Other (Add Custom Category)</option>
                       </select>
+                      {newCrop.category === 'custom' && (
+                        <div className="mt-2">
+                          <input 
+                            type="text" 
+                            className="form-control mb-2" 
+                            placeholder="Enter new category name" 
+                            value={newCrop.customCategory} 
+                            onChange={e => setNewCrop({...newCrop, customCategory: e.target.value})}
+                            required
+                            style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
+                          />
+                          <label className="form-label small mb-1 text-success fw-bold">Category Thumbnail Image</label>
+                          <input 
+                            type="file" 
+                            accept="image/*" 
+                            className="form-control form-control-sm" 
+                            onChange={handleCategoryImageUpload}
+                            disabled={uploadingCategoryImage}
+                            required={!newCrop.categoryImageUrl}
+                            style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)', fontSize: '0.78rem' }}
+                          />
+                          {uploadingCategoryImage && (
+                            <div className="d-flex align-items-center gap-2 py-1 mt-1">
+                              <span className="spinner-border spinner-border-sm text-success" role="status"></span>
+                              <span className="small text-muted" style={{ fontSize: '0.78rem' }}>Uploading...</span>
+                            </div>
+                          )}
+                          {newCrop.categoryImageUrl && (
+                            <div className="mt-1 d-flex align-items-center gap-2">
+                              <img src={newCrop.categoryImageUrl} alt="Category Preview" style={{ width: '30px', height: '30px', objectFit: 'cover', borderRadius: '4px' }} />
+                              <span className="small text-success" style={{ fontSize: '0.78rem' }}>✓ Uploaded</span>
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </div>
                     <div className="col-6">
                       <label className="form-label small">{t('farmerLabel') || 'Farmer Name'}</label>
-                      <input type="text" className="form-control" placeholder={t('namePlaceholder') || 'Your name'} value={newCrop.farmer} onChange={e => setNewCrop({...newCrop, farmer: e.target.value})} required style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }} />
+                      <input type="text" className="form-control" placeholder={t('namePlaceholder') || 'Your name'} value={newCrop.farmer} onChange={e => setNewCrop({...newCrop, farmer: e.target.value})} required style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }} />
                     </div>
                   </div>
                   <div className="row g-2 mb-3">
                     <div className="col-6">
                       <label className="form-label small">{t('quantityQuintals') || 'Quantity (Quintals)'}</label>
-                      <input type="number" className="form-control" placeholder="e.g. 50" value={newCrop.qty} onChange={e => setNewCrop({...newCrop, qty: e.target.value})} required style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }} />
+                      <input type="number" className="form-control" placeholder="e.g. 50" value={newCrop.qty} onChange={e => setNewCrop({...newCrop, qty: e.target.value})} required style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }} />
                     </div>
                     <div className="col-6">
                       <label className="form-label small">{t('pricePerQuintal') || 'Expected Price (₹/q)'}</label>
-                      <input type="number" className="form-control" placeholder="e.g. 2100" value={newCrop.price} onChange={e => setNewCrop({...newCrop, price: e.target.value})} required style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }} />
+                      <input type="number" className="form-control" placeholder="e.g. 2100" value={newCrop.price} onChange={e => setNewCrop({...newCrop, price: e.target.value})} required style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }} />
                     </div>
                   </div>
                   <div className="mb-3">
                     <label className="form-label small">{t('phoneLabel') || 'Contact Mobile Number'}</label>
-                    <input type="text" className="form-control" placeholder="e.g. +91 9876543210" value={newCrop.ph} onChange={e => setNewCrop({...newCrop, ph: e.target.value})} required style={{ background: 'var(--bg-input)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' }} />
+                    <input type="text" className="form-control" placeholder="e.g. +91 9876543210" value={newCrop.ph} onChange={e => setNewCrop({...newCrop, ph: e.target.value})} required style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }} />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label small">Product Image (Cloudinary)</label>
+                    <input 
+                      type="file" 
+                      accept="image/*" 
+                      className="form-control" 
+                      onChange={handleCropImageUpload}
+                      disabled={uploadingImage}
+                      style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}
+                    />
+                    {uploadingImage && (
+                      <div className="d-flex align-items-center gap-2 py-1 mt-1">
+                        <span className="spinner-border spinner-border-sm text-success" role="status"></span>
+                        <span className="small text-muted">Uploading image to Cloudinary...</span>
+                      </div>
+                    )}
+                    {newCrop.imageUrl && (
+                      <div className="mt-2 d-flex align-items-center gap-2">
+                        <img src={newCrop.imageUrl} alt="Crop Preview" style={{ width: '50px', height: '50px', objectFit: 'cover', borderRadius: '6px' }} />
+                        <span className="small text-success">✓ Image uploaded</span>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-outline-light" onClick={() => setShowAddModal(false)}>{t('close') || 'Cancel'}</button>
+                  <button type="button" className="btn btn-light" onClick={() => setShowAddModal(false)}>{t('close') || 'Cancel'}</button>
                   <button type="submit" className="btn btn-success">{t('postListing') || 'Publish Listing'}</button>
                 </div>
               </form>
@@ -385,16 +634,16 @@ const RecommendedFeatures = ({ viewMode }) => {
       {showViewModal && (
         <div className="modal show d-block" tabIndex="-1" style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(5px)', zIndex: 1050 }}>
           <div className="modal-dialog modal-dialog-centered modal-lg">
-            <div className="modal-content text-white" style={{ background: 'var(--bg-card)', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <div className="modal-content" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', border: '1px solid var(--border-color)' }}>
               <div className="modal-header">
                 <h5 className="modal-title fw-bold text-success">{t('cropPostingsFor') || 'Crop Postings for'} {t(viewCategory.toLowerCase()) || viewCategory}</h5>
-                <button type="button" className="btn-close btn-close-white" onClick={() => setShowViewModal(false)}></button>
+                <button type="button" className="btn-close" onClick={() => setShowViewModal(false)} style={{ filter: 'var(--is-dark) ? "invert(1)" : "none"' }}></button>
               </div>
               <div className="modal-body" style={{ maxHeight: '400px', overflowY: 'auto' }}>
                 <div className="table-responsive">
-                  <table className="table align-middle" style={{ color: '#fff' }}>
+                  <table className="table align-middle" style={{ color: 'var(--text-body)' }}>
                     <thead>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                      <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
                         <th>{t('mandiTableCrop') || 'Crop'}</th>
                         <th>{t('farmerLabel') || 'Seller / Farmer'}</th>
                         <th>{t('qtyLabel') || 'Stock Available'}</th>
@@ -409,8 +658,15 @@ const RecommendedFeatures = ({ viewMode }) => {
                         </tr>
                       ) : (
                         activeListings.filter(l => l.category === viewCategory).map(l => (
-                          <tr key={l.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                            <td className="fw-bold">{l.crop}</td>
+                          <tr key={l.id} style={{ borderBottom: '1px solid var(--border-color)' }}>
+                            <td className="fw-bold d-flex align-items-center gap-2">
+                              {l.imageUrl ? (
+                                <img src={l.imageUrl} alt={l.crop} style={{ width: '38px', height: '38px', objectFit: 'cover', borderRadius: '6px' }} />
+                              ) : (
+                                <span style={{ fontSize: '1.4rem' }}>🌱</span>
+                              )}
+                              <span>{l.crop}</span>
+                            </td>
                             <td>{l.farmer}</td>
                             <td>{l.qty}</td>
                             <td className="text-success fw-bold">₹{l.price}</td>
@@ -425,7 +681,7 @@ const RecommendedFeatures = ({ viewMode }) => {
                 </div>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-outline-light" onClick={() => setShowViewModal(false)}>{t('close') || 'Close'}</button>
+                <button type="button" className="btn btn-light" onClick={() => setShowViewModal(false)}>{t('close') || 'Close'}</button>
               </div>
             </div>
           </div>

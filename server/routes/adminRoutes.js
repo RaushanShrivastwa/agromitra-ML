@@ -32,5 +32,6 @@ router.delete('/products/:id', adminCtrl.deleteProduct);
 
 router.get('/crops', adminCtrl.getAllCrops);
 router.put('/crops/:id/approval', adminCtrl.approveCropListing);
+router.put('/categories', adminCtrl.updateCategory);
 
 module.exports = router;

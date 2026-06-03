@@ -1,60 +1,78 @@
 /* Light theme variables */
 body.light {
-  --bg-main: #f4f7f6;
+  --bg-main: #f1f6f2; /* soft mint off-white */
   --bg-card: #ffffff;
-  --bg-input: #f8f9fa;
-  --text-color: #2e7d32;
-  --text-body: #333333;
-  --text-muted: #6c757d;
-  --border-color: #dee2e6;
+  --bg-input: #f4f8f5;
+  --text-color: #1b5e20; /* rich dark green */
+  --text-body: #2e3a30; /* dark charcoal-green for high contrast */
+  --text-muted: #5a6e5e;
+  --border-color: #d0ded2;
   --hover-bg: #e8f5e9;
   
   /* Overrides for Navbar CSS variables in light mode */
   --bg-color: #ffffff;
-  --hover-color: #f5f5f5;
-  --border-color: #dee2e6;
-  --text-color-navbar: #333333;
+  --hover-color: #e8f5e9;
+  --text-color-navbar: #2e3a30;
 
-  /* ServiceSection custom variables */
-  --service-card-bg: #eafab2;
-  --service-item-bg: #f9f9f9;
-  --service-item-hover-bg: #f0f0f0;
-  --service-item-text: #333333;
-  --service-title-color: #2c7d3f;
-  --support-desc-color: #434141;
+  /* ServiceSection & RecommendedFeatures custom variables */
+  --service-card-bg: #e2f3e4; /* soft light green card bg */
+  --service-item-bg: #ffffff;
+  --service-item-hover-bg: #f5faf6;
+  --service-item-text: #2e3a30;
+  --service-title-color: #1b5e20;
+  --support-desc-color: #2e3a30;
+  
+  --feature-card-bg: #e2f3e4;
+  --item-card-bg: #ffffff;
+  --item-card-hover-bg: #f5faf6;
+
+  /* 3D Styling Variables */
+  --btn-3d-bg: #2e7d32;
+  --btn-3d-border-bottom: #1b5e20;
+  --btn-3d-text: #ffffff;
+  --card-3d-border-bottom: #a3c9a8;
+  --card-3d-shadow: rgba(27, 94, 32, 0.08);
 }
 
 /* Dark theme variables */
 body.dark {
-  --bg-main: #121212;
-  --bg-card: #1e1e1e;
-  --bg-input: #2a2a2a;
-  --text-color: #a5d6a7;
-  --text-body: #e0e0e0;
-  --text-muted: #a0a0a0;
-  --border-color: #333333;
+  --bg-main: #0c110d; /* deep forest dark green/black */
+  --bg-card: #131a15; /* dark charcoal green card background */
+  --bg-input: #1a231d; /* slightly lighter input background */
+  --text-color: #81c784; /* bright mint green for high visibility */
+  --text-body: #e0eedc; /* light mint-tinted gray text, very high contrast */
+  --text-muted: #cbe0cd; /* brightened for high contrast and readability */
+  --border-color: #243629;
   --hover-bg: #2e7d32;
   
   /* Overrides for Navbar CSS variables in dark mode */
-  --bg-color: #1e1e1e;
-  --hover-color: #2d2d2d;
-  --border-color: #333333;
-  --text-color-navbar: #e0e0e0;
+  --bg-color: #131a15;
+  --hover-color: #1a231d;
+  --text-color-navbar: #e0eedc;
 
-  /* ServiceSection custom variables */
-  --service-card-bg: #1e2912;
-  --service-item-bg: #252525;
-  --service-item-hover-bg: #303030;
-  --service-item-text: #e0e0e0;
-  --service-title-color: #a5d6a7;
-  --support-desc-color: #b0b0b0;
+  /* ServiceSection & RecommendedFeatures custom variables */
+  --service-card-bg: #1a261c;
+  --service-item-bg: #121a14;
+  --service-item-hover-bg: #1c281f;
+  --service-item-text: #e0eedc;
+  --service-title-color: #81c784;
+  --support-desc-color: #b8c7b9;
+  
+  --feature-card-bg: #1a261c;
+  --item-card-bg: #121a14;
+  --item-card-hover-bg: #1c281f;
+
+  /* 3D Styling Variables */
+  --btn-3d-bg: #2e7d32;
+  --btn-3d-border-bottom: #154c18;
+  --btn-3d-text: #ffffff;
+  --card-3d-border-bottom: #1c291d;
+  --card-3d-shadow: rgba(0, 0, 0, 0.4);
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-main);
@@ -68,3 +86,208 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* --- Global 3D & Custom Overrides --- */
+
+/* 3D Card Effect */
+.card, .service-card, .feature-card, .report-card, .category-card, .scheme-card, .slider-card {
+  border: 1px solid var(--border-color) !important;
+  border-bottom: 5px solid var(--card-3d-border-bottom) !important;
+  border-radius: 16px !important;
+  background-color: var(--bg-card) !important;
+  box-shadow: 0 6px 16px var(--card-3d-shadow) !important;
+  transition: transform 0.2s ease, border-bottom-width 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease !important;
+}
+
+.card:hover, .service-card:hover, .feature-card:hover, .report-card:hover, .category-card:hover, .scheme-card:hover, .slider-card:hover {
+  transform: translateY(-4px) !important;
+  border-bottom-width: 8px !important;
+  box-shadow: 0 12px 24px var(--card-3d-shadow) !important;
+}
+
+/* 3D Button Effect */
+.btn, .service-action, .view-all-btn, .support-btn, .slide-button, .view-reports, .add-items, .view-items, .view-details {
+  border-bottom: 4px solid var(--btn-3d-border-bottom) !important;
+  border-radius: 10px !important;
+  transition: transform 0.1s ease, border-bottom-width 0.1s ease, box-shadow 0.1s ease, background-color 0.2s ease !important;
+  position: relative !important;
+}
+
+.btn:active, .service-action:active, .view-all-btn:active, .support-btn:active, .slide-button:active, .view-reports:active, .add-items:active, .view-items:active, .view-details:active {
+  transform: translateY(3px) !important;
+  border-bottom-width: 1px !important;
+}
+
+/* Specific Bootstrap button high-contrast overrides */
+.btn-success {
+  background-color: var(--text-color) !important;
+  border-color: var(--text-color) !important;
+  color: var(--bg-main) !important;
+  font-weight: 600 !important;
+}
+
+.btn-success:hover {
+  background-color: var(--hover-bg) !important;
+  color: var(--text-color) !important;
+}
+
+.btn-outline-success {
+  color: var(--text-color) !important;
+  border-color: var(--text-color) !important;
+  background-color: transparent !important;
+  font-weight: 600 !important;
+}
+
+.btn-outline-success:hover {
+  background-color: var(--text-color) !important;
+  color: var(--bg-main) !important;
+}
+
+.btn-danger {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  border-bottom-color: #bd2130 !important;
+  color: #ffffff !important;
+}
+.btn-danger:hover {
+  background-color: #c82333 !important;
+}
+body.dark .btn-danger {
+  background-color: #e57373 !important;
+  border-color: #e57373 !important;
+  border-bottom-color: #c62828 !important;
+  color: #0c110d !important;
+}
+body.dark .btn-danger:hover {
+  background-color: #ef9a9a !important;
+}
+
+.btn-outline-danger {
+  color: #dc3545 !important;
+  border-color: #dc3545 !important;
+}
+.btn-outline-danger:hover {
+  background-color: #dc3545 !important;
+  color: #ffffff !important;
+}
+body.dark .btn-outline-danger {
+  color: #e57373 !important;
+  border-color: #e57373 !important;
+}
+body.dark .btn-outline-danger:hover {
+  background-color: #e57373 !important;
+  color: #0c110d !important;
+}
+
+.btn-light {
+  background-color: var(--bg-input) !important;
+  color: var(--text-body) !important;
+  border: 1px solid var(--border-color) !important;
+}
+.btn-light:hover {
+  background-color: var(--hover-bg) !important;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Table Override */
+.table {
+  color: var(--text-body) !important;
+  background-color: transparent !important;
+  --bs-table-color: var(--text-body) !important;
+  --bs-table-bg: transparent !important;
+  --bs-table-border-color: var(--border-color) !important;
+  --bs-table-striped-color: var(--text-body) !important;
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.02) !important;
+  --bs-table-hover-color: var(--text-body) !important;
+  --bs-table-hover-bg: rgba(255, 255, 255, 0.04) !important;
+}
+.table th {
+  color: var(--text-color) !important;
+  background-color: transparent !important;
+  border-bottom: 2px solid var(--border-color) !important;
+}
+.table td {
+  color: var(--text-body) !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+.table tr {
+  background-color: transparent !important;
+}
+
+/* Inputs & Form Controls */
+.form-control, .form-select {
+  background-color: var(--bg-input) !important;
+  color: var(--text-body) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+}
+.form-control:focus, .form-select:focus {
+  background-color: var(--bg-input) !important;
+  color: var(--text-body) !important;
+  border-color: var(--text-color) !important;
+  box-shadow: 0 0 0 0.25rem rgba(46, 125, 50, 0.2) !important;
+}
+
+/* Modals Override */
+.modal-content {
+  background-color: var(--bg-card) !important;
+  color: var(--text-body) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 18px !important;
+}
+.modal-header, .modal-footer {
+  border-color: var(--border-color) !important;
+}
+
+/* Header standard colors */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+/* Bootstrap muted text high-contrast overrides */
+.text-muted, .text-secondary {
+  color: var(--text-muted) !important;
+}
+
+/* Dark Mode Readability Fixes */
+body.dark .logo,
+body.dark .navbar-brand .logo,
+body.dark .faq-page-content .text-muted,
+body.dark .faq-page-content p,
+body.dark .admin-faq-list strong,
+body.dark .admin-faq-list p,
+body.dark .admin-faq-list small,
+body.dark .order-customer-details strong,
+body.dark .order-customer-details small,
+body.dark .order-shipping-details strong,
+body.dark .order-shipping-details div,
+body.dark .order-shipping-details span,
+body.dark .order-shipping-details,
+body.dark .product-details-cell strong,
+body.dark .product-details-cell small,
+body.dark .security-audits-section li,
+body.dark .security-audits-section span,
+body.dark .security-audits-section strong,
+body.dark .session-analytics-section li,
+body.dark .session-analytics-section span,
+body.dark .session-analytics-section strong {
+  color: #ffffff !important;
+}
+

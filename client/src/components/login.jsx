@@ -101,7 +101,7 @@ function Login() {
             value={googleRole} 
             onChange={(e) => setGoogleRole(e.target.value)} 
             className="form-select p-2 w-100" 
-            style={{ borderRadius: '8px', border: '1px solid #ccc', background: 'var(--bg-input)', color: 'var(--text-color)' }}
+            style={{ borderRadius: '8px', border: '1px solid #ccc', background: 'var(--bg-input)', color: 'var(--text-body)' }}
           >
             <option value="Customer">{t('roleCustomer') || 'Customer'}</option>
             <option value="Farmer">{t('roleFarmer') || 'Farmer'}</option>

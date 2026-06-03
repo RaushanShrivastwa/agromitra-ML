@@ -4,6 +4,7 @@ const Analytics = require('../models/Analytics');
 const SoilRequest = require('../models/SoilRequest');
 const Order = require('../models/Order');
 const Product = require('../models/Product');
+const Category = require('../models/Category');
 
 exports.getUsers = async (req, res) => {
   try {
@@ -333,5 +334,31 @@ exports.approveCropListing = async (req, res) => {
   } catch (error) {
     console.error('Error in approveCropListing:', error);
     res.status(500).json({ message: 'Server error updating crop listing status.' });
+  }
+};
+
+exports.updateCategory = async (req, res) => {
+  const { name, imageUrl } = req.body;
+  if (!name || !imageUrl) {
+    return res.status(400).json({ message: 'Name and imageUrl are required.' });
+  }
+  try {
+    const category = await Category.findOneAndUpdate(
+      { name: name.trim() },
+      { imageUrl: imageUrl.trim() },
+      { upsert: true, new: true }
+    );
+
+    // Also update any crop listings under this category
+    const CropListing = require('../models/CropListing');
+    await CropListing.updateMany(
+      { category: name.trim() },
+      { categoryImageUrl: imageUrl.trim() }
+    );
+
+    res.status(200).json({ message: 'Category thumbnail updated successfully.', category });
+  } catch (error) {
+    console.error('Error in updateCategory:', error);
+    res.status(500).json({ message: 'Server error updating category thumbnail.' });
   }
 };

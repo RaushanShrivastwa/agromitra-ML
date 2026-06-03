@@ -185,7 +185,7 @@ export default function Weather() {
   const selectedDay = weeklyData && weeklyData.forecast ? weeklyData.forecast[selectedDayIndex] : null;
 
   return (
-    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-color)' }}>
+    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-body)' }}>
       <Navbar />
       <div className="container py-5" style={{ marginTop: '90px' }}>
         
@@ -198,8 +198,8 @@ export default function Weather() {
 
         <div className="row g-4 justify-content-center">
           <div className="col-md-5">
-            <div className="card shadow border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-color)', borderRadius: '15px' }}>
-              <h2 className="mb-3 d-flex align-items-center" style={{ fontWeight: 700, color: '#2e7d32' }}>
+            <div className="card shadow border-0 p-4" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', borderRadius: '15px' }}>
+              <h2 className="mb-3 d-flex align-items-center" style={{ fontWeight: 700, color: 'var(--text-color)' }}>
                 <FaCloudSun className="me-2" /> {t('weatherTitle') || 'Weather Predictor'}
               </h2>
               <p className="text-muted small mb-4">{t('weatherSubtitle') || 'Enter daily weather metrics or trigger the Weekly Observatory to examine week-long crop advice.'}</p>
@@ -224,7 +224,7 @@ export default function Weather() {
                     onClick={handleWeeklyObservatory}
                     disabled={loading}
                     style={{ 
-                      background: 'linear-gradient(135deg, #1b5e20, #2e7d32)', 
+                      background: 'linear-gradient(135deg, var(--btn-3d-border-bottom), var(--btn-3d-bg))', 
                       border: 'none',
                       fontWeight: 600,
                       borderRadius: '10px',
@@ -248,7 +248,7 @@ export default function Weather() {
                     onChange={handleInputChange}
                     placeholder="e.g. 2.5"
                     required
-                    style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)' }}
+                    style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)' }}
                   />
                 </div>
                 <div className="row g-2 mb-3">
@@ -263,7 +263,7 @@ export default function Weather() {
                       onChange={handleInputChange}
                       placeholder="e.g. 32.5"
                       required
-                      style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)' }}
+                      style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)' }}
                     />
                   </div>
                   <div className="col-6">
@@ -277,7 +277,7 @@ export default function Weather() {
                       onChange={handleInputChange}
                       placeholder="e.g. 19.0"
                       required
-                      style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)' }}
+                      style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)' }}
                     />
                   </div>
                 </div>
@@ -292,7 +292,7 @@ export default function Weather() {
                     onChange={handleInputChange}
                     placeholder="e.g. 4.8"
                     required
-                    style={{ background: 'var(--bg-input)', color: 'var(--text-color)', border: '1px solid rgba(255,255,255,0.1)' }}
+                    style={{ background: 'var(--bg-input)', color: 'var(--text-body)', border: '1px solid rgba(255,255,255,0.1)' }}
                   />
                 </div>
                 <button type="submit" className="btn btn-success w-100 py-2 d-flex align-items-center justify-content-center gap-2" disabled={loading} style={{ fontWeight: 600, borderRadius: '10px' }}>
@@ -305,7 +305,7 @@ export default function Weather() {
 
           {/* Results Display */}
           <div className="col-md-7">
-            <div className="card shadow border-0 p-4 h-100 d-flex flex-column" style={{ background: 'var(--bg-card)', color: 'var(--text-color)', borderRadius: '15px', minHeight: '450px' }}>
+            <div className="card shadow border-0 p-4 h-100 d-flex flex-column" style={{ background: 'var(--bg-card)', color: 'var(--text-body)', borderRadius: '15px', minHeight: '450px' }}>
               
               {loading ? (
                 <div className="d-flex flex-column justify-content-center align-items-center flex-grow-1 text-center py-5">
@@ -345,7 +345,7 @@ export default function Weather() {
                             borderRadius: '12px',
                             cursor: 'pointer',
                             background: isSelected ? 'rgba(46, 125, 50, 0.2)' : 'rgba(255, 255, 255, 0.02)',
-                            border: isSelected ? '2px solid #2e7d32' : '2px solid rgba(255, 255, 255, 0.05)',
+                            border: isSelected ? '2px solid var(--text-color)' : '2px solid rgba(255, 255, 255, 0.05)',
                             transition: 'all 0.2s ease-in-out',
                             transform: isSelected ? 'scale(1.03)' : 'none'
                           }}
@@ -377,7 +377,7 @@ export default function Weather() {
 
                   {/* Selected Day Details */}
                   {selectedDay && (
-                    <div className="card border-0 p-4 flex-grow-1 d-flex flex-column text-start" style={{ background: 'rgba(255, 255, 255, 0.02)', borderRadius: '12px', borderLeft: '5px solid #2e7d32' }}>
+                    <div className="card border-0 p-4 flex-grow-1 d-flex flex-column text-start" style={{ background: 'rgba(255, 255, 255, 0.02)', borderRadius: '12px', borderLeft: '5px solid var(--text-color)' }}>
                       <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-1">
                         <h5 className="fw-bold mb-0 d-flex align-items-center">
                           <FaCalendarAlt className="text-success me-2" /> 
@@ -437,10 +437,10 @@ export default function Weather() {
                   <div className="mb-3">
                     {getWeatherIcon(prediction.prediction, "fs-1")}
                   </div>
-                  <h1 className="display-4 fw-bold" style={{ color: '#2e7d32' }}>{prediction.prediction}</h1>
+                  <h1 className="display-4 fw-bold" style={{ color: 'var(--text-color)' }}>{prediction.prediction}</h1>
                   <h4 className="mt-3 fw-bold">Predicted Condition</h4>
                   
-                  <div className="card p-4 mt-4 text-start shadow-sm border-0" style={{ background: 'rgba(255,255,255,0.02)', borderLeft: '6px solid #2e7d32', borderRadius: '10px' }}>
+                  <div className="card p-4 mt-4 text-start shadow-sm border-0" style={{ background: 'rgba(255,255,255,0.02)', borderLeft: '6px solid var(--text-color)', borderRadius: '10px' }}>
                     <h5 className="fw-bold mb-2 text-success">💡 Agricultural Smart Advisory</h5>
                     <p className="mb-0 text-muted" style={{ lineHeight: '1.6' }}>{prediction.advice}</p>
                   </div>
@@ -456,7 +456,7 @@ export default function Weather() {
                     type="button" 
                     className="btn btn-success px-4 py-2"
                     onClick={handleWeeklyObservatory}
-                    style={{ background: 'linear-gradient(135deg, #1b5e20, #2e7d32)', border: 'none', fontWeight: 600, borderRadius: '10px' }}
+                    style={{ background: 'linear-gradient(135deg, var(--btn-3d-border-bottom), var(--btn-3d-bg))', border: 'none', fontWeight: 600, borderRadius: '10px' }}
                   >
                     🌌 Launch Weekly Observatory
                   </button>

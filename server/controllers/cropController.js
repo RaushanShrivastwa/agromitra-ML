@@ -1,4 +1,5 @@
 const CropListing = require('../models/CropListing');
+const Category = require('../models/Category');
 const Log = require('../models/Log');
 const axios = require('axios');
 
@@ -11,18 +12,13 @@ const ALLOWED_CROPS = [
 ];
 
 exports.createListing = async (req, res) => {
-  const { cropName, category, quantity, price, imageUrl, farmerName, farmerPhone } = req.body;
+  const { cropName, category, quantity, price, imageUrl, categoryImageUrl, farmerName, farmerPhone } = req.body;
 
   if (!cropName || !category || !quantity || !price || !farmerName || !farmerPhone) {
     return res.status(400).json({ message: 'All fields (except image) are required' });
   }
 
-  const normalizedCrop = cropName.trim().toLowerCase();
-  if (!ALLOWED_CROPS.includes(normalizedCrop)) {
-    return res.status(400).json({ 
-      message: `Invalid crop: "${cropName}". Crop must be one of: ${ALLOWED_CROPS.join(', ')}` 
-    });
-  }
+  // Dynamic crops are allowed, so we skip the strict CSV crops validation
 
   try {
     const newListing = await CropListing.create({
@@ -31,10 +27,24 @@ exports.createListing = async (req, res) => {
       quantity: Number(quantity),
       price: Number(price),
       imageUrl: imageUrl || '',
+      categoryImageUrl: categoryImageUrl || '',
       farmerName: farmerName.trim(),
       farmerPhone: farmerPhone.trim(),
       userId: req.user.id
     });
+
+    // If categoryImageUrl is provided, save/upsert the category thumbnail
+    if (categoryImageUrl) {
+      try {
+        await Category.findOneAndUpdate(
+          { name: category.trim() },
+          { imageUrl: categoryImageUrl },
+          { upsert: true, new: true }
+        );
+      } catch (catErr) {
+        console.error('Error upserting category thumbnail:', catErr.message);
+      }
+    }
 
     // Log this action
     await new Log({
@@ -699,5 +709,45 @@ exports.getMandiStates = async (req, res) => {
     'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'
   ];
   res.status(200).json({ states });
+};
+
+// POST /api/crops/upload — upload crop image to Cloudinary (accessible by farmers)
+const cloudinary = require('cloudinary').v2;
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+exports.uploadCropImage = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file uploaded.' });
+    }
+    const uploadStream = cloudinary.uploader.upload_stream(
+      { folder: 'agromitra_crops' },
+      (error, result) => {
+        if (error) {
+          console.error('Cloudinary upload error:', error);
+          return res.status(500).json({ message: 'Cloudinary upload failed.', error });
+        }
+        res.status(200).json({ imageUrl: result.secure_url });
+      }
+    );
+    uploadStream.end(req.file.buffer);
+  } catch (error) {
+    console.error('Error in uploadCropImage:', error);
+    res.status(500).json({ message: 'Server error during upload.' });
+  }
+};
+
+exports.getCategories = async (req, res) => {
+  try {
+    const categories = await Category.find({}).sort({ name: 1 });
+    res.status(200).json({ categories });
+  } catch (error) {
+    console.error('Error in getCategories:', error);
+    res.status(500).json({ message: 'Server error fetching categories.' });
+  }
 };
 

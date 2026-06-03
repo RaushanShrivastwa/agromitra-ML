@@ -9,7 +9,7 @@ export default function ServicesPage() {
   const viewMode = user?.role === 'admin' ? 'farmer' : (user?.role === 'customer' ? 'customer' : 'farmer');
 
   return (
-    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-color)' }}>
+    <div style={{ background: 'var(--bg-main)', minHeight: '100vh', color: 'var(--text-body)' }}>
       <Navbar />
       <div style={{ paddingTop: '50px' }}>
         <ServicesSection viewMode={viewMode} />

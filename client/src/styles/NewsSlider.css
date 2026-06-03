@@ -66,17 +66,19 @@
 
 .slide-button {
   padding: 0.8rem 1.5rem;
-  background-color: #4CAF50;
-  color: white;
+  background-color: var(--text-color);
+  color: var(--bg-main);
   border: none;
-  border-radius: 4px;
+  border-bottom: 4px solid var(--btn-3d-border-bottom);
+  border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .slide-button:hover {
-  background-color: #388E3C;
+  background-color: var(--hover-bg);
+  color: var(--text-color);
   transform: translateY(-2px);
 }
 

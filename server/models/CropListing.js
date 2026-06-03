@@ -6,6 +6,7 @@ const cropListingSchema = new mongoose.Schema({
   quantity: { type: Number, required: true },
   price: { type: Number, required: true },
   imageUrl: { type: String, default: "" },
+  categoryImageUrl: { type: String, default: "" },
   farmerName: { type: String, required: true },
   farmerPhone: { type: String, required: true },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },

@@ -107,6 +107,19 @@
   color: #d42f17;
 }
 
+body.dark .service-status.completed {
+  background-color: rgba(46, 125, 50, 0.25);
+  color: #81c784;
+}
+body.dark .service-status.in-progress {
+  background-color: rgba(212, 160, 23, 0.25);
+  color: #ffd54f;
+}
+body.dark .service-status.pending-review {
+  background-color: rgba(212, 47, 23, 0.25);
+  color: #ef9a9a;
+}
+
 .service-action {
   display: flex;
   align-items: center;
@@ -171,12 +184,13 @@
 }
 
 .call-btn {
-  background-color: #343534;
-  color: white;
+  background-color: var(--text-color) !important;
+  color: var(--bg-card) !important;
 }
 
 .call-btn:hover {
-  background-color: #000000;
+  background-color: var(--hover-bg) !important;
+  color: var(--text-color) !important;
 }
 
 .email-btn {
