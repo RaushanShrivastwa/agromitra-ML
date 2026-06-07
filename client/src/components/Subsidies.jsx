@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Navbar from './Navbar';
 import Footer from './footer';
 import { useLanguage } from '../context/LanguageContext';
-import { FaBookmark, FaComments, FaArrowRight, FaPaperPlane, FaUser, FaRobot, FaFilter, FaSpinner } from 'react-icons/fa';
+import { FaBookmark, FaComments, FaPaperPlane, FaRobot, FaFilter, FaSpinner } from 'react-icons/fa';
 
 export default function Subsidies() {
   const { t } = useLanguage();
@@ -77,6 +77,7 @@ export default function Subsidies() {
   // Run initial match on page load
   useEffect(() => {
     handleMatch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSendMessage = async (e) => {

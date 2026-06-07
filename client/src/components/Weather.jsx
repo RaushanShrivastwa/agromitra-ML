@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './footer';
 import { useLanguage } from '../context/LanguageContext';
-import { FaCloudSun, FaCloudRain, FaSnowflake, FaWind, FaSun, FaSpinner, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
+import { FaCloudSun, FaCloudRain, FaSnowflake, FaSun, FaSpinner, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 
 export default function Weather() {
   const { t } = useLanguage();

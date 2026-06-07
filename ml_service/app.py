@@ -15,6 +15,16 @@ CORS(app)  # Enable Cross-Origin Resource Sharing
 MODELS_DIR = os.path.join(os.path.dirname(__file__), 'models')
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 
+# Auto-train models on startup if they don't exist (useful for Hugging Face Spaces)
+if not os.path.exists(os.path.join(MODELS_DIR, "crop_model.joblib")):
+    print("Pre-trained models not found. Running train_models.py...")
+    import sys
+    import subprocess
+    try:
+        subprocess.run([sys.executable, os.path.join(os.path.dirname(__file__), "train_models.py")], check=True)
+    except Exception as e:
+        print(f"Error running train_models.py: {e}")
+
 # Load models and encoders
 print("Loading ML models and encoders...")
 try:
@@ -434,4 +444,5 @@ def retrain_faq():
         }), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5050, debug=True)
+    port = int(os.environ.get("PORT", 7860))
+    app.run(host='0.0.0.0', port=port, debug=True)

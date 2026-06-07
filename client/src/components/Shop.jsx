@@ -70,7 +70,6 @@ export default function Shop() {
   }, []);
 
   const [products, setProducts] = useState([]);
-  const [productsLoading, setProductsLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -85,8 +84,6 @@ export default function Shop() {
         }
       } catch (err) {
         console.error('Error fetching products:', err);
-      } finally {
-        setProductsLoading(false);
       }
     };
     fetchProducts();

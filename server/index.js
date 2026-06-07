@@ -9,106 +9,34 @@ const authRoutes = require('./routes/authRoutes');    // Auth-related routes
 const jwtAuth = require('./middleware/jwtAuth');      // JWT middleware
 
 const app = express();
+
+// Custom CORS middleware supporting multiple origins from ALLOWED_ORIGINS env var
+app.use((req, res, next) => {
+  const allowedOrigins = (process.env.ALLOWED_ORIGINS || '').split(',').map(o => o.trim());
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else if (!process.env.ALLOWED_ORIGINS) {
+    // Fallback default for local development if env var is missing
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  
+  // Instantly resolve CORS preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(async () => {
-    console.log('Connected to Database');
-    // Seed initial FAQs if empty or update lead profiles
-    try {
-      const GeneralFaq = require('./models/GeneralFaq');
-      
-      // Upsert/ensure the project lead ones are correct and detailed
-      await GeneralFaq.deleteMany({
-        question: { 
-          $in: [
-            "Who built this platform and who are the project leads?", 
-            "What is Vrishank Raina's role in the AgroMitra project?", 
-            "What is Raushan Shrivastawa's role in the AgroMitra project?"
-          ]
-        }
-      });
-      
-      await GeneralFaq.create([
-        {
-          question: "Who built this platform and who are the project leads?",
-          answer: "The project leads for AgroMitra are Vrishank Raina and Raushan Shrivastawa. Vrishank Raina is responsible for the backend architecture and machine learning models, while Raushan Shrivastawa leads the frontend interface design and user experience development.",
-          keywords: ["leads", "built", "who", "vrishank", "raina", "vrishank raina", "raushan", "shrivastawa", "raushan shrivastawa", "creator", "backend", "frontend", "developers"]
-        },
-        {
-          question: "What is Vrishank Raina's role in the AgroMitra project?",
-          answer: "Vrishank Raina is the Backend and Machine Learning Architect for AgroMitra. He designed the server-side framework using Express and Node.js, established the MongoDB database models, implemented the API routing and security, and engineered the Python Flask ML microservice which powers weather forecasts, fertilizer advice, crop suggestions, and the FAQ search models.",
-          keywords: ["vrishank", "vrishank raina", "backend", "ml", "machine learning", "flask", "express", "node", "database", "mongodb", "routing", "developer", "architect"]
-        },
-        {
-          question: "What is Raushan Shrivastawa's role in the AgroMitra project?",
-          answer: "Raushan Shrivastawa is the Frontend Lead and UI/UX Designer for AgroMitra. He built the entire client application using React, created the interactive farmer and admin dashboards, integrated charts, responsive grid layouts, custom UI components, and designed the premium look-and-feel of the application, including the custom theme context for light and dark modes.",
-          keywords: ["raushan", "raushan shrivastawa", "frontend", "react", "ui", "ux", "design", "theme", "dashboard", "layout", "visuals", "interface"]
-        }
-      ]);
-
-      // Seed the other default ones if they are missing
-      const hasServicesFaq = await GeneralFaq.findOne({ question: "What agricultural services does AgroMitra provide?" });
-      if (!hasServicesFaq) {
-        await GeneralFaq.create({
-          question: "What agricultural services does AgroMitra provide?",
-          answer: "AgroMitra offers a suite of intelligent services including live weather forecast with smart advisories, crop recommendation based on NPK parameters, fertilizer suggestion, live Mandi pricing from data.gov.in, and a crop marketplace.",
-          keywords: ["services", "what", "features", "mandi", "weather", "fertilizer", "crop"]
-        });
-      }
-
-      const hasSoilFaq = await GeneralFaq.findOne({ question: "How does the soil testing service work?" });
-      if (!hasSoilFaq) {
-        await GeneralFaq.create({
-          question: "How does the soil testing service work?",
-          answer: "Farmers can schedule a soil sample pickup from their dashboard. Our agents will collect the sample, analyze it, and the admin will upload the NPK results directly to your profile. You can then import these results directly into the Fertilizer Advisor.",
-          keywords: ["soil", "test", "testing", "npk", "pickup", "sample"]
-        });
-      }
-
-      console.log('Initial FAQs seeded/updated successfully.');
-    } catch (seedErr) {
-      console.error('Error seeding FAQs:', seedErr.message);
-    }
-
-    // Seed initial products if empty
-    try {
-      const Product = require('./models/Product');
-      const productCount = await Product.countDocuments();
-      if (productCount === 0) {
-        await Product.create([
-          { name: 'Hybrid Tomato Seeds', category: 'Seeds', price: 199, oldPrice: 398, rating: 4.8, image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=80', description: 'High-yield, disease-resistant tomato hybrid seeds (500g).' },
-          { name: 'Premium Nitrogen Fertilizer (Urea)', category: 'Fertilizers', price: 499, oldPrice: 699, rating: 4.6, image: 'https://images.unsplash.com/photo-1586771107445-d3ca888129ce?w=400&q=80', description: 'Concentrated nitrogen fertilizer for rapid vegetative crop growth.' },
-          { name: 'Handheld Seed Sower Tool', category: 'Equipment', price: 1499, oldPrice: 2999, rating: 4.5, image: 'https://images.unsplash.com/photo-1585011650347-c59dbef5a823?w=400&q=80', description: 'Ergonomic manual seed planter implement with adjustable depth.' },
-          { name: 'Hybrid Wheat Seeds', category: 'Seeds', price: 299, oldPrice: 499, rating: 4.9, image: 'https://images.unsplash.com/photo-1601593768799-76d6d8cde7dc?w=400&q=80', description: 'Heat-tolerant hybrid wheat seeds suitable for multiple seasons.' },
-          { name: 'Bio-Organic Compost', category: 'Fertilizers', price: 349, oldPrice: 499, rating: 4.7, image: 'https://images.unsplash.com/photo-1594122230689-45899d9e6f69?w=400&q=80', description: '100% organic decomposed compost to enrich soil microbial health.' },
-          { name: 'Drip Irrigation Pipe Kit (100m)', category: 'Equipment', price: 2499, oldPrice: 4999, rating: 4.4, image: 'https://images.unsplash.com/photo-1603048719537-7a7387dfb1e1?w=400&q=80', description: 'Full micro-irrigation layout pipe kit with drip emitters.' }
-        ]);
-        console.log('Initial products seeded successfully.');
-      }
-    } catch (seedErr) {
-      console.error('Error seeding products:', seedErr.message);
-    }
-
-    // Seed initial crop categories if empty
-    try {
-      const Category = require('./models/Category');
-      const categoryCount = await Category.countDocuments();
-      if (categoryCount === 0) {
-        await Category.create([
-          { name: 'Vegetables', imageUrl: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=300' },
-          { name: 'Cereals', imageUrl: 'https://images.unsplash.com/photo-1601593768799-76d6d8cde7dc?w=300' },
-          { name: 'Pulses', imageUrl: 'https://images.unsplash.com/photo-1603048719537-7a7387dfb1e1?w=300' },
-          { name: 'Spices', imageUrl: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=300' }
-        ]);
-        console.log('Initial categories seeded successfully.');
-      }
-    } catch (seedErr) {
-      console.error('Error seeding categories:', seedErr.message);
-    }
-  })
+  .then(() => console.log('Connected to Database'))
   .catch((err) => console.error('DB connection error:', err));
 
 // Session & Passport (for OAuth)
@@ -158,7 +86,8 @@ app.use('/api/products', productRoutes);
 const axios = require('axios');
 app.all('/api/ml/*', jwtAuth, async (req, res) => {
   const targetPath = req.url.replace('/api/ml', '');
-  const targetUrl = `http://localhost:5050${targetPath}`;
+  const mlServiceUrl = process.env.ML_SERVICE_URL || 'http://localhost:5050';
+  const targetUrl = `${mlServiceUrl.replace(/\/$/, '')}${targetPath}`;
   try {
     const response = await axios({
       method: req.method,
@@ -433,10 +362,9 @@ app.get('/api/dashboard', jwtAuth, async (req, res) => {
   }
 });
 
-// Serve React frontend from the build directory
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+// Default status health-check endpoint
+app.get('/', (req, res) => {
+  res.json({ message: 'AgroMitra API Server is running' });
 });
 
 const PORT = process.env.PORT || 5000;

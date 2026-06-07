@@ -12,7 +12,7 @@ AgroMitra was built and designed by a dedicated two-person development team:
   * Engineered the Node.js/Express backend framework, RESTful API routing, and security.
   * Designed the MongoDB schema patterns and index caching systems.
   * Authored the Python Flask ML service, training Random Forest classifiers and Tfidf-vectorized hybrid search engines.
-  * Integrated Google OAuth, Razorpay checkout gateway, Fast2SMS, and Gemini API fallback structures.
+  * Integrated Google OAuth, Razorpay checkout gateway, and Gemini API fallback structures.
 * 🎨 **Raushan Shrivastawa** — *Frontend & UI/UX Design Lead*
   * Architected the entire client interface using React (v18).
   * Designed the premium user experience, complete with glassmorphism, harmonious color palettes, custom charts, and a responsive theme context (light/dark mode).
@@ -42,7 +42,7 @@ graph TD
 * **Frontend**: React.js, Bootstrap (v5), Custom CSS styling (vibrant color palettes, dark mode, custom fonts), React Icons.
 * **Backend**: Node.js, Express.js, MongoDB + Mongoose, JWT Authentication, Passport.js (Google OAuth).
 * **ML Microservice**: Python (v3.10), Flask, Scikit-Learn (Random Forest, Label Encoders), Pandas, Joblib, TF-IDF Vectorizers.
-* **External APIs**: Razorpay, OpenWeatherMap, data.gov.in, Cloudinary, Fast2SMS, Gemini API.
+* **External APIs**: Razorpay, OpenWeatherMap, data.gov.in, Cloudinary and Gemini API.
 
 ---
 
@@ -179,7 +179,7 @@ agromitra-ML/
 │   ├── middleware/             # Route validators (JWT token checker)
 │   ├── models/                 # Mongoose schemas (Products, User, Orders, Soil)
 │   ├── routes/                 # Endpoint path bindings
-│   ├── utils/                  # Helper modules (Fast2SMS, data caches)
+│   ├── utils/                  # Helper modules (data caches)
 │   ├── index.js                # Server entrypoint & DB connection/seeder
 │   └── .env                    # Main system environment variables
 ├── README.md                   # Project documentation
@@ -212,9 +212,6 @@ CLOUDINARY_API_SECRET=your_cloudinary_secret
 # Razorpay Sandbox Credentials
 RAZORPAY_KEY_ID=your_razorpay_key_id
 RAZORPAY_KEY_SECRET=your_razorpay_key_secret
-
-# Optional SMS Notification keys
-FAST2SMS_API_KEY=your_sms_gateway_key
 ```
 
 ### Client Environment Config (`client/.env`)

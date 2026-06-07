@@ -108,9 +108,10 @@ exports.getWeeklyWeather = async (req, res) => {
     });
 
     // Call ML prediction model in parallel for each of the forecast days
+    const mlServiceUrl = process.env.ML_SERVICE_URL || 'http://localhost:5050';
     const predictionPromises = forecastDays.map(async (day) => {
       try {
-        const mlResponse = await axios.post('http://localhost:5050/predict/weather', {
+        const mlResponse = await axios.post(`${mlServiceUrl.replace(/\/$/, '')}/predict/weather`, {
           precipitation: day.precipitation,
           temp_max: day.temp_max,
           temp_min: day.temp_min,
